@@ -1,19 +1,28 @@
-# Network Trace Extension
+# Network Trace Emulator
 
 
 
 Description
 -----------
-Chrome development tool extension able to emulate network conditions (downlink, uplink, latency) according to pre-recorded JSON file.
+- Chrome development tool extension enabling emulatation of network conditions (downlink) based on pre-recorded trace files.
 
-Simple way to test a web application with different network conditions.
+- Enables a simple way to test web applications when put through different network conditions.
 
-Using LPP predictions can enhance your web application.
+- The emulator showcases that leveraging LPP predictions can enhance your web application.
 
-JSON schema for files
+Installation
 -----------
 
-ADD LINKS
+1. Go to `chrome://extensions`.
+2. On the top right corner, toggle the *Developer Mode* switch.
+3. On the top left corner, click on *Load Unpacked*.
+4. Locate and load the *extension* folder.
+5. [Optional] Go to `chrome://apps`.
+6. [Optional] Remove Google apps related to website that emulator will be used on.
+
+The Network Trace Emulator will be available in the developer tools, accessed
+by pressing `F12`. Navigate the tabs in the Chrome developer window to find it.
+
 
 LPP predicions - LPP JS API
 -----------
@@ -43,7 +52,7 @@ LppSession.onpredictions (data)
 ```
 The data message will contain an array of predictions. 
 There can be several predictions of different types at one specific time.
-The predictions are always in chronlogical order with the nearest prdiction first in the array
+The predictions are always in chronlogical order with the nearest prediction first in the array
 
 Received message structure:
 ```javascript
@@ -72,8 +81,11 @@ LppType.type == PREDICTION_TYPE_UPLINK_BANDWIDTH  // value is a number of kilobi
 LppType.type == PREDICTION_TYPE_LATENCY // value is a number of nanoseconds
 ```
 
+Chromium Issues
+-----------
 
-
+1. [Issue 1126825](https://bugs.chromium.org/p/chromium/issues/detail?id=1126825) To avoid issues in certain use cases e.g. using the extension on youtube, please remove the corresponding website application under `chrome://apps`. The issue will be patched in later releases of the chromium engine. 
+2. [Issue 423246](https://bugs.chromium.org/p/chromium/issues/detail?id=423246) Emulation cannot be provided with the extension using the `WebSocket` protocol. 
 
 
 
