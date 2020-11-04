@@ -1,0 +1,1669 @@
+{
+	"version": 1,
+	"description": "Car trip from Zalom to Szczecin",
+	"clientName": "Huawei P30",
+	"clientModel": "ELE-L29",
+	"entries": [
+		{
+			"entryNo": 1,
+			"dateTime": "2020-11-04T12:55:50.773+01:00",
+			"dlBw": 45437,
+			"gpsCoordinates": {
+				"latitude": 53.4443199,
+				"longitude": 14.7413465,
+				"accuracy": 47.24700164794922
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 2,
+			"dateTime": "2020-11-04T12:56:00.257+01:00",
+			"dlBw": 49952,
+			"gpsCoordinates": {
+				"latitude": 53.4442005,
+				"longitude": 14.7415525,
+				"accuracy": 4
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 3,
+			"dateTime": "2020-11-04T12:56:10.295+01:00",
+			"dlBw": 49858,
+			"gpsCoordinates": {
+				"latitude": 53.4440571,
+				"longitude": 14.7417269,
+				"accuracy": 25.42799949645996
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 4,
+			"dateTime": "2020-11-04T12:56:20.092+01:00",
+			"dlBw": 69902,
+			"gpsCoordinates": {
+				"latitude": 53.4443979,
+				"longitude": 14.7419734,
+				"accuracy": 12.5
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 5,
+			"dateTime": "2020-11-04T12:56:30.148+01:00",
+			"dlBw": 65038,
+			"gpsCoordinates": {
+				"latitude": 53.4444164,
+				"longitude": 14.7411608,
+				"accuracy": 4.400000095367432
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 6,
+			"dateTime": "2020-11-04T12:56:40.730+01:00",
+			"dlBw": 34723,
+			"gpsCoordinates": {
+				"latitude": 53.4438901,
+				"longitude": 14.7407381,
+				"accuracy": 4
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 7,
+			"dateTime": "2020-11-04T12:56:50.636+01:00",
+			"dlBw": 39016,
+			"gpsCoordinates": {
+				"latitude": 53.4433576,
+				"longitude": 14.7403461,
+				"accuracy": 3.940000057220459
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 8,
+			"dateTime": "2020-11-04T12:57:00.612+01:00",
+			"dlBw": 45769,
+			"gpsCoordinates": {
+				"latitude": 53.4424927,
+				"longitude": 14.7397239,
+				"accuracy": 3.9000000953674316
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 9,
+			"dateTime": "2020-11-04T12:57:10.388+01:00",
+			"dlBw": 39954,
+			"gpsCoordinates": {
+				"latitude": 53.4416469,
+				"longitude": 14.7392941,
+				"accuracy": 3.9000000953674316
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 10,
+			"dateTime": "2020-11-04T12:57:21.520+01:00",
+			"dlBw": 32608,
+			"gpsCoordinates": {
+				"latitude": 53.4403758,
+				"longitude": 14.7387257,
+				"accuracy": 3.9000000953674316
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 11,
+			"dateTime": "2020-11-04T12:57:31.016+01:00",
+			"dlBw": 28559,
+			"gpsCoordinates": {
+				"latitude": 53.4395138,
+				"longitude": 14.7380427,
+				"accuracy": 3.9000000953674316
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 12,
+			"dateTime": "2020-11-04T12:57:40.503+01:00",
+			"dlBw": 39830,
+			"gpsCoordinates": {
+				"latitude": 53.4388985,
+				"longitude": 14.7369906,
+				"accuracy": 3.9000000953674316
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 13,
+			"dateTime": "2020-11-04T12:57:50.410+01:00",
+			"dlBw": 40619,
+			"gpsCoordinates": {
+				"latitude": 53.4384175,
+				"longitude": 14.7362146,
+				"accuracy": 3.9000000953674316
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 14,
+			"dateTime": "2020-11-04T12:58:00.312+01:00",
+			"dlBw": 52148,
+			"gpsCoordinates": {
+				"latitude": 53.4376115,
+				"longitude": 14.7348893,
+				"accuracy": 3.9000000953674316
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 15,
+			"dateTime": "2020-11-04T12:58:10.201+01:00",
+			"dlBw": 64228,
+			"gpsCoordinates": {
+				"latitude": 53.4367642,
+				"longitude": 14.733511,
+				"accuracy": 3.9000000953674316
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 16,
+			"dateTime": "2020-11-04T12:58:20.148+01:00",
+			"dlBw": 61552,
+			"gpsCoordinates": {
+				"latitude": 53.4363342,
+				"longitude": 14.7327841,
+				"accuracy": 3.9000000953674316
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 17,
+			"dateTime": "2020-11-04T12:58:30.276+01:00",
+			"dlBw": 55338,
+			"gpsCoordinates": {
+				"latitude": 53.4355753,
+				"longitude": 14.7315407,
+				"accuracy": 3.9200000762939453
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 18,
+			"dateTime": "2020-11-04T12:58:40.601+01:00",
+			"dlBw": 43174,
+			"gpsCoordinates": {
+				"latitude": 53.4350213,
+				"longitude": 14.7306711,
+				"accuracy": 4
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 19,
+			"dateTime": "2020-11-04T12:58:58.085+01:00",
+			"dlBw": 14355,
+			"gpsCoordinates": {
+				"latitude": 53.4330616,
+				"longitude": 14.7283835,
+				"accuracy": 4
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 20,
+			"dateTime": "2020-11-04T12:59:09.541+01:00",
+			"dlBw": 4246,
+			"gpsCoordinates": {
+				"latitude": 53.4314339,
+				"longitude": 14.7273326,
+				"accuracy": 4
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 21,
+			"dateTime": "2020-11-04T12:59:27.412+01:00",
+			"dlBw": 7064,
+			"gpsCoordinates": {
+				"latitude": 53.4296374,
+				"longitude": 14.7243864,
+				"accuracy": 4
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 22,
+			"dateTime": "2020-11-04T12:59:31.624+01:00",
+			"dlBw": 19407,
+			"gpsCoordinates": {
+				"latitude": 53.4291801,
+				"longitude": 14.7233875,
+				"accuracy": 3.933000087738037
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 23,
+			"dateTime": "2020-11-04T12:59:41.267+01:00",
+			"dlBw": 24594,
+			"gpsCoordinates": {
+				"latitude": 53.4283234,
+				"longitude": 14.7215638,
+				"accuracy": 3.9000000953674316
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 24,
+			"dateTime": "2020-11-04T12:59:52.341+01:00",
+			"dlBw": 22049,
+			"gpsCoordinates": {
+				"latitude": 53.4274609,
+				"longitude": 14.7192373,
+				"accuracy": 4
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 25,
+			"dateTime": "2020-11-04T13:00:02.569+01:00",
+			"dlBw": 12825,
+			"gpsCoordinates": {
+				"latitude": 53.4267222,
+				"longitude": 14.7167513,
+				"accuracy": 3.950000047683716
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 26,
+			"dateTime": "2020-11-04T13:00:11.195+01:00",
+			"dlBw": 22522,
+			"gpsCoordinates": {
+				"latitude": 53.4258171,
+				"longitude": 14.7150817,
+				"accuracy": 4
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 27,
+			"dateTime": "2020-11-04T13:00:22.708+01:00",
+			"dlBw": 17698,
+			"gpsCoordinates": {
+				"latitude": 53.4240495,
+				"longitude": 14.7135175,
+				"accuracy": 4
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 28,
+			"dateTime": "2020-11-04T13:00:36.986+01:00",
+			"dlBw": 12480,
+			"gpsCoordinates": {
+				"latitude": 53.4218817,
+				"longitude": 14.7122843,
+				"accuracy": 3.9000000953674316
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 29,
+			"dateTime": "2020-11-04T13:00:42.628+01:00",
+			"dlBw": 13494,
+			"gpsCoordinates": {
+				"latitude": 53.4210432,
+				"longitude": 14.7111399,
+				"accuracy": 3.9000000953674316
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 30,
+			"dateTime": "2020-11-04T13:00:52.321+01:00",
+			"dlBw": 13955,
+			"gpsCoordinates": {
+				"latitude": 53.4198249,
+				"longitude": 14.7094416,
+				"accuracy": 3.9000000953674316
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 31,
+			"dateTime": "2020-11-04T13:01:01.106+01:00",
+			"dlBw": 24180,
+			"gpsCoordinates": {
+				"latitude": 53.4186905,
+				"longitude": 14.7072623,
+				"accuracy": 3.9000000953674316
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 32,
+			"dateTime": "2020-11-04T13:01:12.202+01:00",
+			"dlBw": 23931,
+			"gpsCoordinates": {
+				"latitude": 53.4173102,
+				"longitude": 14.7045023,
+				"accuracy": 3.9000000953674316
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 33,
+			"dateTime": "2020-11-04T13:01:22.408+01:00",
+			"dlBw": 15891,
+			"gpsCoordinates": {
+				"latitude": 53.4157634,
+				"longitude": 14.7031005,
+				"accuracy": 3.9000000953674316
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 34,
+			"dateTime": "2020-11-04T13:01:30.680+01:00",
+			"dlBw": 31497,
+			"gpsCoordinates": {
+				"latitude": 53.4142457,
+				"longitude": 14.7020051,
+				"accuracy": 3.9000000953674316
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 35,
+			"dateTime": "2020-11-04T13:01:43.936+01:00",
+			"dlBw": 20878,
+			"gpsCoordinates": {
+				"latitude": 53.41196,
+				"longitude": 14.7005512,
+				"accuracy": 3.9000000953674316
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 36,
+			"dateTime": "2020-11-04T13:01:52.888+01:00",
+			"dlBw": 11740,
+			"gpsCoordinates": {
+				"latitude": 53.4106116,
+				"longitude": 14.699509,
+				"accuracy": 3.9000000953674316
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 37,
+			"dateTime": "2020-11-04T13:02:03.408+01:00",
+			"dlBw": 18355,
+			"gpsCoordinates": {
+				"latitude": 53.4096764,
+				"longitude": 14.6981292,
+				"accuracy": 3.9000000953674316
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 38,
+			"dateTime": "2020-11-04T13:02:13.119+01:00",
+			"dlBw": 11761,
+			"gpsCoordinates": {
+				"latitude": 53.4090797,
+				"longitude": 14.6975233,
+				"accuracy": 3.9000000953674316
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 39,
+			"dateTime": "2020-11-04T13:02:25.936+01:00",
+			"dlBw": 12425,
+			"gpsCoordinates": {
+				"latitude": 53.4075385,
+				"longitude": 14.697869,
+				"accuracy": 3.9000000953674316
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 40,
+			"dateTime": "2020-11-04T13:02:39.529+01:00",
+			"dlBw": 5673,
+			"gpsCoordinates": {
+				"latitude": 53.40609,
+				"longitude": 14.6955734,
+				"accuracy": 3.9200000762939453
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 41,
+			"dateTime": "2020-11-04T13:02:59.529+01:00",
+			"dlBw": 3891,
+			"gpsCoordinates": {
+				"latitude": 53.4040623,
+				"longitude": 14.6918174,
+				"accuracy": 4
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 42,
+			"dateTime": "2020-11-04T13:03:17.957+01:00",
+			"dlBw": 5215,
+			"gpsCoordinates": {
+				"latitude": 53.4022103,
+				"longitude": 14.688395,
+				"accuracy": 4
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 43,
+			"dateTime": "2020-11-04T13:03:29.539+01:00",
+			"dlBw": 4930,
+			"gpsCoordinates": {
+				"latitude": 53.4011539,
+				"longitude": 14.6864326,
+				"accuracy": 4
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 44,
+			"dateTime": "2020-11-04T13:03:41.474+01:00",
+			"dlBw": 18498,
+			"gpsCoordinates": {
+				"latitude": 53.4002879,
+				"longitude": 14.6844772,
+				"accuracy": 3.9000000953674316
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 45,
+			"dateTime": "2020-11-04T13:03:50.973+01:00",
+			"dlBw": 28246,
+			"gpsCoordinates": {
+				"latitude": 53.3997998,
+				"longitude": 14.6831063,
+				"accuracy": 3.9000000953674316
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 46,
+			"dateTime": "2020-11-04T13:04:00.999+01:00",
+			"dlBw": 32708,
+			"gpsCoordinates": {
+				"latitude": 53.399416,
+				"longitude": 14.6819868,
+				"accuracy": 3.9000000953674316
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 47,
+			"dateTime": "2020-11-04T13:04:10.695+01:00",
+			"dlBw": 30132,
+			"gpsCoordinates": {
+				"latitude": 53.3988479,
+				"longitude": 14.6804026,
+				"accuracy": 3.9000000953674316
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 48,
+			"dateTime": "2020-11-04T13:04:20.808+01:00",
+			"dlBw": 29109,
+			"gpsCoordinates": {
+				"latitude": 53.3982838,
+				"longitude": 14.678768,
+				"accuracy": 3.9000000953674316
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 49,
+			"dateTime": "2020-11-04T13:04:30.363+01:00",
+			"dlBw": 45634,
+			"gpsCoordinates": {
+				"latitude": 53.3977497,
+				"longitude": 14.6773447,
+				"accuracy": 3.9000000953674316
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 50,
+			"dateTime": "2020-11-04T13:04:40.406+01:00",
+			"dlBw": 53824,
+			"gpsCoordinates": {
+				"latitude": 53.3972094,
+				"longitude": 14.6757308,
+				"accuracy": 3.9600000381469727
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 51,
+			"dateTime": "2020-11-04T13:04:50.949+01:00",
+			"dlBw": 25098,
+			"gpsCoordinates": {
+				"latitude": 53.3965348,
+				"longitude": 14.6740964,
+				"accuracy": 3.940000057220459
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 52,
+			"dateTime": "2020-11-04T13:05:00.451+01:00",
+			"dlBw": 42135,
+			"gpsCoordinates": {
+				"latitude": 53.3960487,
+				"longitude": 14.6733907,
+				"accuracy": 4
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 53,
+			"dateTime": "2020-11-04T13:05:16.197+01:00",
+			"dlBw": 23175,
+			"gpsCoordinates": {
+				"latitude": 53.3952951,
+				"longitude": 14.6722721,
+				"accuracy": 4
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 54,
+			"dateTime": "2020-11-04T13:05:21.718+01:00",
+			"dlBw": 34564,
+			"gpsCoordinates": {
+				"latitude": 53.3949619,
+				"longitude": 14.6717692,
+				"accuracy": 4
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 55,
+			"dateTime": "2020-11-04T13:05:30.607+01:00",
+			"dlBw": 33406,
+			"gpsCoordinates": {
+				"latitude": 53.3947743,
+				"longitude": 14.6711344,
+				"accuracy": 4
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 56,
+			"dateTime": "2020-11-04T13:05:40.709+01:00",
+			"dlBw": 31651,
+			"gpsCoordinates": {
+				"latitude": 53.395112,
+				"longitude": 14.670182,
+				"accuracy": 4
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 57,
+			"dateTime": "2020-11-04T13:05:50.708+01:00",
+			"dlBw": 31029,
+			"gpsCoordinates": {
+				"latitude": 53.395397,
+				"longitude": 14.6695148,
+				"accuracy": 4
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 58,
+			"dateTime": "2020-11-04T13:06:00.241+01:00",
+			"dlBw": 56530,
+			"gpsCoordinates": {
+				"latitude": 53.3955513,
+				"longitude": 14.6691709,
+				"accuracy": 4
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 59,
+			"dateTime": "2020-11-04T13:06:10.633+01:00",
+			"dlBw": 43969,
+			"gpsCoordinates": {
+				"latitude": 53.3959575,
+				"longitude": 14.6682296,
+				"accuracy": 4
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 60,
+			"dateTime": "2020-11-04T13:06:20.487+01:00",
+			"dlBw": 51032,
+			"gpsCoordinates": {
+				"latitude": 53.3963791,
+				"longitude": 14.6672281,
+				"accuracy": 4
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 61,
+			"dateTime": "2020-11-04T13:06:30.085+01:00",
+			"dlBw": 69805,
+			"gpsCoordinates": {
+				"latitude": 53.3964333,
+				"longitude": 14.6671336,
+				"accuracy": 4
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 62,
+			"dateTime": "2020-11-04T13:06:39.998+01:00",
+			"dlBw": 83293,
+			"gpsCoordinates": {
+				"latitude": 53.3964332,
+				"longitude": 14.6671333,
+				"accuracy": 4
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 63,
+			"dateTime": "2020-11-04T13:06:50.213+01:00",
+			"dlBw": 61186,
+			"gpsCoordinates": {
+				"latitude": 53.3966077,
+				"longitude": 14.6667312,
+				"accuracy": 3.9830000400543213
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 64,
+			"dateTime": "2020-11-04T13:07:00.305+01:00",
+			"dlBw": 49111,
+			"gpsCoordinates": {
+				"latitude": 53.3970909,
+				"longitude": 14.665393,
+				"accuracy": 4
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 65,
+			"dateTime": "2020-11-04T13:07:10.167+01:00",
+			"dlBw": 66314,
+			"gpsCoordinates": {
+				"latitude": 53.3976489,
+				"longitude": 14.6639537,
+				"accuracy": 4
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 66,
+			"dateTime": "2020-11-04T13:07:20.281+01:00",
+			"dlBw": 48968,
+			"gpsCoordinates": {
+				"latitude": 53.3983351,
+				"longitude": 14.6626563,
+				"accuracy": 4
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 67,
+			"dateTime": "2020-11-04T13:07:30.253+01:00",
+			"dlBw": 56535,
+			"gpsCoordinates": {
+				"latitude": 53.3979781,
+				"longitude": 14.6611949,
+				"accuracy": 4
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 68,
+			"dateTime": "2020-11-04T13:07:40.592+01:00",
+			"dlBw": 44516,
+			"gpsCoordinates": {
+				"latitude": 53.3971389,
+				"longitude": 14.6593331,
+				"accuracy": 3.9000000953674316
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 69,
+			"dateTime": "2020-11-04T13:07:50.551+01:00",
+			"dlBw": 38498,
+			"gpsCoordinates": {
+				"latitude": 53.3961502,
+				"longitude": 14.657339,
+				"accuracy": 3.933000087738037
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 70,
+			"dateTime": "2020-11-04T13:08:03.319+01:00",
+			"dlBw": 14140,
+			"gpsCoordinates": {
+				"latitude": 53.3950208,
+				"longitude": 14.6547001,
+				"accuracy": 3.9830000400543213
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 71,
+			"dateTime": "2020-11-04T13:08:13.977+01:00",
+			"dlBw": 12880,
+			"gpsCoordinates": {
+				"latitude": 53.3947336,
+				"longitude": 14.6519632,
+				"accuracy": 4
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 72,
+			"dateTime": "2020-11-04T13:08:24.310+01:00",
+			"dlBw": 10047,
+			"gpsCoordinates": {
+				"latitude": 53.3946443,
+				"longitude": 14.64943,
+				"accuracy": 4
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 73,
+			"dateTime": "2020-11-04T13:08:32.422+01:00",
+			"dlBw": 12805,
+			"gpsCoordinates": {
+				"latitude": 53.3946331,
+				"longitude": 14.6474436,
+				"accuracy": 4
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 74,
+			"dateTime": "2020-11-04T13:08:47.386+01:00",
+			"dlBw": 6876,
+			"gpsCoordinates": {
+				"latitude": 53.3946684,
+				"longitude": 14.6440318,
+				"accuracy": 4
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 75,
+			"dateTime": "2020-11-04T13:08:58.355+01:00",
+			"dlBw": 8079,
+			"gpsCoordinates": {
+				"latitude": 53.3947672,
+				"longitude": 14.6411937,
+				"accuracy": 4
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 76,
+			"dateTime": "2020-11-04T13:09:07.772+01:00",
+			"dlBw": 8013,
+			"gpsCoordinates": {
+				"latitude": 53.3948745,
+				"longitude": 14.6384817,
+				"accuracy": 4
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 77,
+			"dateTime": "2020-11-04T13:09:14.520+01:00",
+			"dlBw": 13777,
+			"gpsCoordinates": {
+				"latitude": 53.3949689,
+				"longitude": 14.6366249,
+				"accuracy": 4
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 78,
+			"dateTime": "2020-11-04T13:09:24.211+01:00",
+			"dlBw": 9539,
+			"gpsCoordinates": {
+				"latitude": 53.3951004,
+				"longitude": 14.6341985,
+				"accuracy": 3.933000087738037
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 79,
+			"dateTime": "2020-11-04T13:09:38.166+01:00",
+			"dlBw": 8260,
+			"gpsCoordinates": {
+				"latitude": 53.3954997,
+				"longitude": 14.6303001,
+				"accuracy": 3.940000057220459
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 80,
+			"dateTime": "2020-11-04T13:09:46.255+01:00",
+			"dlBw": 10593,
+			"gpsCoordinates": {
+				"latitude": 53.3958592,
+				"longitude": 14.6281756,
+				"accuracy": 3.9000000953674316
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 81,
+			"dateTime": "2020-11-04T13:09:57.131+01:00",
+			"dlBw": 7035,
+			"gpsCoordinates": {
+				"latitude": 53.3963269,
+				"longitude": 14.6254951,
+				"accuracy": 3.9000000953674316
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 82,
+			"dateTime": "2020-11-04T13:10:06.403+01:00",
+			"dlBw": 9553,
+			"gpsCoordinates": {
+				"latitude": 53.3966772,
+				"longitude": 14.6232567,
+				"accuracy": 4
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 83,
+			"dateTime": "2020-11-04T13:10:17.832+01:00",
+			"dlBw": 7719,
+			"gpsCoordinates": {
+				"latitude": 53.3971793,
+				"longitude": 14.6200408,
+				"accuracy": 4
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 84,
+			"dateTime": "2020-11-04T13:10:29.529+01:00",
+			"dlBw": 0,
+			"gpsCoordinates": {
+				"latitude": 53.3976071,
+				"longitude": 14.6171521,
+				"accuracy": 3.9000000953674316
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 85,
+			"dateTime": "2020-11-04T13:10:48.512+01:00",
+			"dlBw": 6148,
+			"gpsCoordinates": {
+				"latitude": 53.3981943,
+				"longitude": 14.6126345,
+				"accuracy": 4
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 86,
+			"dateTime": "2020-11-04T13:10:52.810+01:00",
+			"dlBw": 16509,
+			"gpsCoordinates": {
+				"latitude": 53.398259,
+				"longitude": 14.6115178,
+				"accuracy": 3.933000087738037
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 87,
+			"dateTime": "2020-11-04T13:11:06.702+01:00",
+			"dlBw": 12581,
+			"gpsCoordinates": {
+				"latitude": 53.3971348,
+				"longitude": 14.6080386,
+				"accuracy": 3.950000047683716
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 88,
+			"dateTime": "2020-11-04T13:11:18.889+01:00",
+			"dlBw": 9270,
+			"gpsCoordinates": {
+				"latitude": 53.3964481,
+				"longitude": 14.6051101,
+				"accuracy": 3.9000000953674316
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 89,
+			"dateTime": "2020-11-04T13:11:25.872+01:00",
+			"dlBw": 11041,
+			"gpsCoordinates": {
+				"latitude": 53.3967824,
+				"longitude": 14.6034136,
+				"accuracy": 3.9000000953674316
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 90,
+			"dateTime": "2020-11-04T13:11:30.484+01:00",
+			"dlBw": 40917,
+			"gpsCoordinates": {
+				"latitude": 53.3971722,
+				"longitude": 14.6022682,
+				"accuracy": 3.9000000953674316
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 91,
+			"dateTime": "2020-11-04T13:11:42.158+01:00",
+			"dlBw": 22115,
+			"gpsCoordinates": {
+				"latitude": 53.3986536,
+				"longitude": 14.6003878,
+				"accuracy": 3.9000000953674316
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 92,
+			"dateTime": "2020-11-04T13:11:54.638+01:00",
+			"dlBw": 20775,
+			"gpsCoordinates": {
+				"latitude": 53.4010599,
+				"longitude": 14.5993442,
+				"accuracy": 3.9000000953674316
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 93,
+			"dateTime": "2020-11-04T13:12:05.867+01:00",
+			"dlBw": 10396,
+			"gpsCoordinates": {
+				"latitude": 53.4030282,
+				"longitude": 14.5982773,
+				"accuracy": 3.9000000953674316
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 94,
+			"dateTime": "2020-11-04T13:12:12.835+01:00",
+			"dlBw": 11993,
+			"gpsCoordinates": {
+				"latitude": 53.4041331,
+				"longitude": 14.5969646,
+				"accuracy": 3.9000000953674316
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 95,
+			"dateTime": "2020-11-04T13:12:22.062+01:00",
+			"dlBw": 14671,
+			"gpsCoordinates": {
+				"latitude": 53.4051632,
+				"longitude": 14.5946303,
+				"accuracy": 3.9000000953674316
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 96,
+			"dateTime": "2020-11-04T13:12:31.689+01:00",
+			"dlBw": 21706,
+			"gpsCoordinates": {
+				"latitude": 53.406297,
+				"longitude": 14.5920372,
+				"accuracy": 3.9000000953674316
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 97,
+			"dateTime": "2020-11-04T13:12:41.380+01:00",
+			"dlBw": 23190,
+			"gpsCoordinates": {
+				"latitude": 53.4072782,
+				"longitude": 14.5897139,
+				"accuracy": 3.9000000953674316
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 98,
+			"dateTime": "2020-11-04T13:12:50.602+01:00",
+			"dlBw": 35459,
+			"gpsCoordinates": {
+				"latitude": 53.4083488,
+				"longitude": 14.5872933,
+				"accuracy": 3.9000000953674316
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 99,
+			"dateTime": "2020-11-04T13:13:01.860+01:00",
+			"dlBw": 29289,
+			"gpsCoordinates": {
+				"latitude": 53.4095832,
+				"longitude": 14.5844861,
+				"accuracy": 3.9000000953674316
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 100,
+			"dateTime": "2020-11-04T13:13:16.852+01:00",
+			"dlBw": 23786,
+			"gpsCoordinates": {
+				"latitude": 53.4113369,
+				"longitude": 14.5805765,
+				"accuracy": 3.9000000953674316
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 101,
+			"dateTime": "2020-11-04T13:13:29.545+01:00",
+			"dlBw": 6886,
+			"gpsCoordinates": {
+				"latitude": 53.4128807,
+				"longitude": 14.5766576,
+				"accuracy": 3.9000000953674316
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 102,
+			"dateTime": "2020-11-04T13:13:44.403+01:00",
+			"dlBw": 11340,
+			"gpsCoordinates": {
+				"latitude": 53.4145018,
+				"longitude": 14.5726118,
+				"accuracy": 3.9000000953674316
+			},
+			"network": "cellular (Effective connection type: 3g)"
+		},
+		{
+			"entryNo": 103,
+			"dateTime": "2020-11-04T13:13:56.256+01:00",
+			"dlBw": 14812,
+			"gpsCoordinates": {
+				"latitude": 53.4157058,
+				"longitude": 14.5689606,
+				"accuracy": 3.9000000953674316
+			},
+			"network": "cellular (Effective connection type: 3g)"
+		},
+		{
+			"entryNo": 104,
+			"dateTime": "2020-11-04T13:14:09.540+01:00",
+			"dlBw": 2168,
+			"gpsCoordinates": {
+				"latitude": 53.4179431,
+				"longitude": 14.5664118,
+				"accuracy": 3.9000000953674316
+			},
+			"network": "cellular (Effective connection type: 3g)"
+		},
+		{
+			"entryNo": 105,
+			"dateTime": "2020-11-04T13:14:21.309+01:00",
+			"dlBw": 19700,
+			"gpsCoordinates": {
+				"latitude": 53.4201777,
+				"longitude": 14.5669791,
+				"accuracy": 3.9000000953674316
+			},
+			"network": "cellular (Effective connection type: 3g)"
+		},
+		{
+			"entryNo": 106,
+			"dateTime": "2020-11-04T13:14:30.760+01:00",
+			"dlBw": 38084,
+			"gpsCoordinates": {
+				"latitude": 53.4222235,
+				"longitude": 14.5678643,
+				"accuracy": 3.9000000953674316
+			},
+			"network": "cellular (Effective connection type: 3g)"
+		},
+		{
+			"entryNo": 107,
+			"dateTime": "2020-11-04T13:14:44.381+01:00",
+			"dlBw": 29758,
+			"gpsCoordinates": {
+				"latitude": 53.4247927,
+				"longitude": 14.567382,
+				"accuracy": 3.9000000953674316
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 108,
+			"dateTime": "2020-11-04T13:14:59.026+01:00",
+			"dlBw": 8030,
+			"gpsCoordinates": {
+				"latitude": 53.4266402,
+				"longitude": 14.5640562,
+				"accuracy": 3.9000000953674316
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 109,
+			"dateTime": "2020-11-04T13:15:09.381+01:00",
+			"dlBw": 8925,
+			"gpsCoordinates": {
+				"latitude": 53.4272927,
+				"longitude": 14.5615595,
+				"accuracy": 3.9000000953674316
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 110,
+			"dateTime": "2020-11-04T13:15:19.357+01:00",
+			"dlBw": 8230,
+			"gpsCoordinates": {
+				"latitude": 53.4277358,
+				"longitude": 14.5591045,
+				"accuracy": 3.9000000953674316
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 111,
+			"dateTime": "2020-11-04T13:15:21.487+01:00",
+			"dlBw": 36933,
+			"gpsCoordinates": {
+				"latitude": 53.4278502,
+				"longitude": 14.5584649,
+				"accuracy": 3.9000000953674316
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 112,
+			"dateTime": "2020-11-04T13:15:30.154+01:00",
+			"dlBw": 72556,
+			"gpsCoordinates": {
+				"latitude": 53.4281943,
+				"longitude": 14.5572849,
+				"accuracy": 3.9000000953674316
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 113,
+			"dateTime": "2020-11-04T13:15:42.221+01:00",
+			"dlBw": 24241,
+			"gpsCoordinates": {
+				"latitude": 53.4282568,
+				"longitude": 14.5572966,
+				"accuracy": 4
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 114,
+			"dateTime": "2020-11-04T13:15:53.389+01:00",
+			"dlBw": 20298,
+			"gpsCoordinates": {
+				"latitude": 53.428257,
+				"longitude": 14.5572967,
+				"accuracy": 4
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 115,
+			"dateTime": "2020-11-04T13:16:01.645+01:00",
+			"dlBw": 18604,
+			"gpsCoordinates": {
+				"latitude": 53.4282568,
+				"longitude": 14.5572968,
+				"accuracy": 4
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 116,
+			"dateTime": "2020-11-04T13:16:14.154+01:00",
+			"dlBw": 9892,
+			"gpsCoordinates": {
+				"latitude": 53.4282567,
+				"longitude": 14.5572969,
+				"accuracy": 4
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 117,
+			"dateTime": "2020-11-04T13:16:23.019+01:00",
+			"dlBw": 13840,
+			"gpsCoordinates": {
+				"latitude": 53.4282569,
+				"longitude": 14.5572967,
+				"accuracy": 3.9000000953674316
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 118,
+			"dateTime": "2020-11-04T13:16:33.259+01:00",
+			"dlBw": 15000,
+			"gpsCoordinates": {
+				"latitude": 53.4284863,
+				"longitude": 14.5571136,
+				"accuracy": 3.9000000953674316
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 119,
+			"dateTime": "2020-11-04T13:16:41.492+01:00",
+			"dlBw": 18750,
+			"gpsCoordinates": {
+				"latitude": 53.4294013,
+				"longitude": 14.5574679,
+				"accuracy": 3.9660000801086426
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 120,
+			"dateTime": "2020-11-04T13:16:52.953+01:00",
+			"dlBw": 16955,
+			"gpsCoordinates": {
+				"latitude": 53.4307082,
+				"longitude": 14.5579888,
+				"accuracy": 4
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 121,
+			"dateTime": "2020-11-04T13:17:00.857+01:00",
+			"dlBw": 28170,
+			"gpsCoordinates": {
+				"latitude": 53.4317257,
+				"longitude": 14.5582299,
+				"accuracy": 4
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 122,
+			"dateTime": "2020-11-04T13:17:10.860+01:00",
+			"dlBw": 26913,
+			"gpsCoordinates": {
+				"latitude": 53.4329927,
+				"longitude": 14.5589672,
+				"accuracy": 4
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 123,
+			"dateTime": "2020-11-04T13:17:20.892+01:00",
+			"dlBw": 33268,
+			"gpsCoordinates": {
+				"latitude": 53.4341153,
+				"longitude": 14.5597434,
+				"accuracy": 4
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 124,
+			"dateTime": "2020-11-04T13:17:30.930+01:00",
+			"dlBw": 31814,
+			"gpsCoordinates": {
+				"latitude": 53.4346106,
+				"longitude": 14.5600854,
+				"accuracy": 4
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 125,
+			"dateTime": "2020-11-04T13:17:40.350+01:00",
+			"dlBw": 46989,
+			"gpsCoordinates": {
+				"latitude": 53.4347785,
+				"longitude": 14.5601964,
+				"accuracy": 4
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 126,
+			"dateTime": "2020-11-04T13:17:50.874+01:00",
+			"dlBw": 32619,
+			"gpsCoordinates": {
+				"latitude": 53.4348283,
+				"longitude": 14.5602277,
+				"accuracy": 4
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 127,
+			"dateTime": "2020-11-04T13:18:00.143+01:00",
+			"dlBw": 63034,
+			"gpsCoordinates": {
+				"latitude": 53.4348281,
+				"longitude": 14.5602278,
+				"accuracy": 4
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 128,
+			"dateTime": "2020-11-04T13:18:10.199+01:00",
+			"dlBw": 50478,
+			"gpsCoordinates": {
+				"latitude": 53.4348289,
+				"longitude": 14.5602284,
+				"accuracy": 4
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 129,
+			"dateTime": "2020-11-04T13:18:21.171+01:00",
+			"dlBw": 39118,
+			"gpsCoordinates": {
+				"latitude": 53.4350867,
+				"longitude": 14.5603427,
+				"accuracy": 3.940000057220459
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 130,
+			"dateTime": "2020-11-04T13:18:31.065+01:00",
+			"dlBw": 26863,
+			"gpsCoordinates": {
+				"latitude": 53.4351271,
+				"longitude": 14.5603156,
+				"accuracy": 3.9000000953674316
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 131,
+			"dateTime": "2020-11-04T13:18:41.138+01:00",
+			"dlBw": 34120,
+			"gpsCoordinates": {
+				"latitude": 53.4351265,
+				"longitude": 14.5603152,
+				"accuracy": 3.9000000953674316
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 132,
+			"dateTime": "2020-11-04T13:18:50.818+01:00",
+			"dlBw": 28922,
+			"gpsCoordinates": {
+				"latitude": 53.4351267,
+				"longitude": 14.5603146,
+				"accuracy": 3.9200000762939453
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 133,
+			"dateTime": "2020-11-04T13:19:01.679+01:00",
+			"dlBw": 19342,
+			"gpsCoordinates": {
+				"latitude": 53.4352072,
+				"longitude": 14.5599491,
+				"accuracy": 3.9000000953674316
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 134,
+			"dateTime": "2020-11-04T13:19:11.720+01:00",
+			"dlBw": 18787,
+			"gpsCoordinates": {
+				"latitude": 53.435066,
+				"longitude": 14.5582969,
+				"accuracy": 4
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 135,
+			"dateTime": "2020-11-04T13:19:22.581+01:00",
+			"dlBw": 13165,
+			"gpsCoordinates": {
+				"latitude": 53.4349246,
+				"longitude": 14.5563959,
+				"accuracy": 4
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 136,
+			"dateTime": "2020-11-04T13:19:32.062+01:00",
+			"dlBw": 15103,
+			"gpsCoordinates": {
+				"latitude": 53.4342811,
+				"longitude": 14.5565026,
+				"accuracy": 4
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 137,
+			"dateTime": "2020-11-04T13:19:42.582+01:00",
+			"dlBw": 14775,
+			"gpsCoordinates": {
+				"latitude": 53.4339027,
+				"longitude": 14.5566702,
+				"accuracy": 25.5
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 138,
+			"dateTime": "2020-11-04T13:19:50.730+01:00",
+			"dlBw": 30767,
+			"gpsCoordinates": {
+				"latitude": 53.4339123,
+				"longitude": 14.5568167,
+				"accuracy": 35.983001708984375
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 139,
+			"dateTime": "2020-11-04T13:20:01.408+01:00",
+			"dlBw": 28112,
+			"gpsCoordinates": {
+				"latitude": 53.4339166,
+				"longitude": 14.557087,
+				"accuracy": 4.418000221252441
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 140,
+			"dateTime": "2020-11-04T13:20:13.750+01:00",
+			"dlBw": 28843,
+			"gpsCoordinates": {
+				"latitude": 53.4341437,
+				"longitude": 14.5575769,
+				"accuracy": 4.103000164031982
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 141,
+			"dateTime": "2020-11-04T13:20:21.781+01:00",
+			"dlBw": 16938,
+			"gpsCoordinates": {
+				"latitude": 53.4342108,
+				"longitude": 14.557401,
+				"accuracy": 4.485000133514404
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 142,
+			"dateTime": "2020-11-04T13:20:32.262+01:00",
+			"dlBw": 16605,
+			"gpsCoordinates": {
+				"latitude": 53.4342047,
+				"longitude": 14.5572509,
+				"accuracy": 4.281000137329102
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 143,
+			"dateTime": "2020-11-04T13:20:41.841+01:00",
+			"dlBw": 15622,
+			"gpsCoordinates": {
+				"latitude": 53.4341955,
+				"longitude": 14.5572396,
+				"accuracy": 4.160999774932861
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 144,
+			"dateTime": "2020-11-04T13:20:51.282+01:00",
+			"dlBw": 21694,
+			"gpsCoordinates": {
+				"latitude": 53.4341933,
+				"longitude": 14.5572202,
+				"accuracy": 3.9000000953674316
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 145,
+			"dateTime": "2020-11-04T13:21:01.188+01:00",
+			"dlBw": 21070,
+			"gpsCoordinates": {
+				"latitude": 53.4341935,
+				"longitude": 14.5572315,
+				"accuracy": 4.111000061035156
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 146,
+			"dateTime": "2020-11-04T13:21:11.981+01:00",
+			"dlBw": 14663,
+			"gpsCoordinates": {
+				"latitude": 53.434194,
+				"longitude": 14.5572435,
+				"accuracy": 4.520999908447266
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 147,
+			"dateTime": "2020-11-04T13:21:22.208+01:00",
+			"dlBw": 13594,
+			"gpsCoordinates": {
+				"latitude": 53.4341944,
+				"longitude": 14.557254,
+				"accuracy": 4.302000045776367
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 148,
+			"dateTime": "2020-11-04T13:21:31.726+01:00",
+			"dlBw": 16260,
+			"gpsCoordinates": {
+				"latitude": 53.4341943,
+				"longitude": 14.5572505,
+				"accuracy": 4.09499979019165
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 149,
+			"dateTime": "2020-11-04T13:21:41.647+01:00",
+			"dlBw": 17465,
+			"gpsCoordinates": {
+				"latitude": 53.4341942,
+				"longitude": 14.5572486,
+				"accuracy": 4.0370001792907715
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 150,
+			"dateTime": "2020-11-04T13:21:51.733+01:00",
+			"dlBw": 17268,
+			"gpsCoordinates": {
+				"latitude": 53.4341941,
+				"longitude": 14.5572453,
+				"accuracy": 4.248000144958496
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		},
+		{
+			"entryNo": 151,
+			"dateTime": "2020-11-04T13:22:04.941+01:00",
+			"dlBw": 7852,
+			"gpsCoordinates": {
+				"latitude": 53.4341943,
+				"longitude": 14.5572505,
+				"accuracy": 103.56300354003906
+			},
+			"network": "cellular (Effective connection type: 4g)"
+		}
+	]
+}
