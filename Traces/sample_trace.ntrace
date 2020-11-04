@@ -1,0 +1,1726 @@
+{
+	"version": 1,
+	"description": "Car trace",
+	"entries": [
+		{
+			"entryNo": 1,
+			"dateTime": "2020-10-09T08:23:00.478+02:00",
+			"dlBw": 12608,
+			"gpsCoordinates": {
+				"latitude": 59.444343772719364,
+				"longitude": 17.950712293589703,
+				"accuracy": 84.28256875610928
+			}
+		},
+		{
+			"entryNo": 2,
+			"dateTime": "2020-10-09T08:23:11.138+02:00",
+			"dlBw": 7641,
+			"gpsCoordinates": {
+				"latitude": 59.44444296639496,
+				"longitude": 17.951400785404978,
+				"accuracy": 31.263995886659924
+			}
+		},
+		{
+			"entryNo": 3,
+			"dateTime": "2020-10-09T08:23:20.441+02:00",
+			"dlBw": 11532,
+			"gpsCoordinates": {
+				"latitude": 59.44438145920093,
+				"longitude": 17.95138633759115,
+				"accuracy": 65
+			}
+		},
+		{
+			"entryNo": 4,
+			"dateTime": "2020-10-09T08:23:30.034+02:00",
+			"dlBw": 16551,
+			"gpsCoordinates": {
+				"latitude": 59.44405755949927,
+				"longitude": 17.95140427462664,
+				"accuracy": 19.26875211771552
+			}
+		},
+		{
+			"entryNo": 5,
+			"dateTime": "2020-10-09T08:23:42.259+02:00",
+			"dlBw": 5016,
+			"gpsCoordinates": {
+				"latitude": 59.44349240162649,
+				"longitude": 17.951298002400836,
+				"accuracy": 13.058484341797069
+			}
+		},
+		{
+			"entryNo": 6,
+			"dateTime": "2020-10-09T08:23:50.660+02:00",
+			"dlBw": 10540,
+			"gpsCoordinates": {
+				"latitude": 59.44299010278757,
+				"longitude": 17.951369595779823,
+				"accuracy": 13.565752780337027
+			}
+		},
+		{
+			"entryNo": 7,
+			"dateTime": "2020-10-09T08:24:00.341+02:00",
+			"dlBw": 12362,
+			"gpsCoordinates": {
+				"latitude": 59.44235416211962,
+				"longitude": 17.951666574623864,
+				"accuracy": 16.990828306553706
+			}
+		},
+		{
+			"entryNo": 8,
+			"dateTime": "2020-10-09T08:24:10.481+02:00",
+			"dlBw": 11248,
+			"gpsCoordinates": {
+				"latitude": 59.44228192410886,
+				"longitude": 17.95177112792215,
+				"accuracy": 19.6454467743871
+			}
+		},
+		{
+			"entryNo": 9,
+			"dateTime": "2020-10-09T08:24:19.996+02:00",
+			"dlBw": 16384,
+			"gpsCoordinates": {
+				"latitude": 59.44217649033439,
+				"longitude": 17.951950970245214,
+				"accuracy": 16.047175518532086
+			}
+		},
+		{
+			"entryNo": 10,
+			"dateTime": "2020-10-09T08:24:29.902+02:00",
+			"dlBw": 22511,
+			"gpsCoordinates": {
+				"latitude": 59.4422608181386,
+				"longitude": 17.952821337433896,
+				"accuracy": 22.147334363634542
+			}
+		},
+		{
+			"entryNo": 11,
+			"dateTime": "2020-10-09T08:24:40.181+02:00",
+			"dlBw": 13993,
+			"gpsCoordinates": {
+				"latitude": 59.4421433020163,
+				"longitude": 17.95406455029554,
+				"accuracy": 108.88753093510957
+			}
+		},
+		{
+			"entryNo": 12,
+			"dateTime": "2020-10-09T08:24:49.692+02:00",
+			"dlBw": 25192,
+			"gpsCoordinates": {
+				"latitude": 59.4423142195325,
+				"longitude": 17.955189770977338,
+				"accuracy": 21.550191833180083
+			}
+		},
+		{
+			"entryNo": 13,
+			"dateTime": "2020-10-09T08:24:59.720+02:00",
+			"dlBw": 23142,
+			"gpsCoordinates": {
+				"latitude": 59.4423142195325,
+				"longitude": 17.955189770977338,
+				"accuracy": 21.550191833180083
+			}
+		},
+		{
+			"entryNo": 14,
+			"dateTime": "2020-10-09T08:25:12.216+02:00",
+			"dlBw": 5185,
+			"gpsCoordinates": {
+				"latitude": 59.44173103655318,
+				"longitude": 17.95857565977666,
+				"accuracy": 65
+			}
+		},
+		{
+			"entryNo": 15,
+			"dateTime": "2020-10-09T08:25:19.522+02:00",
+			"dlBw": 33056,
+			"gpsCoordinates": {
+				"latitude": 59.44148517271419,
+				"longitude": 17.9593828466337,
+				"accuracy": 29.91741069166776
+			}
+		},
+		{
+			"entryNo": 16,
+			"dateTime": "2020-10-09T08:25:29.957+02:00",
+			"dlBw": 17687,
+			"gpsCoordinates": {
+				"latitude": 59.44111738822173,
+				"longitude": 17.95962811652255,
+				"accuracy": 20.12758261302708
+			}
+		},
+		{
+			"entryNo": 17,
+			"dateTime": "2020-10-09T08:25:40.580+02:00",
+			"dlBw": 10691,
+			"gpsCoordinates": {
+				"latitude": 59.440418056469106,
+				"longitude": 17.96014686894181,
+				"accuracy": 14.999065953965896
+			}
+		},
+		{
+			"entryNo": 18,
+			"dateTime": "2020-10-09T08:25:55.390+02:00",
+			"dlBw": 2404,
+			"gpsCoordinates": {
+				"latitude": 59.440418056469106,
+				"longitude": 17.96014686894181,
+				"accuracy": 14.999065953965896
+			}
+		},
+		{
+			"entryNo": 19,
+			"dateTime": "2020-10-09T08:26:01.354+02:00",
+			"dlBw": 4682,
+			"gpsCoordinates": {
+				"latitude": 59.43998594556322,
+				"longitude": 17.960540685791262,
+				"accuracy": 31.452870835695805
+			}
+		},
+		{
+			"entryNo": 20,
+			"dateTime": "2020-10-09T08:26:10.306+02:00",
+			"dlBw": 12672,
+			"gpsCoordinates": {
+				"latitude": 59.439303422363224,
+				"longitude": 17.961516251008412,
+				"accuracy": 38.399282005944364
+			}
+		},
+		{
+			"entryNo": 21,
+			"dateTime": "2020-10-09T08:26:22.211+02:00",
+			"dlBw": 18260,
+			"gpsCoordinates": {
+				"latitude": 59.43883126402255,
+				"longitude": 17.961974168954253,
+				"accuracy": 18.429438729286357
+			}
+		},
+		{
+			"entryNo": 22,
+			"dateTime": "2020-10-09T08:26:29.828+02:00",
+			"dlBw": 24095,
+			"gpsCoordinates": {
+				"latitude": 59.43827001568277,
+				"longitude": 17.964598075824227,
+				"accuracy": 16.738220044917217
+			}
+		},
+		{
+			"entryNo": 23,
+			"dateTime": "2020-10-09T08:26:40.073+02:00",
+			"dlBw": 13264,
+			"gpsCoordinates": {
+				"latitude": 59.43810415185118,
+				"longitude": 17.965064587348635,
+				"accuracy": 17.182058519032626
+			}
+		},
+		{
+			"entryNo": 24,
+			"dateTime": "2020-10-09T08:26:50.099+02:00",
+			"dlBw": 15606,
+			"gpsCoordinates": {
+				"latitude": 59.437694348122996,
+				"longitude": 17.965799461853184,
+				"accuracy": 21.627823130740623
+			}
+		},
+		{
+			"entryNo": 25,
+			"dateTime": "2020-10-09T08:26:59.949+02:00",
+			"dlBw": 17997,
+			"gpsCoordinates": {
+				"latitude": 59.437694348122996,
+				"longitude": 17.965799461853184,
+				"accuracy": 21.627823130740623
+			}
+		},
+		{
+			"entryNo": 26,
+			"dateTime": "2020-10-09T08:27:09.640+02:00",
+			"dlBw": 27485,
+			"gpsCoordinates": {
+				"latitude": 59.437475112018944,
+				"longitude": 17.96645334141571,
+				"accuracy": 21.420610189935473
+			}
+		},
+		{
+			"entryNo": 27,
+			"dateTime": "2020-10-09T08:27:19.815+02:00",
+			"dlBw": 20942,
+			"gpsCoordinates": {
+				"latitude": 59.437475112018944,
+				"longitude": 17.96645334141571,
+				"accuracy": 21.420610189935473
+			}
+		},
+		{
+			"entryNo": 28,
+			"dateTime": "2020-10-09T08:27:29.885+02:00",
+			"dlBw": 19431,
+			"gpsCoordinates": {
+				"latitude": 59.43653020622506,
+				"longitude": 17.968691178547097,
+				"accuracy": 14.869701168825376
+			}
+		},
+		{
+			"entryNo": 29,
+			"dateTime": "2020-10-09T08:27:40.358+02:00",
+			"dlBw": 12423,
+			"gpsCoordinates": {
+				"latitude": 59.43630002575789,
+				"longitude": 17.969265016796356,
+				"accuracy": 28.094545352301278
+			}
+		},
+		{
+			"entryNo": 30,
+			"dateTime": "2020-10-09T08:27:51.170+02:00",
+			"dlBw": 7793,
+			"gpsCoordinates": {
+				"latitude": 59.43617658424634,
+				"longitude": 17.969781255988945,
+				"accuracy": 30.244700118010336
+			}
+		},
+		{
+			"entryNo": 31,
+			"dateTime": "2020-10-09T08:28:00.337+02:00",
+			"dlBw": 9487,
+			"gpsCoordinates": {
+				"latitude": 59.43563282916991,
+				"longitude": 17.970618616445922,
+				"accuracy": 15.34005949929773
+			}
+		},
+		{
+			"entryNo": 32,
+			"dateTime": "2020-10-09T08:28:11.051+02:00",
+			"dlBw": 8366,
+			"gpsCoordinates": {
+				"latitude": 59.43563282916991,
+				"longitude": 17.970618616445922,
+				"accuracy": 15.34005949929773
+			}
+		},
+		{
+			"entryNo": 33,
+			"dateTime": "2020-10-09T08:28:21.469+02:00",
+			"dlBw": 6693,
+			"gpsCoordinates": {
+				"latitude": 59.43564807376709,
+				"longitude": 17.971494403221673,
+				"accuracy": 16.939713040760193
+			}
+		},
+		{
+			"entryNo": 34,
+			"dateTime": "2020-10-09T08:28:32.310+02:00",
+			"dlBw": 4749,
+			"gpsCoordinates": {
+				"latitude": 59.43563022869725,
+				"longitude": 17.97285474090544,
+				"accuracy": 23.31389682427192
+			}
+		},
+		{
+			"entryNo": 35,
+			"dateTime": "2020-10-09T08:28:41.003+02:00",
+			"dlBw": 10138,
+			"gpsCoordinates": {
+				"latitude": 59.435383556238925,
+				"longitude": 17.973926922190127,
+				"accuracy": 27.64810351150617
+			}
+		},
+		{
+			"entryNo": 36,
+			"dateTime": "2020-10-09T08:28:50.212+02:00",
+			"dlBw": 14841,
+			"gpsCoordinates": {
+				"latitude": 59.43496364256875,
+				"longitude": 17.97505037832109,
+				"accuracy": 20.26337381767892
+			}
+		},
+		{
+			"entryNo": 37,
+			"dateTime": "2020-10-09T08:29:00.489+02:00",
+			"dlBw": 11400,
+			"gpsCoordinates": {
+				"latitude": 59.43496364256875,
+				"longitude": 17.97505037832109,
+				"accuracy": 20.26337381767892
+			}
+		},
+		{
+			"entryNo": 38,
+			"dateTime": "2020-10-09T08:29:10.038+02:00",
+			"dlBw": 16851,
+			"gpsCoordinates": {
+				"latitude": 59.434374710366434,
+				"longitude": 17.975902058315114,
+				"accuracy": 25.18301285529638
+			}
+		},
+		{
+			"entryNo": 39,
+			"dateTime": "2020-10-09T08:29:19.591+02:00",
+			"dlBw": 35587,
+			"gpsCoordinates": {
+				"latitude": 59.43417826307796,
+				"longitude": 17.97626549954424,
+				"accuracy": 19.847059328860094
+			}
+		},
+		{
+			"entryNo": 40,
+			"dateTime": "2020-10-09T08:29:30.035+02:00",
+			"dlBw": 25903,
+			"gpsCoordinates": {
+				"latitude": 59.43389060427791,
+				"longitude": 17.977038611970094,
+				"accuracy": 27.36144724403345
+			}
+		},
+		{
+			"entryNo": 41,
+			"dateTime": "2020-10-09T08:29:39.437+02:00",
+			"dlBw": 46188,
+			"gpsCoordinates": {
+				"latitude": 59.43351317295852,
+				"longitude": 17.97811787767594,
+				"accuracy": 17.184026960036697
+			}
+		},
+		{
+			"entryNo": 42,
+			"dateTime": "2020-10-09T08:29:49.878+02:00",
+			"dlBw": 21333,
+			"gpsCoordinates": {
+				"latitude": 59.43321858821307,
+				"longitude": 17.97901576697752,
+				"accuracy": 22.09172490230114
+			}
+		},
+		{
+			"entryNo": 43,
+			"dateTime": "2020-10-09T08:29:59.641+02:00",
+			"dlBw": 29865,
+			"gpsCoordinates": {
+				"latitude": 59.43321858821307,
+				"longitude": 17.97901576697752,
+				"accuracy": 22.09172490230114
+			}
+		},
+		{
+			"entryNo": 44,
+			"dateTime": "2020-10-09T08:30:09.578+02:00",
+			"dlBw": 58770,
+			"gpsCoordinates": {
+				"latitude": 59.43278909861367,
+				"longitude": 17.982371699494774,
+				"accuracy": 43.007236511079476
+			}
+		},
+		{
+			"entryNo": 45,
+			"dateTime": "2020-10-09T08:30:19.519+02:00",
+			"dlBw": 33956,
+			"gpsCoordinates": {
+				"latitude": 59.43278909861367,
+				"longitude": 17.982371699494774,
+				"accuracy": 43.007236511079476
+			}
+		},
+		{
+			"entryNo": 46,
+			"dateTime": "2020-10-09T08:30:29.562+02:00",
+			"dlBw": 54489,
+			"gpsCoordinates": {
+				"latitude": 59.43180989402542,
+				"longitude": 17.983153966670837,
+				"accuracy": 65
+			}
+		},
+		{
+			"entryNo": 47,
+			"dateTime": "2020-10-09T08:30:39.364+02:00",
+			"dlBw": 47860,
+			"gpsCoordinates": {
+				"latitude": 59.43281785546223,
+				"longitude": 17.982981114578426,
+				"accuracy": 28.892535110664657
+			}
+		},
+		{
+			"entryNo": 48,
+			"dateTime": "2020-10-09T08:30:49.754+02:00",
+			"dlBw": 51299,
+			"gpsCoordinates": {
+				"latitude": 59.43281785546223,
+				"longitude": 17.982981114578426,
+				"accuracy": 28.892535110664657
+			}
+		},
+		{
+			"entryNo": 49,
+			"dateTime": "2020-10-09T08:30:59.507+02:00",
+			"dlBw": 37876,
+			"gpsCoordinates": {
+				"latitude": 59.43282138462124,
+				"longitude": 17.983041092981,
+				"accuracy": 20.869863094205762
+			}
+		},
+		{
+			"entryNo": 50,
+			"dateTime": "2020-10-09T08:31:10.678+02:00",
+			"dlBw": 10093,
+			"gpsCoordinates": {
+				"latitude": 59.431881274016376,
+				"longitude": 17.983143145661636,
+				"accuracy": 65
+			}
+		},
+		{
+			"entryNo": 51,
+			"dateTime": "2020-10-09T08:31:20.311+02:00",
+			"dlBw": 12988,
+			"gpsCoordinates": {
+				"latitude": 59.431881274016376,
+				"longitude": 17.983143145661636,
+				"accuracy": 65
+			}
+		},
+		{
+			"entryNo": 52,
+			"dateTime": "2020-10-09T08:31:30.916+02:00",
+			"dlBw": 8776,
+			"gpsCoordinates": {
+				"latitude": 59.43251423543872,
+				"longitude": 17.984142336214823,
+				"accuracy": 48.730032888065416
+			}
+		},
+		{
+			"entryNo": 53,
+			"dateTime": "2020-10-09T08:31:39.926+02:00",
+			"dlBw": 23480,
+			"gpsCoordinates": {
+				"latitude": 59.432288669284006,
+				"longitude": 17.985431422742586,
+				"accuracy": 40.97690576653156
+			}
+		},
+		{
+			"entryNo": 54,
+			"dateTime": "2020-10-09T08:31:50.013+02:00",
+			"dlBw": 26879,
+			"gpsCoordinates": {
+				"latitude": 59.432288669284006,
+				"longitude": 17.985431422742586,
+				"accuracy": 40.97690576653156
+			}
+		},
+		{
+			"entryNo": 55,
+			"dateTime": "2020-10-09T08:32:01.788+02:00",
+			"dlBw": 5969,
+			"gpsCoordinates": {
+				"latitude": 59.43221461102525,
+				"longitude": 17.986407858290736,
+				"accuracy": 80.07539379207404
+			}
+		},
+		{
+			"entryNo": 56,
+			"dateTime": "2020-10-09T08:32:10.276+02:00",
+			"dlBw": 16430,
+			"gpsCoordinates": {
+				"latitude": 59.43132975404953,
+				"longitude": 17.98856650419328,
+				"accuracy": 21.95358327631934
+			}
+		},
+		{
+			"entryNo": 57,
+			"dateTime": "2020-10-09T08:32:20.372+02:00",
+			"dlBw": 12380,
+			"gpsCoordinates": {
+				"latitude": 59.430754520805806,
+				"longitude": 17.988110262388126,
+				"accuracy": 20.256919330449932
+			}
+		},
+		{
+			"entryNo": 58,
+			"dateTime": "2020-10-09T08:32:30.433+02:00",
+			"dlBw": 15103,
+			"gpsCoordinates": {
+				"latitude": 59.42964342777808,
+				"longitude": 17.98675263823883,
+				"accuracy": 23.668422933928912
+			}
+		},
+		{
+			"entryNo": 59,
+			"dateTime": "2020-10-09T08:32:40.180+02:00",
+			"dlBw": 18025,
+			"gpsCoordinates": {
+				"latitude": 59.42964342777808,
+				"longitude": 17.98675263823883,
+				"accuracy": 23.668422933928912
+			}
+		},
+		{
+			"entryNo": 60,
+			"dateTime": "2020-10-09T08:32:50.198+02:00",
+			"dlBw": 14355,
+			"gpsCoordinates": {
+				"latitude": 59.42903916381309,
+				"longitude": 17.986495600348064,
+				"accuracy": 21.12780371269582
+			}
+		},
+		{
+			"entryNo": 61,
+			"dateTime": "2020-10-09T08:32:59.873+02:00",
+			"dlBw": 20099,
+			"gpsCoordinates": {
+				"latitude": 59.42903916381309,
+				"longitude": 17.986495600348064,
+				"accuracy": 21.12780371269582
+			}
+		},
+		{
+			"entryNo": 62,
+			"dateTime": "2020-10-09T08:33:09.840+02:00",
+			"dlBw": 20910,
+			"gpsCoordinates": {
+				"latitude": 59.42811935399392,
+				"longitude": 17.987235389241214,
+				"accuracy": 32.58101180208457
+			}
+		},
+		{
+			"entryNo": 63,
+			"dateTime": "2020-10-09T08:33:19.625+02:00",
+			"dlBw": 34068,
+			"gpsCoordinates": {
+				"latitude": 59.42811935399392,
+				"longitude": 17.987235389241214,
+				"accuracy": 32.58101180208457
+			}
+		},
+		{
+			"entryNo": 64,
+			"dateTime": "2020-10-09T08:33:29.748+02:00",
+			"dlBw": 33009,
+			"gpsCoordinates": {
+				"latitude": 59.42703638232449,
+				"longitude": 17.98889397197665,
+				"accuracy": 24.439195360799665
+			}
+		},
+		{
+			"entryNo": 65,
+			"dateTime": "2020-10-09T08:33:40.036+02:00",
+			"dlBw": 35476,
+			"gpsCoordinates": {
+				"latitude": 59.42703638232449,
+				"longitude": 17.98889397197665,
+				"accuracy": 24.439195360799665
+			}
+		},
+		{
+			"entryNo": 66,
+			"dateTime": "2020-10-09T08:33:49.667+02:00",
+			"dlBw": 26936,
+			"gpsCoordinates": {
+				"latitude": 59.426438443101276,
+				"longitude": 17.98918587345027,
+				"accuracy": 20.56956218358933
+			}
+		},
+		{
+			"entryNo": 67,
+			"dateTime": "2020-10-09T08:34:00.052+02:00",
+			"dlBw": 16203,
+			"gpsCoordinates": {
+				"latitude": 59.42612290201044,
+				"longitude": 17.98927777980318,
+				"accuracy": 13.331275758531639
+			}
+		},
+		{
+			"entryNo": 68,
+			"dateTime": "2020-10-09T08:34:09.746+02:00",
+			"dlBw": 26283,
+			"gpsCoordinates": {
+				"latitude": 59.426096740347276,
+				"longitude": 17.989333801841116,
+				"accuracy": 15.310509128158532
+			}
+		},
+		{
+			"entryNo": 69,
+			"dateTime": "2020-10-09T08:34:19.599+02:00",
+			"dlBw": 30454,
+			"gpsCoordinates": {
+				"latitude": 59.425612697695115,
+				"longitude": 17.98946955279124,
+				"accuracy": 65
+			}
+		},
+		{
+			"entryNo": 70,
+			"dateTime": "2020-10-09T08:34:30.550+02:00",
+			"dlBw": 10828,
+			"gpsCoordinates": {
+				"latitude": 59.425612697695115,
+				"longitude": 17.98946955279124,
+				"accuracy": 65
+			}
+		},
+		{
+			"entryNo": 71,
+			"dateTime": "2020-10-09T08:34:41.799+02:00",
+			"dlBw": 5978,
+			"gpsCoordinates": {
+				"latitude": 59.42496846403624,
+				"longitude": 17.99004195581013,
+				"accuracy": 14.004433260718024
+			}
+		},
+		{
+			"entryNo": 72,
+			"dateTime": "2020-10-09T08:34:50.118+02:00",
+			"dlBw": 16152,
+			"gpsCoordinates": {
+				"latitude": 59.424502318290884,
+				"longitude": 17.990394053111647,
+				"accuracy": 21.382675453427687
+			}
+		},
+		{
+			"entryNo": 73,
+			"dateTime": "2020-10-09T08:35:00.986+02:00",
+			"dlBw": 4624,
+			"gpsCoordinates": {
+				"latitude": 59.423946675410654,
+				"longitude": 17.99077882114362,
+				"accuracy": 20.20093461515714
+			}
+		},
+		{
+			"entryNo": 74,
+			"dateTime": "2020-10-09T08:35:10.078+02:00",
+			"dlBw": 26987,
+			"gpsCoordinates": {
+				"latitude": 59.4233855715265,
+				"longitude": 17.991382476415733,
+				"accuracy": 14.771175461820393
+			}
+		},
+		{
+			"entryNo": 75,
+			"dateTime": "2020-10-09T08:35:21.013+02:00",
+			"dlBw": 4835,
+			"gpsCoordinates": {
+				"latitude": 59.4229759998196,
+				"longitude": 17.992251381458548,
+				"accuracy": 23.35736168239723
+			}
+		},
+		{
+			"entryNo": 76,
+			"dateTime": "2020-10-09T08:35:30.535+02:00",
+			"dlBw": 10397,
+			"gpsCoordinates": {
+				"latitude": 59.422933847428766,
+				"longitude": 17.992419046541954,
+				"accuracy": 22.653775180308607
+			}
+		},
+		{
+			"entryNo": 77,
+			"dateTime": "2020-10-09T08:35:41.015+02:00",
+			"dlBw": 8864,
+			"gpsCoordinates": {
+				"latitude": 59.42274575238846,
+				"longitude": 17.99313605477865,
+				"accuracy": 17.94284106494647
+			}
+		},
+		{
+			"entryNo": 78,
+			"dateTime": "2020-10-09T08:35:52.017+02:00",
+			"dlBw": 4894,
+			"gpsCoordinates": {
+				"latitude": 59.42246285334644,
+				"longitude": 17.993906528300727,
+				"accuracy": 20.77986989912376
+			}
+		},
+		{
+			"entryNo": 79,
+			"dateTime": "2020-10-09T08:36:01.899+02:00",
+			"dlBw": 5037,
+			"gpsCoordinates": {
+				"latitude": 59.42215808811186,
+				"longitude": 17.994818535654986,
+				"accuracy": 26.049066294848682
+			}
+		},
+		{
+			"entryNo": 80,
+			"dateTime": "2020-10-09T08:36:11.291+02:00",
+			"dlBw": 7361,
+			"gpsCoordinates": {
+				"latitude": 59.42170853060315,
+				"longitude": 17.995913633143413,
+				"accuracy": 19.09656215634012
+			}
+		},
+		{
+			"entryNo": 81,
+			"dateTime": "2020-10-09T08:36:20.521+02:00",
+			"dlBw": 15685,
+			"gpsCoordinates": {
+				"latitude": 59.42170853060315,
+				"longitude": 17.995913633143413,
+				"accuracy": 19.09656215634012
+			}
+		},
+		{
+			"entryNo": 82,
+			"dateTime": "2020-10-09T08:36:30.264+02:00",
+			"dlBw": 14586,
+			"gpsCoordinates": {
+				"latitude": 59.4212833982827,
+				"longitude": 17.995480197306726,
+				"accuracy": 22.58570853531664
+			}
+		},
+		{
+			"entryNo": 83,
+			"dateTime": "2020-10-09T08:36:40.976+02:00",
+			"dlBw": 4745,
+			"gpsCoordinates": {
+				"latitude": 59.4212833982827,
+				"longitude": 17.995480197306726,
+				"accuracy": 22.58570853531664
+			}
+		},
+		{
+			"entryNo": 84,
+			"dateTime": "2020-10-09T08:36:50.306+02:00",
+			"dlBw": 14230,
+			"gpsCoordinates": {
+				"latitude": 59.42125914114662,
+				"longitude": 17.994004504984545,
+				"accuracy": 25.306552464101557
+			}
+		},
+		{
+			"entryNo": 85,
+			"dateTime": "2020-10-09T08:37:00.950+02:00",
+			"dlBw": 9712,
+			"gpsCoordinates": {
+				"latitude": 59.421373784557446,
+				"longitude": 17.993610110021933,
+				"accuracy": 17.77780871047296
+			}
+		},
+		{
+			"entryNo": 86,
+			"dateTime": "2020-10-09T08:37:12.674+02:00",
+			"dlBw": 4557,
+			"gpsCoordinates": {
+				"latitude": 59.421373784557446,
+				"longitude": 17.993610110021933,
+				"accuracy": 17.77780871047296
+			}
+		},
+		{
+			"entryNo": 87,
+			"dateTime": "2020-10-09T08:37:20.687+02:00",
+			"dlBw": 12717,
+			"gpsCoordinates": {
+				"latitude": 59.42115756580412,
+				"longitude": 17.994041324914864,
+				"accuracy": 22.58244717505556
+			}
+		},
+		{
+			"entryNo": 88,
+			"dateTime": "2020-10-09T08:37:31.221+02:00",
+			"dlBw": 7564,
+			"gpsCoordinates": {
+				"latitude": 59.42118560764971,
+				"longitude": 17.995612693401764,
+				"accuracy": 18.256481849224635
+			}
+		},
+		{
+			"entryNo": 89,
+			"dateTime": "2020-10-09T08:37:41.058+02:00",
+			"dlBw": 8527,
+			"gpsCoordinates": {
+				"latitude": 59.42141600692119,
+				"longitude": 17.996066705284598,
+				"accuracy": 26.02684081044915
+			}
+		},
+		{
+			"entryNo": 90,
+			"dateTime": "2020-10-09T08:37:51.432+02:00",
+			"dlBw": 7000,
+			"gpsCoordinates": {
+				"latitude": 59.42141600692119,
+				"longitude": 17.996066705284598,
+				"accuracy": 26.02684081044915
+			}
+		},
+		{
+			"entryNo": 91,
+			"dateTime": "2020-10-09T08:38:01.629+02:00",
+			"dlBw": 6417,
+			"gpsCoordinates": {
+				"latitude": 59.421488059287505,
+				"longitude": 17.99573490920413,
+				"accuracy": 27.594497178613192
+			}
+		},
+		{
+			"entryNo": 92,
+			"dateTime": "2020-10-09T08:38:10.948+02:00",
+			"dlBw": 8731,
+			"gpsCoordinates": {
+				"latitude": 59.42187993636998,
+				"longitude": 17.994991661038807,
+				"accuracy": 36.60010275277345
+			}
+		},
+		{
+			"entryNo": 93,
+			"dateTime": "2020-10-09T08:38:20.677+02:00",
+			"dlBw": 10217,
+			"gpsCoordinates": {
+				"latitude": 59.42227701057969,
+				"longitude": 17.993951133415646,
+				"accuracy": 33.970158957030094
+			}
+		},
+		{
+			"entryNo": 94,
+			"dateTime": "2020-10-09T08:38:30.774+02:00",
+			"dlBw": 9803,
+			"gpsCoordinates": {
+				"latitude": 59.42227701057969,
+				"longitude": 17.993951133415646,
+				"accuracy": 33.970158957030094
+			}
+		},
+		{
+			"entryNo": 95,
+			"dateTime": "2020-10-09T08:38:40.551+02:00",
+			"dlBw": 13281,
+			"gpsCoordinates": {
+				"latitude": 59.42301328190409,
+				"longitude": 17.992453232891112,
+				"accuracy": 27.185778195860046
+			}
+		},
+		{
+			"entryNo": 96,
+			"dateTime": "2020-10-09T08:38:50.202+02:00",
+			"dlBw": 16602,
+			"gpsCoordinates": {
+				"latitude": 59.423236947611244,
+				"longitude": 17.991561746268925,
+				"accuracy": 20.473765545192066
+			}
+		},
+		{
+			"entryNo": 97,
+			"dateTime": "2020-10-09T08:39:01.631+02:00",
+			"dlBw": 6662,
+			"gpsCoordinates": {
+				"latitude": 59.423236947611244,
+				"longitude": 17.991561746268925,
+				"accuracy": 20.473765545192066
+			}
+		},
+		{
+			"entryNo": 98,
+			"dateTime": "2020-10-09T08:39:11.633+02:00",
+			"dlBw": 6400,
+			"gpsCoordinates": {
+				"latitude": 59.424158038432175,
+				"longitude": 17.990463950237423,
+				"accuracy": 18.886305790799746
+			}
+		},
+		{
+			"entryNo": 99,
+			"dateTime": "2020-10-09T08:39:20.656+02:00",
+			"dlBw": 9643,
+			"gpsCoordinates": {
+				"latitude": 59.42471955582715,
+				"longitude": 17.99010916563494,
+				"accuracy": 26.915662204489106
+			}
+		},
+		{
+			"entryNo": 100,
+			"dateTime": "2020-10-09T08:39:30.309+02:00",
+			"dlBw": 17795,
+			"gpsCoordinates": {
+				"latitude": 59.42471955582715,
+				"longitude": 17.99010916563494,
+				"accuracy": 26.915662204489106
+			}
+		},
+		{
+			"entryNo": 101,
+			"dateTime": "2020-10-09T08:39:39.857+02:00",
+			"dlBw": 24521,
+			"gpsCoordinates": {
+				"latitude": 59.42583322818322,
+				"longitude": 17.989240969701463,
+				"accuracy": 17.904558843069935
+			}
+		},
+		{
+			"entryNo": 102,
+			"dateTime": "2020-10-09T08:39:49.869+02:00",
+			"dlBw": 20531,
+			"gpsCoordinates": {
+				"latitude": 59.42672233576293,
+				"longitude": 17.989346472591585,
+				"accuracy": 24.700728433269877
+			}
+		},
+		{
+			"entryNo": 103,
+			"dateTime": "2020-10-09T08:39:59.879+02:00",
+			"dlBw": 30119,
+			"gpsCoordinates": {
+				"latitude": 59.42683616999274,
+				"longitude": 17.989951050233962,
+				"accuracy": 14.852660593148322
+			}
+		},
+		{
+			"entryNo": 104,
+			"dateTime": "2020-10-09T08:40:10.431+02:00",
+			"dlBw": 12696,
+			"gpsCoordinates": {
+				"latitude": 59.42683616999274,
+				"longitude": 17.989951050233962,
+				"accuracy": 14.852660593148322
+			}
+		},
+		{
+			"entryNo": 105,
+			"dateTime": "2020-10-09T08:40:22.675+02:00",
+			"dlBw": 4581,
+			"gpsCoordinates": {
+				"latitude": 59.426965509156574,
+				"longitude": 17.990917160690863,
+				"accuracy": 19.802059075939944
+			}
+		},
+		{
+			"entryNo": 106,
+			"dateTime": "2020-10-09T08:40:30.074+02:00",
+			"dlBw": 16398,
+			"gpsCoordinates": {
+				"latitude": 59.42700156887773,
+				"longitude": 17.991987971352295,
+				"accuracy": 15.563314040739243
+			}
+		},
+		{
+			"entryNo": 107,
+			"dateTime": "2020-10-09T08:40:40.411+02:00",
+			"dlBw": 19485,
+			"gpsCoordinates": {
+				"latitude": 59.42688642380588,
+				"longitude": 17.993541194674087,
+				"accuracy": 21.38417699154718
+			}
+		},
+		{
+			"entryNo": 108,
+			"dateTime": "2020-10-09T08:40:50.406+02:00",
+			"dlBw": 16070,
+			"gpsCoordinates": {
+				"latitude": 59.42688642380588,
+				"longitude": 17.993541194674087,
+				"accuracy": 21.38417699154718
+			}
+		},
+		{
+			"entryNo": 109,
+			"dateTime": "2020-10-09T08:41:00.125+02:00",
+			"dlBw": 17621,
+			"gpsCoordinates": {
+				"latitude": 59.426825459625015,
+				"longitude": 17.993740025477116,
+				"accuracy": 15.786793531529556
+			}
+		},
+		{
+			"entryNo": 110,
+			"dateTime": "2020-10-09T08:41:10.118+02:00",
+			"dlBw": 22615,
+			"gpsCoordinates": {
+				"latitude": 59.426825459625015,
+				"longitude": 17.993740025477116,
+				"accuracy": 15.786793531529556
+			}
+		},
+		{
+			"entryNo": 111,
+			"dateTime": "2020-10-09T08:41:20.226+02:00",
+			"dlBw": 14433,
+			"gpsCoordinates": {
+				"latitude": 59.42658154614427,
+				"longitude": 17.99488496625991,
+				"accuracy": 18.335149519637845
+			}
+		},
+		{
+			"entryNo": 112,
+			"dateTime": "2020-10-09T08:41:29.670+02:00",
+			"dlBw": 35801,
+			"gpsCoordinates": {
+				"latitude": 59.42638155563026,
+				"longitude": 17.996875521496193,
+				"accuracy": 15.99748196457911
+			}
+		},
+		{
+			"entryNo": 113,
+			"dateTime": "2020-10-09T08:41:39.858+02:00",
+			"dlBw": 44182,
+			"gpsCoordinates": {
+				"latitude": 59.42638155563026,
+				"longitude": 17.996875521496193,
+				"accuracy": 15.99748196457911
+			}
+		},
+		{
+			"entryNo": 114,
+			"dateTime": "2020-10-09T08:41:49.585+02:00",
+			"dlBw": 50915,
+			"gpsCoordinates": {
+				"latitude": 59.42648041564895,
+				"longitude": 17.997392827880095,
+				"accuracy": 14.038434792479903
+			}
+		},
+		{
+			"entryNo": 115,
+			"dateTime": "2020-10-09T08:41:59.481+02:00",
+			"dlBw": 42559,
+			"gpsCoordinates": {
+				"latitude": 59.42648041564895,
+				"longitude": 17.997392827880095,
+				"accuracy": 14.038434792479903
+			}
+		},
+		{
+			"entryNo": 116,
+			"dateTime": "2020-10-09T08:42:09.438+02:00",
+			"dlBw": 46282,
+			"gpsCoordinates": {
+				"latitude": 59.426474719397326,
+				"longitude": 17.99741430797956,
+				"accuracy": 12.667775275880496
+			}
+		},
+		{
+			"entryNo": 117,
+			"dateTime": "2020-10-09T08:42:19.784+02:00",
+			"dlBw": 28444,
+			"gpsCoordinates": {
+				"latitude": 59.426474719397326,
+				"longitude": 17.99741430797956,
+				"accuracy": 12.667775275880496
+			}
+		},
+		{
+			"entryNo": 118,
+			"dateTime": "2020-10-09T08:42:29.577+02:00",
+			"dlBw": 39305,
+			"gpsCoordinates": {
+				"latitude": 59.4260929291352,
+				"longitude": 17.99846672781626,
+				"accuracy": 15.41561605901327
+			}
+		},
+		{
+			"entryNo": 119,
+			"dateTime": "2020-10-09T08:42:39.647+02:00",
+			"dlBw": 71699,
+			"gpsCoordinates": {
+				"latitude": 59.425320879508995,
+				"longitude": 17.99970376378853,
+				"accuracy": 9.9865587171132
+			}
+		},
+		{
+			"entryNo": 120,
+			"dateTime": "2020-10-09T08:42:49.421+02:00",
+			"dlBw": 49349,
+			"gpsCoordinates": {
+				"latitude": 59.42435226352635,
+				"longitude": 18.001007637272888,
+				"accuracy": 10.403627901851529
+			}
+		},
+		{
+			"entryNo": 121,
+			"dateTime": "2020-10-09T08:42:59.760+02:00",
+			"dlBw": 44329,
+			"gpsCoordinates": {
+				"latitude": 59.42435226352635,
+				"longitude": 18.001007637272888,
+				"accuracy": 10.403627901851529
+			}
+		},
+		{
+			"entryNo": 122,
+			"dateTime": "2020-10-09T08:43:10.477+02:00",
+			"dlBw": 12173,
+			"gpsCoordinates": {
+				"latitude": 59.422520472082276,
+				"longitude": 18.00306058637644,
+				"accuracy": 14.783687357010189
+			}
+		},
+		{
+			"entryNo": 123,
+			"dateTime": "2020-10-09T08:43:20.346+02:00",
+			"dlBw": 16298,
+			"gpsCoordinates": {
+				"latitude": 59.421251944135925,
+				"longitude": 18.003958920003,
+				"accuracy": 12.338221547106514
+			}
+		},
+		{
+			"entryNo": 124,
+			"dateTime": "2020-10-09T08:43:30.997+02:00",
+			"dlBw": 8864,
+			"gpsCoordinates": {
+				"latitude": 59.41933508354371,
+				"longitude": 18.006216577333806,
+				"accuracy": 65
+			}
+		},
+		{
+			"entryNo": 125,
+			"dateTime": "2020-10-09T08:43:40.279+02:00",
+			"dlBw": 17256,
+			"gpsCoordinates": {
+				"latitude": 59.41933508354371,
+				"longitude": 18.006216577333806,
+				"accuracy": 65
+			}
+		},
+		{
+			"entryNo": 126,
+			"dateTime": "2020-10-09T08:43:50.061+02:00",
+			"dlBw": 20291,
+			"gpsCoordinates": {
+				"latitude": 59.418595087947885,
+				"longitude": 18.007550135687424,
+				"accuracy": 19.641559667444497
+			}
+		},
+		{
+			"entryNo": 127,
+			"dateTime": "2020-10-09T08:43:59.923+02:00",
+			"dlBw": 19798,
+			"gpsCoordinates": {
+				"latitude": 59.41801754717028,
+				"longitude": 18.008556717823044,
+				"accuracy": 65
+			}
+		},
+		{
+			"entryNo": 128,
+			"dateTime": "2020-10-09T08:44:09.956+02:00",
+			"dlBw": 21271,
+			"gpsCoordinates": {
+				"latitude": 59.41781579164175,
+				"longitude": 18.00913319956688,
+				"accuracy": 85.8877155927629
+			}
+		},
+		{
+			"entryNo": 129,
+			"dateTime": "2020-10-09T08:44:20.330+02:00",
+			"dlBw": 12923,
+			"gpsCoordinates": {
+				"latitude": 59.41700577419344,
+				"longitude": 18.01138433680861,
+				"accuracy": 226.71149547044482
+			}
+		},
+		{
+			"entryNo": 130,
+			"dateTime": "2020-10-09T08:44:31.909+02:00",
+			"dlBw": 5859,
+			"gpsCoordinates": {
+				"latitude": 59.41601740528289,
+				"longitude": 18.01457246983614,
+				"accuracy": 27.790927925660032
+			}
+		},
+		{
+			"entryNo": 131,
+			"dateTime": "2020-10-09T08:44:42.058+02:00",
+			"dlBw": 5030,
+			"gpsCoordinates": {
+				"latitude": 59.41601740528289,
+				"longitude": 18.01457246983614,
+				"accuracy": 27.790927925660032
+			}
+		},
+		{
+			"entryNo": 132,
+			"dateTime": "2020-10-09T08:44:53.766+02:00",
+			"dlBw": 2447,
+			"gpsCoordinates": {
+				"latitude": 59.415557237997824,
+				"longitude": 18.01569145896721,
+				"accuracy": 65
+			}
+		},
+		{
+			"entryNo": 133,
+			"dateTime": "2020-10-09T08:45:01.299+02:00",
+			"dlBw": 7430,
+			"gpsCoordinates": {
+				"latitude": 59.41419037096531,
+				"longitude": 18.02085362604044,
+				"accuracy": 43.69803884841988
+			}
+		},
+		{
+			"entryNo": 134,
+			"dateTime": "2020-10-09T08:45:13.900+02:00",
+			"dlBw": 2424,
+			"gpsCoordinates": {
+				"latitude": 59.41358025592703,
+				"longitude": 18.02304332315271,
+				"accuracy": 32.104596797080106
+			}
+		},
+		{
+			"entryNo": 135,
+			"dateTime": "2020-10-09T08:45:22.745+02:00",
+			"dlBw": 5026,
+			"gpsCoordinates": {
+				"latitude": 59.41222883580746,
+				"longitude": 18.027028848230806,
+				"accuracy": 23.63393614956434
+			}
+		},
+		{
+			"entryNo": 136,
+			"dateTime": "2020-10-09T08:45:37.320+02:00",
+			"dlBw": 2008,
+			"gpsCoordinates": {
+				"latitude": 59.41222883580746,
+				"longitude": 18.027028848230806,
+				"accuracy": 23.63393614956434
+			}
+		},
+		{
+			"entryNo": 137,
+			"dateTime": "2020-10-09T08:45:41.632+02:00",
+			"dlBw": 6468,
+			"gpsCoordinates": {
+				"latitude": 59.411758168344655,
+				"longitude": 18.028208138666493,
+				"accuracy": 30.02015883198034
+			}
+		},
+		{
+			"entryNo": 138,
+			"dateTime": "2020-10-09T08:45:51.433+02:00",
+			"dlBw": 8067,
+			"gpsCoordinates": {
+				"latitude": 59.41075077098048,
+				"longitude": 18.030722934608377,
+				"accuracy": 14.421034767006574
+			}
+		},
+		{
+			"entryNo": 139,
+			"dateTime": "2020-10-09T08:46:00.471+02:00",
+			"dlBw": 12052,
+			"gpsCoordinates": {
+				"latitude": 59.41057404666229,
+				"longitude": 18.03122157801814,
+				"accuracy": 65
+			}
+		},
+		{
+			"entryNo": 140,
+			"dateTime": "2020-10-09T08:46:10.992+02:00",
+			"dlBw": 10040,
+			"gpsCoordinates": {
+				"latitude": 59.410390758880226,
+				"longitude": 18.031437275090752,
+				"accuracy": 34.66454514872836
+			}
+		},
+		{
+			"entryNo": 141,
+			"dateTime": "2020-10-09T08:46:20.508+02:00",
+			"dlBw": 12108,
+			"gpsCoordinates": {
+				"latitude": 59.41038001054456,
+				"longitude": 18.031463901128998,
+				"accuracy": 159.981094700546
+			}
+		},
+		{
+			"entryNo": 142,
+			"dateTime": "2020-10-09T08:46:31.202+02:00",
+			"dlBw": 8007,
+			"gpsCoordinates": {
+				"latitude": 59.409883536181404,
+				"longitude": 18.03096259438209,
+				"accuracy": 14.679955228626634
+			}
+		},
+		{
+			"entryNo": 143,
+			"dateTime": "2020-10-09T08:46:40.149+02:00",
+			"dlBw": 18714,
+			"gpsCoordinates": {
+				"latitude": 59.40899549339158,
+				"longitude": 18.030277407089926,
+				"accuracy": 178.06761048117139
+			}
+		},
+		{
+			"entryNo": 144,
+			"dateTime": "2020-10-09T08:46:52.653+02:00",
+			"dlBw": 4624,
+			"gpsCoordinates": {
+				"latitude": 59.40837493400162,
+				"longitude": 18.029589836836337,
+				"accuracy": 20.109050479462628
+			}
+		},
+		{
+			"entryNo": 145,
+			"dateTime": "2020-10-09T08:47:03.034+02:00",
+			"dlBw": 4984,
+			"gpsCoordinates": {
+				"latitude": 59.40780140026013,
+				"longitude": 18.029091479680428,
+				"accuracy": 182.8569743667918
+			}
+		},
+		{
+			"entryNo": 146,
+			"dateTime": "2020-10-09T08:47:17.587+02:00",
+			"dlBw": 2285,
+			"gpsCoordinates": {
+				"latitude": 59.407899169802235,
+				"longitude": 18.0280854524228,
+				"accuracy": 26.343520808289572
+			}
+		},
+		{
+			"entryNo": 147,
+			"dateTime": "2020-10-09T08:47:29.115+02:00",
+			"dlBw": 1625,
+			"gpsCoordinates": {
+				"latitude": 59.40783925589624,
+				"longitude": 18.026562773944185,
+				"accuracy": 28.318090352430993
+			}
+		},
+		{
+			"entryNo": 148,
+			"dateTime": "2020-10-09T08:47:41.689+02:00",
+			"dlBw": 6452,
+			"gpsCoordinates": {
+				"latitude": 59.40795460807519,
+				"longitude": 18.027086698642883,
+				"accuracy": 195.94604777651492
+			}
+		},
+		{
+			"entryNo": 149,
+			"dateTime": "2020-10-09T08:47:52.450+02:00",
+			"dlBw": 4952,
+			"gpsCoordinates": {
+				"latitude": 59.40801176514675,
+				"longitude": 18.025332700937714,
+				"accuracy": 24.90424528857239
+			}
+		},
+		{
+			"entryNo": 150,
+			"dateTime": "2020-10-09T08:48:02.380+02:00",
+			"dlBw": 5050,
+			"gpsCoordinates": {
+				"latitude": 59.40801176514675,
+				"longitude": 18.025332700937714,
+				"accuracy": 24.90424528857239
+			}
+		},
+		{
+			"entryNo": 151,
+			"dateTime": "2020-10-09T08:48:13.888+02:00",
+			"dlBw": 5030,
+			"gpsCoordinates": {
+				"latitude": 59.408128963013375,
+				"longitude": 18.022042311703114,
+				"accuracy": 19.473366632425225
+			}
+		},
+		{
+			"entryNo": 152,
+			"dateTime": "2020-10-09T08:48:21.882+02:00",
+			"dlBw": 6009,
+			"gpsCoordinates": {
+				"latitude": 59.408128963013375,
+				"longitude": 18.022042311703114,
+				"accuracy": 19.473366632425225
+			}
+		},
+		{
+			"entryNo": 153,
+			"dateTime": "2020-10-09T08:48:30.808+02:00",
+			"dlBw": 9857,
+			"gpsCoordinates": {
+				"latitude": 59.408545592028815,
+				"longitude": 18.01879609486547,
+				"accuracy": 14.532377633340907
+			}
+		},
+		{
+			"entryNo": 154,
+			"dateTime": "2020-10-09T08:48:41.348+02:00",
+			"dlBw": 10757,
+			"gpsCoordinates": {
+				"latitude": 59.408545592028815,
+				"longitude": 18.01879609486547,
+				"accuracy": 14.532377633340907
+			}
+		},
+		{
+			"entryNo": 155,
+			"dateTime": "2020-10-09T08:48:52.240+02:00",
+			"dlBw": 5033,
+			"gpsCoordinates": {
+				"latitude": 59.40899204295182,
+				"longitude": 18.017056676908314,
+				"accuracy": 15.882889452211023
+			}
+		},
+		{
+			"entryNo": 156,
+			"dateTime": "2020-10-09T08:49:00.610+02:00",
+			"dlBw": 11003,
+			"gpsCoordinates": {
+				"latitude": 59.40952017552431,
+				"longitude": 18.013822253688538,
+				"accuracy": 15.664434245777613
+			}
+		},
+		{
+			"entryNo": 157,
+			"dateTime": "2020-10-09T08:49:11.051+02:00",
+			"dlBw": 9235,
+			"gpsCoordinates": {
+				"latitude": 59.40952017552431,
+				"longitude": 18.013822253688538,
+				"accuracy": 15.664434245777613
+			}
+		},
+		{
+			"entryNo": 158,
+			"dateTime": "2020-10-09T08:49:20.771+02:00",
+			"dlBw": 10342,
+			"gpsCoordinates": {
+				"latitude": 59.40970353144237,
+				"longitude": 18.011956192555253,
+				"accuracy": 15.073793925189097
+			}
+		},
+		{
+			"entryNo": 159,
+			"dateTime": "2020-10-09T08:49:30.352+02:00",
+			"dlBw": 14337,
+			"gpsCoordinates": {
+				"latitude": 59.40970353144237,
+				"longitude": 18.011956192555253,
+				"accuracy": 15.073793925189097
+			}
+		},
+		{
+			"entryNo": 160,
+			"dateTime": "2020-10-09T08:49:40.056+02:00",
+			"dlBw": 18795,
+			"gpsCoordinates": {
+				"latitude": 59.40974038160687,
+				"longitude": 18.011015024116222,
+				"accuracy": 15.215763863033178
+			}
+		},
+		{
+			"entryNo": 161,
+			"dateTime": "2020-10-09T08:49:49.828+02:00",
+			"dlBw": 25272,
+			"gpsCoordinates": {
+				"latitude": 59.409722150580855,
+				"longitude": 18.010616337542903,
+				"accuracy": 13.103693345170125
+			}
+		},
+		{
+			"entryNo": 162,
+			"dateTime": "2020-10-09T08:49:59.878+02:00",
+			"dlBw": 22442,
+			"gpsCoordinates": {
+				"latitude": 59.40966425033163,
+				"longitude": 18.01056952143725,
+				"accuracy": 13.029706993557417
+			}
+		},
+		{
+			"entryNo": 163,
+			"dateTime": "2020-10-09T08:50:10.125+02:00",
+			"dlBw": 18322,
+			"gpsCoordinates": {
+				"latitude": 59.40966425033163,
+				"longitude": 18.01056952143725,
+				"accuracy": 13.029706993557417
+			}
+		},
+		{
+			"entryNo": 164,
+			"dateTime": "2020-10-09T08:50:21.046+02:00",
+			"dlBw": 8684,
+			"gpsCoordinates": {
+				"latitude": 59.409867118842214,
+				"longitude": 18.01036882837635,
+				"accuracy": 20.42560032065898
+			}
+		},
+		{
+			"entryNo": 165,
+			"dateTime": "2020-10-09T08:50:32.725+02:00",
+			"dlBw": 4570,
+			"gpsCoordinates": {
+				"latitude": 59.41005140554969,
+				"longitude": 18.010417328218665,
+				"accuracy": 116.36390259649045
+			}
+		},
+		{
+			"entryNo": 166,
+			"dateTime": "2020-10-09T08:50:43.609+02:00",
+			"dlBw": 5025,
+			"gpsCoordinates": {
+				"latitude": 59.410890871216935,
+				"longitude": 18.009547247173114,
+				"accuracy": 17.869335334789962
+			}
+		},
+		{
+			"entryNo": 167,
+			"dateTime": "2020-10-09T08:50:52.416+02:00",
+			"dlBw": 5073,
+			"gpsCoordinates": {
+				"latitude": 59.41144770076456,
+				"longitude": 18.008147408518816,
+				"accuracy": 23.943512201066287
+			}
+		},
+		{
+			"entryNo": 168,
+			"dateTime": "2020-10-09T08:51:09.132+02:00",
+			"dlBw": 2775,
+			"gpsCoordinates": {
+				"latitude": 59.41169204352607,
+				"longitude": 18.00749049160863,
+				"accuracy": 65
+			}
+		},
+		{
+			"entryNo": 169,
+			"dateTime": "2020-10-09T08:51:22.070+02:00",
+			"dlBw": 5025,
+			"gpsCoordinates": {
+				"latitude": 59.41230824961286,
+				"longitude": 18.00570285232498,
+				"accuracy": 18.758235801395696
+			}
+		},
+		{
+			"entryNo": 170,
+			"dateTime": "2020-10-09T08:51:30.475+02:00",
+			"dlBw": 15147,
+			"gpsCoordinates": {
+				"latitude": 59.41439809690069,
+				"longitude": 18.002286785591075,
+				"accuracy": 22.974236233867813
+			}
+		},
+		{
+			"entryNo": 171,
+			"dateTime": "2020-10-09T08:51:40.583+02:00",
+			"dlBw": 11958,
+			"gpsCoordinates": {
+				"latitude": 59.41439809690069,
+				"longitude": 18.002286785591075,
+				"accuracy": 22.974236233867813
+			}
+		},
+		{
+			"entryNo": 172,
+			"dateTime": "2020-10-09T08:51:52.761+02:00",
+			"dlBw": 5025,
+			"gpsCoordinates": {
+				"latitude": 59.41480119004304,
+				"longitude": 18.00213375625188,
+				"accuracy": 28.711675760555085
+			}
+		}
+	]
+}
