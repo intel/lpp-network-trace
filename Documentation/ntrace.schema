@@ -1,0 +1,139 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://example.com/product.schema.json",
+  "title": "LPP trace schema",
+  "description": "Link Performance Prediction trace file schema",
+  "type": "object",
+  "properties": {
+    "version": {
+      "description": "Format version",
+      "type": "integer",
+      "enum": [
+        1
+      ]
+    },
+    "description": {
+      "description": "Trace description (e.g. \"From Stockholm to Szczecin\")",
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 256
+    },
+    "clientModel": {
+      "description": "Client model (e.g. \"SM-G390\")",
+      "type": "string",
+      "maxLength": 128
+    },
+    "clientName": {
+      "description": "Client name (e.g. \"Samsung Galaxy S10\")",
+      "type": "string",
+      "maxLength": 128
+    },
+    "note": {
+      "description": "additional description",
+      "type": "string",
+      "maxLength": 512
+    },
+    "entries": {
+      "description": "Trace entries",
+      "type": "array",
+      "uniqueItems": true,
+      "contains": {
+        "type": "object"
+      },
+      "minItems": 2,
+      "maxItems": 5000,
+      "items": {
+        "type": "object",
+        "properties": {
+          "entryNo": {
+            "description": "Trace entry number in ascending order",
+            "type": "integer",
+            "minimum": 1
+          },
+          "dateTime": {
+            "description": "UTC timestamp in format \"YYYY-MM-DDThh:mm:ssTZD\" according to ISO 8601",
+            "type": "string",
+            "pattern": "^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[01]|0[1-9]|[12][0-9])T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9])(.[0-9]{3})?(?:Z|[+-][01][0-9]:[0-5][0-9])?$"
+          },
+          "network": {
+            "description": "Network operator name or the numeric name (MCC+MNC)",
+            "type": "string",
+            "maxLength": 128
+          },
+          "dlBw": {
+            "description": "Downlink bandwidth in kpbs",
+            "type": "integer",
+            "minimum": 0
+          },
+          "dlLatency": {
+            "description": "Downlink latency to first bytes in microseconds",
+            "type": "integer",
+            "minimum": 0
+          },
+          "ulBw": {
+            "description": "Uplink bandwidth in kpbs",
+            "type": "integer",
+            "minimum": 0
+          },
+          "ulLatency": {
+            "description": "Uplink latency to first bytes in microseconds",
+            "type": "integer",
+            "minimum": 0
+          },
+          "gpsCoordinates": {
+            "description": "A geographical coordinate",
+            "type": "object",
+            "properties": {
+              "latitude": {
+                "description": "GPS latitude in decimal degrees (DD) in WGS-84 format",
+                "type": "number"
+              },
+              "longitude": {
+                "description": "GPS longitude in decimal degrees (DD) in WGS-84 format",
+                "type": "number"
+              },
+              "accuracy": {
+                "description": "GPS accuracy of the latitude and longitude in meters.",
+                "type": "number"
+              }
+            },
+            "required": [ "latitude", "longitude" ]
+          },
+          "note": {
+            "description": "Additional description",
+            "type": "string",
+            "maxLength": 512
+          }
+        },
+        "anyOf": [
+          {
+            "required": [
+              "entryNo",
+              "dateTime",
+              "dlBw"
+            ]
+          },
+          {
+            "required": [
+              "entryNo",
+              "dateTime",
+              "ulBw"
+            ]
+          },
+          {
+            "required": [
+              "entryNo",
+              "dateTime",
+              "gpsCoordinates"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "required": [
+    "version",
+    "description",
+    "entries"
+  ]
+}
