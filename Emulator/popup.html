@@ -1,0 +1,122 @@
+<!-- Copyright (C) 2020 Intel Corporation.-->   
+
+<!-- This program is free software; you can redistribute it and/or modify it -->   
+<!-- under the terms and conditions of the GNU General Public License, -->   
+<!-- version 2, as published by the Free Software Foundation. -->   
+
+<!-- This program is distributed in the hope it will be useful, but WITHOUT -->   
+<!-- ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or -->   
+<!-- FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for -->   
+<!-- more details. -->
+
+<!DOCTYPE html>
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+   integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+   crossorigin=""/>
+   <script src="lib/leaflet/leaflet.js"
+   integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+   crossorigin=""></script>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <style>
+.slidecontainer {
+  width: 100%;
+}
+
+.slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 15px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+.slider:hover {
+  opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  background: rgb(75, 192, 192);
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  background: #4CAF50;
+  cursor: pointer;
+}
+</style>
+
+  <title>LPP extension</title>
+</head>
+<body>
+  <div class="popup">
+    <div class="popup__content js-main-content">
+      <h1 class="popup__title">
+        Network Trace Emulator
+      </h1>
+      <div class="popup__select">
+      </div>
+	  <div>
+	  <input class="input_file js_input_file" type="file" id="input_file" >
+	  </div>
+	  <div>
+      <button class="popup__button js-enable-throttling">
+        Apply throttling
+      </button>
+	   <button class="popup__button js-pause" disabled="true">
+        Pause 
+      </button>
+	  <button class="popup__button js-cancel" disabled="true">
+        Cancel 
+      </button>
+	  <div>
+	  <canvas id="myChart" width="75%"></canvas>
+	  </div>
+	  </div>
+	  <div class="slidecontainer">
+  <input type="range" min="1" max="100" value="1" class="slider" id="myRange" hidden="true">
+  <p>Time in sec: <span id="demo" hidden="true"></span></p>
+</div>
+	  Current downlink rate in kbps
+	  	<h7 class="lpp_bw js_lpp_bw">
+		
+		</h7>
+    </div>	
+	
+	<h7 class="lpp_predictions js_lpp_bw">
+	</h7>
+	<br> Generate prediction if difference to previous value is more than  <input type="number" class="lpp_pro js_lpp_pro" name="lpp_pro" min="1" max="100" value="5" style="width: 3em">%<br>
+	<br> Prediction window in sec  <input type="number" class="lpp_time js_lpp_time" name="lpp_time" value="60" style="width: 6em" ><br>
+    <div class="popup__content js-settings-content hide">
+      <div class="popup__checkbox">
+        <label class="checkboxes" >Loop mode
+		<input type="checkbox" class="checkboxes__value js-loopmode" name="loopmode" value="loopmode" checked>
+        <span class="checkboxes__icon"></span>
+		Auto reload tab after apply
+          <input type="checkbox" class="checkboxes__value js-reload-tabs" name="reload-tabs" value="reload-tabs" checked>
+          <span class="checkboxes__icon"></span>		  
+        </label>
+      </div>
+    </div>
+	<h7 class="lpp_predictions js_lpp_prediction">
+	 NA
+	</h7>
+	<div id="mapid" style="height:380px;" ></div>
+  </div>
+   <script src="dist/utils.js"></script>
+  <script src="dist/popup.js"></script>
+  <script src="lib/chart.js/chart.js@2.8.0"></script>
+  <script src="lib/chartjs-plugin/chartjs-plugin-annotation.js"></script>
+
+</body>
+</html>
