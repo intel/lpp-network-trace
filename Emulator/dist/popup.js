@@ -26,6 +26,8 @@ let isPaused = false;
 let delta = 0;
 let id = 0;
 let currentTab = null;
+let pauseTime = 0;
+let counter = 0;
 // Taken from Lighthouse
 const DEVTOOLS_THROUGHPUT_ADJUSTMENT_FACTOR = 0.9;
 const conditions = {
@@ -111,6 +113,10 @@ function sliderMove() {
   }
 
   id += 1;
+  if (isPaused) {
+	pauseTime = new Date();
+	counter = new Date();
+  }
 }
 document.getElementById('myRange').addEventListener('input', sliderMove);
 
@@ -417,9 +423,9 @@ async function onEnableThrottling(JsonFile) {
       chart.annotation.elements.testline.options.value = 0;
       if ((lat.length !== 0) && (lon.length !== 0)) mymap.setView([lat[0], lon[0]], 17);
 
-      const counter = new Date();
+      counter = new Date();
 
-      let pauseTime = 0;
+      pauseTime = 0;
       mainTimer = setInterval(() => {
         if (isPaused) {
           if (pauseTime === 0) pauseTime = new Date();
