@@ -1,6 +1,7 @@
 {
 	"version": 1,
 	"description": "Car trace",
+	"note": "BW server in Frankfurt/DE",
 	"entries": [
 		{
 			"entryNo": 1,

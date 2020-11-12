@@ -3,6 +3,7 @@
 	"description": "Car trip from Zalom to Szczecin",
 	"clientName": "Huawei P30",
 	"clientModel": "ELE-L29",
+	"note": "Off-peak hours, BW server in Frankfurt/DE",
 	"entries": [
 		{
 			"entryNo": 1,

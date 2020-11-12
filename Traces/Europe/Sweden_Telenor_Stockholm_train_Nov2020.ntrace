@@ -3,7 +3,7 @@
         "description": "Central Stockholm to Sollentuna by train",
         "clientModel": "SM-J510FN",
         "clientName": "Galaxy J5 (2016)",
-        "note": "Commuter train at off-peak hours from central to north stockholm.",
+        "note": "Commuter train at off-peak hours from central to north stockholm, BW server in Frankfurt/DE",
         "entries": [
                 {
                         "entryNo": 1,
