@@ -1,7 +1,7 @@
-Network trace tool
-==================
+Network Capture Tool
+====================
 
-The Network Trace Tool is a website that enables tracing downlink bandwidth and 
+The Network Capture Tool is a website that enables tracing downlink bandwidth and
 GPS position to JSON format. Bandwidth is calculated according to speedtest.net 
 algorithm: https://help.speedtest.net/hc/en-us/articles/360038679354-How-does-Speedtest-measure-my-network-speeds-
 (How results are calculated). If there is insufficient number of samples, total
