@@ -470,7 +470,7 @@ window.onerror = function ( msg, url, lineNo, columnNo, error ) {
     var string = msg.toLowerCase();
     var substring = 'script error';
     if ( string.indexOf( substring ) > -1 ) {
-        log( 'error', 'Script Error: See Browser Console for Detail' );
+        log( 'err', 'Script Error: See Browser Console for Detail' );
     } else {
         var message = [
             'Message: ' + msg,
@@ -480,7 +480,7 @@ window.onerror = function ( msg, url, lineNo, columnNo, error ) {
             'Error object: ' + JSON.stringify( error )
         ].join( ' - ' );
 
-        log( 'error', message );
+        log( 'err', message );
     }
 
     return false;

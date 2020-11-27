@@ -184,7 +184,7 @@ class PositionHandler {
                 }
                 this.error = 'failed to get position: error: ' + e;
                 this.position = null;
-                log( 'error', 'failed to get position: error: ' + e,
+                log( 'err', 'failed to get position: error: ' + e,
                     'PositionHandler::errorPosition' );
             };
 
@@ -243,7 +243,7 @@ class PositionHandler {
                     }
                     this.error = 'failed to get geolocation: error: ' + e;
                     this.position = null;
-                    log( 'error', 'failed to get geolocation: error: ' + e,
+                    log( 'err', 'failed to get geolocation: error: ' + e,
                         'PositionHandler::errorPosition' );
                     resolve( null );
                 };
@@ -267,7 +267,7 @@ class PositionHandler {
 
         return new Promise( async function ( resolve ) {
             this.timer = window.setTimeout( function () {
-                log( 'error', 'position not available (timed out)',
+                log( 'err', 'position not available (timed out)',
                     'PositionHandler::getCurrentPosition' );
                 resolve( null );
             }, Defaults.locationPermPromptTimeout );
@@ -301,7 +301,7 @@ class PositionHandler {
                             pos.getAccuracy() + ')',
                         'PositionHandler::getPosition' );
                     } else {
-                        log( 'error', 'position not available',
+                        log( 'err', 'position not available',
                             'PositionHandler::getCurrentPosition' );
                     }
                     resolve( pos );
@@ -315,7 +315,7 @@ class PositionHandler {
                     }
 
                     clearTimeout( this.timer );
-                    log( 'error', 'position not available',
+                    log( 'err', 'position not available',
                         'PositionHandler::getCurrentPosition' );
                     resolve( null );
                 } else if ( permState === 'prompt' ) {
@@ -334,7 +334,7 @@ class PositionHandler {
                             pos.getLongitude() + ' (acc: ' + pos.getAccuracy() +
                             ')', 'PositionHandler::getPosition' );
                     } else {
-                        log( 'error', 'position not available',
+                        log( 'err', 'position not available',
                             'PositionHandler::getCurrentPosition' );
                     }
                     resolve( pos );
@@ -347,7 +347,7 @@ class PositionHandler {
                         pos.getLongitude() + ' (acc: ' + pos.getAccuracy() + ')',
                     'PositionHandler::getPosition' );
                 } else {
-                    log( 'error', 'position not available',
+                    log( 'err', 'position not available',
                         'PositionHandler::getCurrentPosition' );
                 }
                 resolve( pos );
