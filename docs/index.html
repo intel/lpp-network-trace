@@ -1,1 +1,125 @@
-<h1>Network Trace Tool</h1>
+<!-- Copyright (C) 2020 Intel Corporation. -->
+
+<!-- This program is free software; you can redistribute it and/or modify it -->
+<!-- under the terms and conditions of the GNU General Public License, -->
+<!-- version 2, as published by the Free Software Foundation. -->
+
+<!-- This program is distributed in the hope it will be useful, but WITHOUT -->
+<!-- ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or -->
+<!-- FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for -->
+<!-- more details. -->
+
+<!-- You should have received a copy of the GNU General Public License along with -->
+<!-- this program; if not, write to the Free Software Foundation, Inc., -->
+<!-- 51 Franklin St - Fifth Floor, Boston, MA 02110-1301 USA. -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Network Trace Tool</title>
+	<style>
+	  /* Hide page by default */
+	  html { display : none; }
+	</style>
+    <link rel="stylesheet" href="css/default.css">
+  </head>
+  <body>
+    <h1>Network Trace Tool</h1>
+    <label for="description">Description:</label>
+    <div class="tooltip">
+      <input type="text" id="description" name="description" maxlength="256"
+            size="30">
+      <span class="tooltiptext">Enter trace description</span>
+    </div>
+    <br><br>
+    <label for="clientModel">Client model:</label>
+    <div class="tooltip">
+      <input type="text" id="clientModel" name="clientModel" maxlength="128"
+            size="10">
+      <span class="tooltiptext">Enter client model, e.g. SM-G390</span>
+    </div>
+    <br><br>
+    <label for="clientName">Client name:</label>
+    <div class="tooltip">
+      <input type="text" id="clientName" name="clientName" maxlength="128"
+            size="10">
+      <span class="tooltiptext">Enter client name, e.g. Samsung Galaxy S10</span>
+    </div>
+    <br><br>
+    <label for="note">Note:</label>
+    <div class="tooltip">
+      <input type="text" id="note" name="note" maxlength="512" size="30">
+      <span class="tooltiptext">Enter additional description</span>
+    </div>
+    <br><br>
+    <label for="dlBwTestInterval">DL BW test interval (sec):</label>
+    <div class="tooltip">
+      <input type="text" id="dlBwTestInterval" name="dlBwTestInterval"
+            maxlength="6" size="6">
+      <span class="tooltiptext">Enter measurement interval in seconds. Each measurement is run every interval</span>
+    </div>
+    <br><br>
+    <label for="dlBwTestDuration">DL BW test duration (sec):</label>
+    <div class="tooltip">
+      <input type="text" id="dlBwTestDuration" name="dlBwTestDuration"
+            maxlength="6" size="6">
+      <span class="tooltiptext">Enter measurement duration. Each measurement is stopped if this time passes</span>
+    </div>
+    <br><br>
+    <label for="dlLimitKbytes">Download limit (kbytes):
+    </label>
+    <div class="tooltip">
+      <input type="text" id="dlLimitKbytes" name="dlLimitKbytes" maxlength="6"
+            size="6">
+      <span class="tooltiptext">Enter download limit in kilobytes. Each measurement is stopped after this amount is downloaded</span>
+    </div>
+    <br><br>
+    <label for="fileUrl">File URL:</label>
+    <div class="tooltip">
+      <input type="text" id="fileUrl" name="File Url" maxlength="256"
+            size="50">
+      <span class="tooltiptext">Enter file http(s) URL to download</span>
+    </div>
+    <br><br>
+    <label for="tracePosition">Trace GPS position:</label>
+    <input type="checkbox" id="tracePosition" name="tracePosition" value="tracePosition">
+    <br><br>
+    <button id='startButton' type="button">Start</button>
+    <button id='pauseButton' type="button">Pause</button>
+    <button id='stopButton' type="button">Stop</button>
+    <br>
+    <br>
+    <label id='status'>Status:</label>
+    <br><br>
+    <label>DL BW test progress:</label><br>
+	<div id="progress">
+      <div id='percent' class='percent'>0%</div>
+	  <div id='bar' class='bar'></div>
+	</div>
+    <br>
+    <label id='bandwidth'>Measured DL BW:</label>
+    <br>
+    <br>
+    <label id='network'>Network:&nbsp;unknown</label>
+    <br>
+    <br>
+    <label id='position'>Position:</label>
+    <br>
+    <br>
+    <label for="outputJson">JSON:</label><br><br>
+    <textarea id="outputJson" name="outputJson" rows="10" cols="70">
+    </textarea>
+    <br>
+    <button id='copyButton' type='button'>Copy</button>
+    <br><br>
+	<script>
+	  if ( self === top ) {
+		// Everything checks out, show the page.
+		document.documentElement.style.display = 'block';
+	  }
+	</script>
+    <script type="module" src="js/tracetool.js">
+    </script>
+  </body>
+</html>
