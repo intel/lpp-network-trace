@@ -3,7 +3,7 @@ Network Capture Tool
 
 The Network Capture Tool is a website that enables tracing downlink bandwidth and
 GPS position to JSON format. Bandwidth is calculated according to speedtest.net 
-algorithm: https://help.speedtest.net/hc/en-us/articles/360038679354-How-does-Speedtest-measure-my-network-speeds-
+algorithm: https://help.speedtest.net/hc/en-us/articles/360038679354-How-does-Speedtest-measure-my-network-speeds-#:~:text=How%20results%20are%20calculated
 (How results are calculated). If there is insufficient number of samples, total
 arithmetic mean is calculated.
 GPS position tracing is optional and disabled by default.
