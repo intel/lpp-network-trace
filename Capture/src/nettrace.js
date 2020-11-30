@@ -557,7 +557,9 @@ class Tracer {
     }
 
     toJSON() {
-        return JSON.stringify( this.dump, null, '\t' );
+        // Default indentation for JS is 2 chars. This also makes
+        // it much more readable output on mobile.
+        return JSON.stringify( this.dump, null, 2 );
     }
 }
 

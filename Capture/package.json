@@ -19,6 +19,11 @@
     "snowpack": "^2.17.1"
   },
   "dependencies": {
-    "lit-element": "^2.4.0"
+    "lit-element": "^2.4.0",
+    "@material/mwc-button": "^0.19.1",
+    "@material/mwc-textfield": "^0.19.1",
+    "@material/mwc-formfield": "^0.19.1",
+    "@material/mwc-linear-progress": "^0.19.1",
+    "@material/mwc-switch": "^0.19.1"
   }
 }

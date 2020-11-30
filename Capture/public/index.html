@@ -19,11 +19,28 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
     <title>Network Capture Tool</title>
-	<style>
-	  /* Hide page by default */
-	  html { display : none; }
-	</style>
-    <link rel="stylesheet" href="css/default.css">
+    <link crossorigin="anonymous" href="https://fonts.googleapis.com/css?family=Material+Icons&display=block" rel="stylesheet">
+    <link crossorigin="anonymous" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+    <style>
+      html, body {
+        margin: 0;
+        padding: 6px;
+        background-color: white;
+        font-family: Roboto, sans-serif;
+      }
+
+      .unresolved {
+        opacity: 0;
+      }
+
+      body {
+        transition: opacity ease-in 0.2s;
+      }
+
+      body {
+        height: 100vh;
+      }
+    </style>
   </head>
   <body>
     <main-view></main-view>

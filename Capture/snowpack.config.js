@@ -22,6 +22,11 @@ module.exports = {
   },
   install: [
     "lit-element",
-    "lit-html"
+    "lit-html",
+    "@material/mwc-button",
+    "@material/mwc-textfield",
+    "@material/mwc-formfield",
+    "@material/mwc-switch",
+    "@material/mwc-linear-progress"
   ]
 };
