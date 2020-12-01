@@ -229,6 +229,9 @@ function lppStart() {
 }
 
 function onStopButtonClick() {
+    if ( isWakeLockSupported && wakeLock !== null ) {
+        wakeLock.release().then( () => { wakeLock = null; } );
+    }
     switchInputFields( true );
     stopButton.disabled = true;
     startButton.disabled = false;
@@ -346,6 +349,9 @@ function onStartButtonClick() {
     status.appendChild(
         document.createTextNode( "Status: running..." ) );
     lppStart();
+    if ( isWakeLockSupported && wakeLock === null ) {
+        requestWakeLock();
+    }
     startButton.disabled = true;
     pauseButton.disabled = false;
     stopButton.disabled = false;
@@ -360,6 +366,11 @@ function onPauseButtonClick() {
         }
         if ( sampler.getStatus() === LppStatus.STARTED ) {
             sampler.stop();
+            if ( isWakeLockSupported ) {
+                if ( wakeLock !== null ) {
+                    wakeLock.release().then( () => { wakeLock = null; } );
+                }
+            }
             status.appendChild( document.createTextNode(
                 "Status: paused" ) );
             pauseButton.innerText = pauseButton.textContent = "Resume";
@@ -368,6 +379,11 @@ function onPauseButtonClick() {
             status.appendChild( document.createTextNode(
                 "Status: running..." ) );
             sampler.start();
+            if ( isWakeLockSupported &&
+                document.visibilityState === 'visible' &&
+                wakeLock === null ) {
+                requestWakeLock();
+            }
             pauseButton.innerText = pauseButton.textContent = "Pause";
             animate( status );
         }
@@ -394,14 +410,6 @@ function updateProgressBar( percentage ) {
     }
 }
 
-function isMobile() {
-    let ret = false;
-    if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test( navigator.userAgent ) ){
-        ret = true;
-    }
-    return ret;
-}
-
 var description = document.getElementById( 'description' );
 var clientModel = document.getElementById( 'clientModel' );
 var clientName = document.getElementById( 'clientName' );
@@ -424,6 +432,25 @@ var outputJson = document.getElementById( 'outputJson' );
 var percent = document.getElementById( 'percent' );
 var bar = document.getElementById( 'bar' );
 var tracePosition = document.getElementById( 'tracePosition' );
+var wakeLock = null;
+var requestWakeLock;
+
+var isWakeLockSupported;
+if ('wakeLock' in navigator) {
+    isWakeLockSupported = true;
+    requestWakeLock = async () => {
+        try {
+            wakeLock = await navigator.wakeLock.request('screen');
+        } catch (err) {
+            // if wake lock request fails - usually system related, such as battery
+            log( 'warn', `${err.name}, ${err.message}` );
+            isWakeLockSupported = false;
+        }
+    }
+} else {
+    isWakeLockSupported = false;
+    requestWakeLock = () => {};
+}
 
 initValues();
 
@@ -486,8 +513,10 @@ window.onerror = function ( msg, url, lineNo, columnNo, error ) {
     return false;
 };
 
-if ( isMobile() ) {
+if ( isWakeLockSupported ) {
     window.document.addEventListener( "visibilitychange", function ( e ) {
-        onPauseButtonClick();
+        if (document.visibilityState === 'visible' && wakeLock !== null) {
+            requestWakeLock();
+        }
     } );
 }

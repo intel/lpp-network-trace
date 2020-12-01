@@ -54,8 +54,4 @@ Notes
 
 - use of the tool impacts browser cache increase,
 - use of the tool impacts (mobile) data usage,
-- mobile browsers only:
-    - tracing is paused automatically when the browser is NOT visible 
-      (e.g. another app is put to foreground, screen is off),
-    - tracing is resumed automatically when the browser is visible again,
 - higher download limit increases measurement accuracy.
