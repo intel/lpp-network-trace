@@ -6,6 +6,7 @@
     "@material/mwc-switch": "./@material/mwc-switch.js",
     "@material/mwc-textfield": "./@material/mwc-textfield.js",
     "lit-element": "./lit-element.js",
-    "lit-element/lib/decorators": "./lit-element/lib/decorators.js"
+    "lit-element/lib/decorators": "./lit-element/lib/decorators.js",
+    "lit-html": "./lit-html.js"
   }
 }

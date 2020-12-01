@@ -17,8 +17,11 @@
  */
 import { isValidHttpUrl } from './utils.js';
 import { LppNetworkTracer, LppStatus } from './nettrace.js';
+
 import { html, css, LitElement, customElement, property } from "lit-element";
+import { directive } from "lit-html";
 import { query } from 'lit-element/lib/decorators';
+
 import "@material/mwc-button";
 import "@material/mwc-textfield";
 import "@material/mwc-formfield";
@@ -31,10 +34,15 @@ const parsePositiveNumber = str => {
   return Number.isInteger(num) && num > 0 ? num : null;
 }
 
-function animate(element) {
-  element.style.backgroundColor = "#f2f2f2";
-  setTimeout(_ => element.style.backgroundColor= "#ffffff", 1000);
-}
+const animateChange = directive(value => (part) => {
+  if (part.value !== value) {
+    part.setValue(value);
+    part.commit();
+    part.startNode.parentElement.animate({
+      backgroundColor: ['lightgray', 'white']
+    }, 1000);
+  }
+});
 
 @customElement('main-view')
 export class MainView extends LitElement {
@@ -60,6 +68,7 @@ export class MainView extends LitElement {
     }
 
     pre {
+      max-height: 200px;
       padding: 1em;
       margin: .5em 0;
       border: 0;
@@ -85,57 +94,64 @@ export class MainView extends LitElement {
   sampler = null;
 
   @property() isTracing = false;
-  @property() progress = 0;
+  @property({type: Number}) progress = 0;
 
-  @query('#network') network;
-  @query('#effective') effective;
-  @query('#description') description;
-  @query('#clientModel') clientModel;
-  @query('#clientName') clientName;
-  @query('#note') note;
-  @query('#dlBwTestInterval') dlBwTestInterval;
-  @query('#dlBwTestDuration') dlBwTestDuration;
-  @query('#dlLimitKbytes') dlLimitKbytes;
-  @query('#fileUrl') fileUrl;
-  @query('#tracePosition') tracePosition;
-  @query('#jsonConsole') jsonConsole;
-  @query('#bandwidth') bandwidth;
-  @query('#position') position;
-  @query('#status') status;
+  @property() status = 'Stopped';
+  @property() networkType = 'Unknown';
+  @property() networkEffectiveType = 'Unknown';
+  @property() bandwidth = 0;
+
+  @property() longitude = 0;
+  @property() latitude = 0;
+  @property() accuracy = 0;
+
+  @query('#description') descriptionRef;
+  @query('#clientModel') clientModelRef;
+  @query('#clientName') clientNameRef;
+  @query('#note') noteRef;
+  @query('#dlBwTestInterval') dlBwTestIntervalRef;
+  @query('#dlBwTestDuration') dlBwTestDurationRef;
+  @query('#dlLimitKbytes') dlLimitKbytesRef;
+  @query('#fileUrl') fileUrlRef;
+  @query('#tracePosition') tracePositionRef;
+  @query('#jsonConsole') jsonConsoleRef;
 
   _onConnectionChange() {
     const { type, effectiveType } = navigator.connection;
-    this.network.innerHTML = type ? type : "unknown";
-    this.effective.innerHTML = effectiveType ? effectiveType : "unknown";
-    animate(this.network);
+    this.networkType = type || "Unknown";
+    this.networkEffectiveType = effectiveType || "Unknown";
   }
 
   firstUpdated() {
-    this.fileUrl.value = localStorage.getItem('lastUrl');
+    this.fileUrlRef.value = localStorage.getItem('lastUrl');
+    this.tracePositionRef.checked = localStorage.getItem('inclPosition') === String(true);
     if ('connection' in navigator) {
       this._onConnectionChange();
       navigator.connection.onchange = () => this._onConnectionChange();
     }
   }
 
-  _onTracePositionClick() {
-    if (!!this.tracePosition.checked && navigator.geolocation) {
+  _onTracePositionClick(ev) {
+    const checked = !!this.tracePositionRef.checked;
+    localStorage.setItem('inclPosition', String(checked));
+
+    if (checked && navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(_ => {});
     }
   }
 
   _onStartClick() {
-    const description = this.description.value;
+    const description = this.descriptionRef.value;
     if (isEmpty(description)) {
       return alert('Description must not be empty!');
     }
 
-    const interval = parsePositiveNumber(this.dlBwTestInterval.value);
+    const interval = parsePositiveNumber(this.dlBwTestIntervalRef.value);
     if (!interval) {
       return alert( 'interval must be positive integer!' );
     }
 
-    const duration = parsePositiveNumber(this.dlBwTestDuration.value);
+    const duration = parsePositiveNumber(this.dlBwTestDurationRef.value);
     if (!duration) {
       return alert('duration must be positive integer!');
     }
@@ -144,23 +160,23 @@ export class MainView extends LitElement {
       return alert('duration must be <= interval!');
     }
 
-    const dlLimitKbytes = parsePositiveNumber(this.dlLimitKbytes.value);
+    const dlLimitKbytes = parsePositiveNumber(this.dlLimitKbytesRef.value);
     if (!dlLimitKbytes) {
       return alert('limit must be positive integer!');
     }
 
-    const fileUrl = this.fileUrl.value.trim();
+    const fileUrl = this.fileUrlRef.value.trim();
     if (isEmpty(fileUrl) || !isValidHttpUrl(fileUrl)) {
       return alert('url is invalid!');
     }
 
-    const clientModel = this.clientModel.value;
-    const clientName = this.clientName.value;
-    const note = this.note.value;
+    const clientModel = this.clientModelRef.value;
+    const clientName = this.clientNameRef.value;
+    const note = this.noteRef.value;
 
     const params = {
       traceDlBw: true,
-      tracePosition: !!this.tracePosition.checked,
+      tracePosition: !!this.tracePositionRef.checked,
       dlBwTestInterval: interval,
       dlBwTestDuration: duration,
       dlLimitKbytes,
@@ -170,31 +186,30 @@ export class MainView extends LitElement {
       note: !isEmpty(note) ? note : undefined,
     };
 
-    this.jsonConsole.value = '';
+    this.jsonConsoleRef.value = '';
     this.isTracing = true;
 
-    this.bandwidth.innerText = '';
-    this.position.innerText = '';
-    this.status.innerText = 'running...';
+    this.bandwidth = 0;
+    this.status = 'running...';
 
-    this.lppStart(description, params);
     this.progress = 0;
+    this.lppStart(description, params);
   }
 
   _onStopClick() {
     this.isTracing = false;
     this.sampler?.stop();
-    this.status.innerText = 'Stopped';
-    this.jsonConsole.innerText = this.sampler?.toJSON();
+    this.status = 'Stopped';
+    this.jsonConsoleRef.innerText = this.sampler?.toJSON();
   }
 
   _onPauseClick() {
     if (this.sampler !== null) {
       if (this.sampler.getStatus() === LppStatus.STARTED) {
         this.sampler.stop();
-        this.status.innerText = "Paused";
+        this.status = "Paused";
       } else if (this.sampler.getStatus() === LppStatus.STOPPED) {
-        this.status.innerText = "Running...";
+        this.status = "Running...";
         this.sampler.start();
       }
     }
@@ -202,12 +217,12 @@ export class MainView extends LitElement {
 
   _onCopyClick() {
     const range = document.createRange();
-    range.selectNode(this.jsonConsole);
+    range.selectNode(this.jsonConsoleRef);
     window.getSelection().removeAllRanges();
     window.getSelection().addRange(range);
     document.execCommand("copy");
     window.getSelection().removeAllRanges();
-    this.jsonConsole.disabled = false;
+    this.jsonConsoleRef.disabled = false;
   }
 
   lppStart(description, params) {
@@ -215,55 +230,49 @@ export class MainView extends LitElement {
     this.sampler = new LppNetworkTracer(1, description, params);
 
     this.sampler.setDlBwResultHdlr(() => {
-      this.status.innerText = 'running...';
+      this.status = 'Running...';
 
       const bw = this.sampler.getDlBw();
       if (bw) {
         this.progress = 100;
-        this.bandwidth.innerText = bw;
-        animate(this.bandwidth);
+        this.bandwidth = bw;
       }
 
       const pos = this.sampler.getPosition();
       const err = this.sampler.getPositionError();
       if (err) {
-        this.status.innerText = `Error: ${err}`;
+        this.status = `Error: ${err}`;
       }
 
-      this.position.innerHTML = pos ? `
-        - latitude: ${pos.getLatitude()}<br>
-        - longitude: ${pos.getLongitude()}<br>
-        - accuracy: ${pos.getAccuracy()}
-      ` : 'unknown';
-
-      animate(this.position);
+      if (pos) {
+        this.longitude = pos.getLongitude();
+        this.latitude = pos.getLongitude();
+        this.accuracy = pos.getAccuracy();
+      }
     });
 
     this.sampler.setErrorHdlr(() => {
       let err = this.sampler.getError();
       if (err) {
-        this.status.innerText = `Error: ${err}`;
+        this.status = `Error: ${err}`;
       }
       const bw = this.sampler.getDlBw();
       if (bw !== null) {
         this.progress = bw === 0 ? 0 : 100;
-        this.bandwidth.innerText = bw;
-        animate(this.bandwidth);
+        this.bandwidth = bw;
       }
 
       const pos = this.sampler.getPosition();
       err = this.sampler.getPositionError();
       if (err) {
-        this.status.innerText = `Error: ${err}`;
+        this.status = `Error: ${err}`;
       }
 
-      this.position.innerHTML = pos ? `
-        - latitude: ${pos.getLatitude()}<br>
-        - longitude: ${pos.getLongitude()}<br>
-        - accuracy: ${pos.getAccuracy()}
-      ` : 'unknown';
-
-      animate(this.position);
+      if (pos) {
+        this.longitude = pos.getLongitude();
+        this.latitude = pos.getLongitude();
+        this.accuracy = pos.getAccuracy();
+      }
     });
 
     this.sampler.start();
@@ -324,25 +333,27 @@ export class MainView extends LitElement {
           <mwc-button dense unelevated id='pauseButton' ?disabled=${!this.isTracing} @click=${this._onPauseClick}>${this.isTracing ? "Pause" : "Resume"}</mwc-button>
           <mwc-button dense unelevated id='stopButton' ?disabled=${!this.isTracing} @click=${this._onStopClick}>Stop</mwc-button>
           <div>
-            <span id='status'>Stopped</span>
+            <span>${this.status}</span>
           </div>
         </div>
       </div>
       <div class="inline-label">
         <label for='progress'>Test progress:</label>
-        <mwc-linear-progress id=progress progress=${this.progress} buffer="0"></mwc-linear-progress>
+        <mwc-linear-progress id=progress progress=${this.progress/100} buffer="0"></mwc-linear-progress>
       </div>
       <div class="inline-label">
-        <label for='bandwidth'>Measured download bandwidth:</label> <span id='bandwidth'>0</span> kbps
+        <label for='bandwidth'>Measured download bandwidth:</label> <span>${animateChange(this.bandwidth)}</span> kbps
       </div>
       <div class="inline-label">
-        <label for="network">Network:</label> <span id='network'>Unknown</span>
+        <label for="network">Network:</label> <span>${animateChange(this.networkType)}</span>
       </div>
       <div class="inline-label">
-        <label for="effective">Effective type:</label> <span id='effective'>Unknown</span>
+        <label for="effective">Effective type:</label> <span>${animateChange(this.networkEffectiveType)}</span>
       </div>
       <div class="inline-label">
-        <label for='position'>Position:</label> <div id='position'></div>
+        <div>Longitude: <span>${animateChange(this.longitude)}</span></div>
+        <div>Latitude:  <span>${animateChange(this.latitude)}</span></div>
+        <div>Accuracy:  <span>${animateChange(this.accuracy)}</span></div>
       </div>
       <div class="inline-label">
         <label for="jsonConsole">Recorded data as JSON:</label><br><br>

@@ -1,4 +1,4 @@
-import { d as directive, A as AttributePart, P as PropertyPart } from './lit-element-6893ef84.js';
+import { d as directive, A as AttributePart, P as PropertyPart } from './lit-html-11dd2d1e.js';
 
 /*! *****************************************************************************
 Copyright (c) Microsoft Corporation.
