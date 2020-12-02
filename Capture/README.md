@@ -40,8 +40,8 @@ Configure the tool using the following input fields:
 
 Tracing process is controlled by using buttons: Start, Pause/Resume, Stop.
 
-+![](res/configure.PNG "Network Capture Tool configuration")
-+
+![](res/configure.PNG "Network Capture Tool configuration")
+
 Output information:
 - Status - status of tracing (running, paused, stopped) OR last error,
 - DL BW test progress - downlink bandwidth measurement progress bar,

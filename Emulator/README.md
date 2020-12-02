@@ -13,16 +13,7 @@ Description
 Installation
 -----------
 
-1. Go to `chrome://extensions`.
-2. On the top right corner, toggle the *Developer Mode* switch.
-3. On the top left corner, click on *Load Unpacked*.
-4. Locate and load the *extension* folder.
-5. [Optional] Go to `chrome://apps`.
-6. [Optional] Remove Google apps related to website that emulator will be used on.
-
-The Network Trace Emulator will be available in the developer tools, accessed
-by pressing `F12`. Navigate the tabs in the Chrome developer window to find it.
-
+See [INSTALL.md](INSTALL.md)
 
 LPP predicions - LPP JS API
 -----------
