@@ -4,7 +4,7 @@ This document describes the format of Link Performance Prediction (LPP) network
 trace file, aka ntrace file. The intent is to have flexible and extensible
 format that contains series of location and bandwidth data. This documentation
 along with network emulator and trace capture tools as well as traces can be
-found under GNU GPL 2.0 license at [lpp-network-trace](www.github.com/intel/lpp-network-trace).
+found under GNU GPL 2.0 license at [lpp-network-trace](https://github.com/intel/lpp-network-trace).
 
 ## Trace format
 
