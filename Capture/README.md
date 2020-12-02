@@ -32,11 +32,16 @@ Configure the tool using the following input fields:
   Each measurement is stopped after this amount is downloaded. Note that the 
   actual amount can be higher as it depends on how often onprogress handler of 
   XMLHttpRequest is called (see https://xhr.spec.whatwg.org/),
-- File URL - file http(s) URL to download,
-- Trace GPS position checkbox.
+- File URL - file http(s) URL to download ("https://" required in case
+  the Network Capture Tool is hosted over HTTPS). File should be larger than
+  download limit. File should not be possible to compress. Ensure that bandwidth
+  to test server is adequate and does not become the bottleneck,
+- Trace GPS position checkbox - confirm that position is shared in browser.
 
 Tracing process is controlled by using buttons: Start, Pause/Resume, Stop.
 
++![](res/configure.PNG "Network Capture Tool configuration")
++
 Output information:
 - Status - status of tracing (running, paused, stopped) OR last error,
 - DL BW test progress - downlink bandwidth measurement progress bar,
@@ -47,7 +52,9 @@ Output information:
   accuracy in meters) if available,
 - JSON - text area containing output JSON content
   (displayed once tracing is stopped),
-- Copy button - copies JSON string content to clipboard.
+- Copy button - copies JSON string content to clipboard. It can be saved to a file.
+
+![](res/output.PNG "Output")
 
 Notes
 -----
