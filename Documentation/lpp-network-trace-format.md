@@ -14,13 +14,18 @@ Link to [JSON schema](https://github.com/intel/lpp-network-trace/blob/main/Docum
 
 ### Trace header
 
-| Name          | Type    | Description                            | Mandatory |
-|:------------- |:-------:|:---------------------------------------|:---------:|
-| version       | integer | Format version<br>(possible values: 1) | yes       |
-| description   | string  | Trace description (e.g. “From Stockholm to Szczecin”)<br>(min length: 1, max length: 256) | yes |
-| clientModel   | string  | Client model (e.g. “SM-G390”)<br>(max length: 128) | no |
-| clientName    | string  | Client name (e.g. “Samsung Galaxy S10”)<br>(max length: 128) | no |
-| note          | string  | additional description, e.g. name of network, link test server<br>(max length: 512) | no |
+| Name                  | Type    | Description                            | Mandatory |
+|:----------------------|:-------:|:---------------------------------------|:---------:|
+| version               | integer | Format version<br>(possible values: 1) | yes       |
+| description           | string  | Trace description (e.g. “From Stockholm to Szczecin”)<br>(min length: 1, max length: 256) | yes |
+| clientModel           | string  | Client model (e.g. “SM-G390”)<br>(max length: 128) | no |
+| clientName            | string  | Client name (e.g. “Samsung Galaxy S10”)<br>(max length: 128) | no |
+| note                  | string  | additional description, e.g. name of network, link test server<br>(max length: 512) | no |
+| dlBwTestDuration      | integer | Configured downlink bandwidth test max duration in seconds<br>(minimum value: 1) | no |
+| dlBwTestDownloadLimit | integer | Configured download limit in kilobytes<br>(minimum value: 1) | no |
+| dlBwTestUrl           | string  | Configured URL to download<br>(max length: 2048) | no |
+| ulBwTestDuration      | integer | Configured uplink bandwidth test max duration in seconds<br>(minimum value: 1) | no |
+| ulBwTestUploadLimit   | integer | Configured upload limit in kilobytes<br>(minimum value: 1) | no |
 
 ### Entry
 
@@ -46,6 +51,7 @@ Link to [JSON schema](https://github.com/intel/lpp-network-trace/blob/main/Docum
 {
   "clientModel": "SM-G390",
   "note": "additional description",
+  "dlBwTestDuration": 10,
   "version": 1,
   "description": "trip from Paris to London",
   "entries": [

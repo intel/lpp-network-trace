@@ -33,6 +33,31 @@
       "type": "string",
       "maxLength": 512
     },
+    "dlBwTestDuration": {
+      "description": "Configured downlink bandwidth test max duration in seconds",
+      "type": "integer",
+      "minimum": 1
+    },
+    "dlBwTestDownloadLimit": {
+      "description": "Configured download limit in kilobytes",
+      "type": "integer",
+      "minimum": 1
+    },
+    "dlBwTestUrl": {
+      "description": "Configured URL to download",
+      "type": "string",
+      "maxLength": 2048
+    },
+    "ulBwTestDuration": {
+      "description": "Configured uplink bandwidth test max duration in seconds",
+      "type": "integer",
+      "minimum": 1
+    },
+    "ulBwTestUploadLimit": {
+      "description": "Configured upload limit in kilobytes",
+      "type": "integer",
+      "minimum": 1
+    },
     "entries": {
       "description": "Trace entries",
       "type": "array",
