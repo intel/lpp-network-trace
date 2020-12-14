@@ -60,6 +60,7 @@ import { html, css, LitElement, customElement, property } from "../web_modules/l
 import { directive } from "../web_modules/lit-html.js";
 import { query } from '../web_modules/lit-element/lib/decorators.js';
 import "../web_modules/@material/mwc-button.js";
+import "../web_modules/@material/mwc-icon-button.js";
 import "../web_modules/@material/mwc-textfield.js";
 import "../web_modules/@material/mwc-formfield.js";
 import "../web_modules/@material/mwc-switch.js";
@@ -134,21 +135,6 @@ export let MainView = _decorate([customElement('main-view')], function (_initial
       align-items: center;
       flex-wrap: wrap;
       gap: 6px;
-    }
-
-    pre {
-      max-height: 200px;
-      padding: 1em;
-      margin: .5em 0;
-      border: 0;
-      border-radius: 0.3em;
-      min-height: 180px;
-      max-width: auto;
-      overflow: auto;
-      line-height: inherit;
-      word-wrap: normal;
-      background-color: #2b354f;
-      color: white;
     }
 
     mwc-linear-progress {
@@ -388,7 +374,22 @@ export let MainView = _decorate([customElement('main-view')], function (_initial
       kind: "method",
       key: "firstUpdated",
       value: function firstUpdated() {
-        this.fileUrlRef.value = localStorage.getItem('lastUrl');
+        if ('wakeLock' in navigator) {
+          // Reacquire wake lock
+          document.addEventListener('visibilitychange', async () => {
+            if (this.wakeLock !== null && document.visibilityState === 'visible') {
+              this.wakeLock = await this._requestWakeLock();
+              this.keepScreenOnRef.checked = !!this.wakeLock;
+            }
+          });
+          this.keepScreenOnRef.checked = localStorage.getItem('keepScreenOn') === String(true);
+
+          this._onKeepScreenOn();
+        } else {
+          this.keepScreenOnRef.disabled = true;
+        }
+
+        this.fileUrlRef.value = localStorage.getItem('lastUrl') || "";
         this.tracePositionRef.checked = localStorage.getItem('inclPosition') === String(true);
 
         if ('connection' in navigator) {
@@ -485,7 +486,7 @@ export let MainView = _decorate([customElement('main-view')], function (_initial
         this.isPaused = false;
         (_this$sampler = this.sampler) == null ? void 0 : _this$sampler.stop();
         this.status = 'Stopped';
-        this.jsonConsoleRef.innerText = (_this$sampler2 = this.sampler) == null ? void 0 : _this$sampler2.toJSON();
+        this.jsonConsoleRef.value = (_this$sampler2 = this.sampler) == null ? void 0 : _this$sampler2.toJSON();
       }
     }, {
       kind: "method",
@@ -515,18 +516,6 @@ export let MainView = _decorate([customElement('main-view')], function (_initial
             }
           }
         }
-      }
-    }, {
-      kind: "method",
-      key: "_onCopyClick",
-      value: function _onCopyClick() {
-        const range = document.createRange();
-        range.selectNode(this.jsonConsoleRef);
-        window.getSelection().removeAllRanges();
-        window.getSelection().addRange(range);
-        document.execCommand("copy");
-        window.getSelection().removeAllRanges();
-        this.jsonConsoleRef.disabled = false;
       }
     }, {
       kind: "method",
@@ -668,8 +657,115 @@ export let MainView = _decorate([customElement('main-view')], function (_initial
       </div>
       <div class="inline-label">
         <label for="jsonConsole">Recorded data as JSON:</label><br><br>
-        <pre id="jsonConsole"></pre>
-        <mwc-button dense unelevated id='copyButton' type='button' ?disabled=${this.isTracing} @click=${this._onCopyClick}>Copy</mwc-button>
+        <json-view id="jsonConsole" ?disabled=${this.isTracing}></json-view>
+      </div>
+      <br>
+    `;
+      }
+    }]
+  };
+}, LitElement);
+export let JsonView = _decorate([customElement('json-view')], function (_initialize2, _LitElement2) {
+  class JsonView extends _LitElement2 {
+    constructor(...args) {
+      super(...args);
+
+      _initialize2(this);
+    }
+
+  }
+
+  return {
+    F: JsonView,
+    d: [{
+      kind: "field",
+      static: true,
+      key: "styles",
+
+      value() {
+        return css`
+    pre {
+      max-height: 200px;
+      padding: 1em;
+      margin: .5em 0;
+      border: 0;
+      border-radius: 0.3em;
+      min-height: 180px;
+      max-width: auto;
+      overflow: auto;
+      line-height: inherit;
+      word-wrap: normal;
+      background-color: #2b354f;
+      color: white;
+    }
+
+    div {
+      display: block;
+      position: relative;
+    }
+
+    mwc-icon-button {
+      overflow: unset;
+      padding: 0;
+      color: white;
+      margin: 8px;
+      padding: 0px;
+      position: absolute;
+      right: 0;
+      top: 0;
+      --mdc-theme-text-disabled-on-light: lightslategray;
+    }
+
+    #save {
+      right: 52px;
+    }
+  `;
+      }
+
+    }, {
+      kind: "field",
+      decorators: [property({
+        type: String
+      })],
+      key: "value",
+
+      value() {
+        return "";
+      }
+
+    }, {
+      kind: "method",
+      key: "copy",
+      value: function copy() {
+        window.getSelection().removeAllRanges();
+        const range = document.createRange();
+        range.selectNode(this.shadowRoot.querySelector('#json'));
+        window.getSelection().addRange(range);
+        document.execCommand('copy');
+        window.getSelection().removeAllRanges();
+      }
+    }, {
+      kind: "method",
+      key: "save",
+      value: function save() {
+        const blob = new Blob([this.value], {
+          type: "application/json"
+        });
+        const anchor = document.createElement("a");
+        anchor.href = URL.createObjectURL(blob);
+        anchor.download = "tracedata.json";
+        anchor.click();
+        window.URL.revokeObjectURL(anchor.href);
+      }
+    }, {
+      kind: "method",
+      key: "render",
+      value: function render() {
+        return html`
+      <div>
+        <pre id="json">${this.value}</pre>
+        <mwc-icon-button id="save" icon="save_alt" @click=${this.save} ?disabled=${!this.value.length}></mwc-icon-button>
+        <mwc-icon-button id="copy" icon="content_copy" @click=${this.copy} ?disabled=${!this.value.length}></mwc-icon-button>
       </div>
     `;
       }

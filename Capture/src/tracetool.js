@@ -24,6 +24,7 @@ import { directive } from "lit-html";
 import { query } from 'lit-element/lib/decorators';
 
 import "@material/mwc-button";
+import "@material/mwc-icon-button";
 import "@material/mwc-textfield";
 import "@material/mwc-formfield";
 import "@material/mwc-switch";
@@ -76,21 +77,6 @@ export class MainView extends LitElement {
       align-items: center;
       flex-wrap: wrap;
       gap: 6px;
-    }
-
-    pre {
-      max-height: 200px;
-      padding: 1em;
-      margin: .5em 0;
-      border: 0;
-      border-radius: 0.3em;
-      min-height: 180px;
-      max-width: auto;
-      overflow: auto;
-      line-height: inherit;
-      word-wrap: normal;
-      background-color: #2b354f;
-      color: white;
     }
 
     mwc-linear-progress {
@@ -185,7 +171,22 @@ export class MainView extends LitElement {
   }
 
   firstUpdated() {
-    this.fileUrlRef.value = localStorage.getItem('lastUrl');
+    if ('wakeLock' in navigator) {
+      // Reacquire wake lock
+      document.addEventListener('visibilitychange', async () => {
+        if (this.wakeLock !== null && document.visibilityState === 'visible') {
+          this.wakeLock = await this._requestWakeLock();
+          this.keepScreenOnRef.checked = !!this.wakeLock;
+        }
+      });
+
+      this.keepScreenOnRef.checked = localStorage.getItem('keepScreenOn') === String(true);
+      this._onKeepScreenOn();
+    } else {
+      this.keepScreenOnRef.disabled = true;
+    }
+
+    this.fileUrlRef.value = localStorage.getItem('lastUrl') || "";
     this.tracePositionRef.checked = localStorage.getItem('inclPosition') === String(true);
     if ('connection' in navigator) {
       this._onConnectionChange();
@@ -268,7 +269,7 @@ export class MainView extends LitElement {
     this.isPaused = false;
     this.sampler?.stop();
     this.status = 'Stopped';
-    this.jsonConsoleRef.innerText = this.sampler?.toJSON();
+    this.jsonConsoleRef.value = this.sampler?.toJSON();
   }
 
   _onPauseClick() {
@@ -292,16 +293,6 @@ export class MainView extends LitElement {
         }
       }
     }
-  }
-
-  _onCopyClick() {
-    const range = document.createRange();
-    range.selectNode(this.jsonConsoleRef);
-    window.getSelection().removeAllRanges();
-    window.getSelection().addRange(range);
-    document.execCommand("copy");
-    window.getSelection().removeAllRanges();
-    this.jsonConsoleRef.disabled = false;
   }
 
   lppStart(description, params) {
@@ -436,8 +427,80 @@ export class MainView extends LitElement {
       </div>
       <div class="inline-label">
         <label for="jsonConsole">Recorded data as JSON:</label><br><br>
-        <pre id="jsonConsole"></pre>
-        <mwc-button dense unelevated id='copyButton' type='button' ?disabled=${this.isTracing} @click=${this._onCopyClick}>Copy</mwc-button>
+        <json-view id="jsonConsole" ?disabled=${this.isTracing}></json-view>
+      </div>
+      <br>
+    `;
+  }
+}
+
+@customElement('json-view')
+export class JsonView extends LitElement {
+
+  static styles = css`
+    pre {
+      max-height: 200px;
+      padding: 1em;
+      margin: .5em 0;
+      border: 0;
+      border-radius: 0.3em;
+      min-height: 180px;
+      max-width: auto;
+      overflow: auto;
+      line-height: inherit;
+      word-wrap: normal;
+      background-color: #2b354f;
+      color: white;
+    }
+
+    div {
+      display: block;
+      position: relative;
+    }
+
+    mwc-icon-button {
+      overflow: unset;
+      padding: 0;
+      color: white;
+      margin: 8px;
+      padding: 0px;
+      position: absolute;
+      right: 0;
+      top: 0;
+      --mdc-theme-text-disabled-on-light: lightslategray;
+    }
+
+    #save {
+      right: 52px;
+    }
+  `;
+
+  @property({ type: String }) value = "";
+
+  copy() {
+    window.getSelection().removeAllRanges();
+    const range = document.createRange();
+    range.selectNode(this.shadowRoot.querySelector('#json'));
+    window.getSelection().addRange(range);
+    document.execCommand('copy');
+    window.getSelection().removeAllRanges();
+  }
+
+  save() {
+    const blob = new Blob([this.value], {type: "application/json"});
+    const anchor = document.createElement("a");
+    anchor.href = URL.createObjectURL(blob);
+    anchor.download = "tracedata.json";
+    anchor.click();
+    window.URL.revokeObjectURL(anchor.href);
+  }
+
+  render() {
+    return html`
+      <div>
+        <pre id="json">${this.value}</pre>
+        <mwc-icon-button id="save" icon="save_alt" @click=${this.save} ?disabled=${!this.value.length}></mwc-icon-button>
+        <mwc-icon-button id="copy" icon="content_copy" @click=${this.copy} ?disabled=${!this.value.length}></mwc-icon-button>
       </div>
     `;
   }
