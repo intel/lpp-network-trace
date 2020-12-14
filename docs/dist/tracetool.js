@@ -78,13 +78,17 @@ const animateChange = directive(value => part => {
     part.setValue(value);
     part.commit();
 
-    if (part.startNode.parentElement.animate) {
-      part.startNode.parentElement.animate({
+    const parentElement = part.startNode.parentElement;
+
+    if ('animate' in parentElement) {
+      parentElement.animate({
         backgroundColor: ['lightgray', 'white']
       }, 1000);
     } else {
-      part.startNode.parentElement.style.backgroundColor = "#f2f2f2";
-      setTimeout(_ => part.startNode.parentElement.style.backgroundColor = "#ffffff", 1000);
+      parentElement.style.backgroundColor = 'lightgray';
+      setTimeout(_ => {
+        parentElement.style.backgroundColor = 'white';
+      }, 1000);
     }
   }
 });
