@@ -90,6 +90,7 @@ export class MainView extends LitElement {
   `;
 
   sampler = null;
+  wakeLock = null;
 
   @property() isTracing = false;
   @property() isPaused = false;
@@ -104,9 +105,6 @@ export class MainView extends LitElement {
   @property() latitude = 0;
   @property() accuracy = 0;
 
-  @property() wakeLock = null;
-  @property() isWakeLockSupported;
-
   @query('#description') descriptionRef;
   @query('#clientModel') clientModelRef;
   @query('#clientName') clientNameRef;
@@ -116,59 +114,27 @@ export class MainView extends LitElement {
   @query('#dlLimitKbytes') dlLimitKbytesRef;
   @query('#fileUrl') fileUrlRef;
   @query('#tracePosition') tracePositionRef;
+  @query('#keepScreenOn') keepScreenOnRef;
   @query('#jsonConsole') jsonConsoleRef;
-
-  constructor() {
-    super();
-    if ('wakeLock' in navigator) {
-      this.isWakeLockSupported = true;
-    } else {
-      this.isWakeLockSupported = false;
-    }
-  }
 
   connectedCallback() {
     super.connectedCallback();
-    if (this.isWakeLockSupported) {
-      window.document.addEventListener( "visibilitychange",
-        this._handleOnVisibilityChange.bind(this) );
-    }
     if ('connection' in navigator) {
       navigator.connection.onchange = this._onConnectionChange.bind(this);
     }
   }
 
   disconnectedCallback() {
-    if (this.isWakeLockSupported) {
-      window.document.removeEventListener( "visibilitychange",
-        this._handleOnVisibilityChange.bind(this) );
-    }
     if ('connection' in navigator) {
       navigator.connection.onchange = null;
     }
     super.disconnectedCallback();
   }
 
-  _handleOnVisibilityChange(_) {
-    if (document.visibilityState === 'visible' && this.wakeLock !== null) {
-      this._requestWakeLock();
-    }
-  }
-
   _onConnectionChange() {
     const { type, effectiveType } = navigator.connection;
     this.networkType = type || "Unknown";
     this.networkEffectiveType = effectiveType || "Unknown";
-  }
-
-  async _requestWakeLock() {
-    try {
-      this.wakeLock = await navigator.wakeLock.request('screen');
-    } catch (err) {
-      // if wake lock request fails - usually system related, such as battery
-      log( 'warn', `${err.name}, ${err.message}` );
-      this.isWakeLockSupported = false;
-    }
   }
 
   firstUpdated() {
@@ -189,6 +155,7 @@ export class MainView extends LitElement {
 
     this.fileUrlRef.value = localStorage.getItem('lastUrl') || "";
     this.tracePositionRef.checked = localStorage.getItem('inclPosition') === String(true);
+
     if ('connection' in navigator) {
       this._onConnectionChange();
     }
@@ -203,7 +170,31 @@ export class MainView extends LitElement {
     }
   }
 
-  _onStartClick() {
+  async _requestWakeLock() {
+    const hasLock = !!this.wakeLock;
+    const wakeLock = await navigator.wakeLock.request('screen');
+    if (!wakeLock) {
+      return null;
+    }
+
+    console.log("Screen wakelock was", hasLock ? "re-acquired" : "acquired");
+
+    wakeLock.onrelease = () => {
+      console.log("Screen wakelock was released")
+    };
+    return wakeLock;
+  }
+
+  async _onKeepScreenOn() {
+    const checked = !!this.keepScreenOnRef.checked;
+    localStorage.setItem('keepScreenOn', String(checked));
+
+    if (!('wakeLock' in navigator)) {
+      this.keepScreenOnRef.checked = false;
+    }
+  }
+
+  async _onStartClick() {
     const description = this.descriptionRef.value;
     if (isEmpty(description)) {
       return alert('Description must not be empty!');
@@ -211,7 +202,7 @@ export class MainView extends LitElement {
 
     const interval = parsePositiveNumber(this.dlBwTestIntervalRef.value);
     if (!interval) {
-      return alert( 'interval must be positive integer!' );
+      return alert('interval must be positive integer!');
     }
 
     const duration = parsePositiveNumber(this.dlBwTestDurationRef.value);
@@ -256,21 +247,22 @@ export class MainView extends LitElement {
     this.status = 'running...';
 
     this.progress = 0;
+
     this.lppStart(description, params);
-    if ( this.isWakeLockSupported && this.wakeLock === null ) {
-        this._requestWakeLock();
+    if (this.keepScreenOnRef.checked) {
+      this.wakeLock = await this._requestWakeLock();
     }
   }
 
-  _onStopClick() {
-    if ( this.isWakeLockSupported && this.wakeLock !== null ) {
-        this.wakeLock.release().then( () => { this.wakeLock = null; } );
-    }
+  async _onStopClick() {
     this.isTracing = false;
     this.isPaused = false;
     this.sampler?.stop();
     this.status = 'Stopped';
     this.jsonConsoleRef.value = this.sampler?.toJSON();
+
+    await this.wakeLock?.release();
+    this.wakeLock = null;
   }
 
   _onPauseClick() {
@@ -278,20 +270,11 @@ export class MainView extends LitElement {
       if (this.sampler.getStatus() === LppStatus.STARTED) {
         this.sampler.stop();
         this.isPaused = true;
-        if ( this.isWakeLockSupported ) {
-          if ( this.wakeLock !== null ) {
-            this.wakeLock.release().then( () => { this.wakeLock = null; } );
-          }
-        }
         this.status = "Paused";
       } else if (this.sampler.getStatus() === LppStatus.STOPPED) {
         this.status = "Running...";
         this.sampler.start();
         this.isPaused = false;
-        if ( this.isWakeLockSupported && document.visibilityState === 'visible' &&
-          this.wakeLock === null ) {
-          this._requestWakeLock();
-        }
       }
     }
   }
@@ -396,6 +379,12 @@ export class MainView extends LitElement {
         <mwc-formfield label="Trace GPS position">
           <mwc-switch id="tracePosition" ?disabled=${this.isTracing}
             @change=${this._onTracePositionClick}>
+          </mwc-switch>
+        </mwc-formfield>
+
+        <mwc-formfield label="Keep screen on while tracing">
+          <mwc-switch id="keepScreenOn" ?disabled=${this.isTracing}
+            @change=${this._onKeepScreenOn}>
           </mwc-switch>
         </mwc-formfield>
 

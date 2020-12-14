@@ -79,7 +79,6 @@ const animateChange = directive(value => part => {
   if (part.value !== value) {
     part.setValue(value);
     part.commit();
-
     const parentElement = part.startNode.parentElement;
 
     if ('animate' in parentElement) {
@@ -96,16 +95,10 @@ const animateChange = directive(value => part => {
 });
 export let MainView = _decorate([customElement('main-view')], function (_initialize, _LitElement) {
   class MainView extends _LitElement {
-    constructor() {
-      super();
+    constructor(...args) {
+      super(...args);
 
       _initialize(this);
-
-      if ('wakeLock' in navigator) {
-        this.isWakeLockSupported = true;
-      } else {
-        this.isWakeLockSupported = false;
-      }
     }
 
   }
@@ -151,6 +144,14 @@ export let MainView = _decorate([customElement('main-view')], function (_initial
     }, {
       kind: "field",
       key: "sampler",
+
+      value() {
+        return null;
+      }
+
+    }, {
+      kind: "field",
+      key: "wakeLock",
 
       value() {
         return null;
@@ -250,20 +251,6 @@ export let MainView = _decorate([customElement('main-view')], function (_initial
 
     }, {
       kind: "field",
-      decorators: [property()],
-      key: "wakeLock",
-
-      value() {
-        return null;
-      }
-
-    }, {
-      kind: "field",
-      decorators: [property()],
-      key: "isWakeLockSupported",
-      value: void 0
-    }, {
-      kind: "field",
       decorators: [query('#description')],
       key: "descriptionRef",
       value: void 0
@@ -309,6 +296,11 @@ export let MainView = _decorate([customElement('main-view')], function (_initial
       value: void 0
     }, {
       kind: "field",
+      decorators: [query('#keepScreenOn')],
+      key: "keepScreenOnRef",
+      value: void 0
+    }, {
+      kind: "field",
       decorators: [query('#jsonConsole')],
       key: "jsonConsoleRef",
       value: void 0
@@ -318,10 +310,6 @@ export let MainView = _decorate([customElement('main-view')], function (_initial
       value: function connectedCallback() {
         _get(_getPrototypeOf(MainView.prototype), "connectedCallback", this).call(this);
 
-        if (this.isWakeLockSupported) {
-          window.document.addEventListener("visibilitychange", this._handleOnVisibilityChange.bind(this));
-        }
-
         if ('connection' in navigator) {
           navigator.connection.onchange = this._onConnectionChange.bind(this);
         }
@@ -330,23 +318,11 @@ export let MainView = _decorate([customElement('main-view')], function (_initial
       kind: "method",
       key: "disconnectedCallback",
       value: function disconnectedCallback() {
-        if (this.isWakeLockSupported) {
-          window.document.removeEventListener("visibilitychange", this._handleOnVisibilityChange.bind(this));
-        }
-
         if ('connection' in navigator) {
           navigator.connection.onchange = null;
         }
 
         _get(_getPrototypeOf(MainView.prototype), "disconnectedCallback", this).call(this);
-      }
-    }, {
-      kind: "method",
-      key: "_handleOnVisibilityChange",
-      value: function _handleOnVisibilityChange(_) {
-        if (document.visibilityState === 'visible' && this.wakeLock !== null) {
-          this._requestWakeLock();
-        }
       }
     }, {
       kind: "method",
@@ -358,18 +334,6 @@ export let MainView = _decorate([customElement('main-view')], function (_initial
         } = navigator.connection;
         this.networkType = type || "Unknown";
         this.networkEffectiveType = effectiveType || "Unknown";
-      }
-    }, {
-      kind: "method",
-      key: "_requestWakeLock",
-      value: async function _requestWakeLock() {
-        try {
-          this.wakeLock = await navigator.wakeLock.request('screen');
-        } catch (err) {
-          // if wake lock request fails - usually system related, such as battery
-          log('warn', `${err.name}, ${err.message}`);
-          this.isWakeLockSupported = false;
-        }
       }
     }, {
       kind: "method",
@@ -410,8 +374,38 @@ export let MainView = _decorate([customElement('main-view')], function (_initial
       }
     }, {
       kind: "method",
+      key: "_requestWakeLock",
+      value: async function _requestWakeLock() {
+        const hasLock = !!this.wakeLock;
+        const wakeLock = await navigator.wakeLock.request('screen');
+
+        if (!wakeLock) {
+          return null;
+        }
+
+        console.log("Screen wakelock was", hasLock ? "re-acquired" : "acquired");
+
+        wakeLock.onrelease = () => {
+          console.log("Screen wakelock was released");
+        };
+
+        return wakeLock;
+      }
+    }, {
+      kind: "method",
+      key: "_onKeepScreenOn",
+      value: async function _onKeepScreenOn() {
+        const checked = !!this.keepScreenOnRef.checked;
+        localStorage.setItem('keepScreenOn', String(checked));
+
+        if (!('wakeLock' in navigator)) {
+          this.keepScreenOnRef.checked = false;
+        }
+      }
+    }, {
+      kind: "method",
       key: "_onStartClick",
-      value: function _onStartClick() {
+      value: async function _onStartClick() {
         const description = this.descriptionRef.value;
 
         if (isEmpty(description)) {
@@ -467,27 +461,23 @@ export let MainView = _decorate([customElement('main-view')], function (_initial
         this.progress = 0;
         this.lppStart(description, params);
 
-        if (this.isWakeLockSupported && this.wakeLock === null) {
-          this._requestWakeLock();
+        if (this.keepScreenOnRef.checked) {
+          this.wakeLock = await this._requestWakeLock();
         }
       }
     }, {
       kind: "method",
       key: "_onStopClick",
-      value: function _onStopClick() {
-        var _this$sampler, _this$sampler2;
-
-        if (this.isWakeLockSupported && this.wakeLock !== null) {
-          this.wakeLock.release().then(() => {
-            this.wakeLock = null;
-          });
-        }
+      value: async function _onStopClick() {
+        var _this$sampler, _this$sampler2, _this$wakeLock;
 
         this.isTracing = false;
         this.isPaused = false;
         (_this$sampler = this.sampler) == null ? void 0 : _this$sampler.stop();
         this.status = 'Stopped';
         this.jsonConsoleRef.value = (_this$sampler2 = this.sampler) == null ? void 0 : _this$sampler2.toJSON();
+        await ((_this$wakeLock = this.wakeLock) == null ? void 0 : _this$wakeLock.release());
+        this.wakeLock = null;
       }
     }, {
       kind: "method",
@@ -497,24 +487,11 @@ export let MainView = _decorate([customElement('main-view')], function (_initial
           if (this.sampler.getStatus() === LppStatus.STARTED) {
             this.sampler.stop();
             this.isPaused = true;
-
-            if (this.isWakeLockSupported) {
-              if (this.wakeLock !== null) {
-                this.wakeLock.release().then(() => {
-                  this.wakeLock = null;
-                });
-              }
-            }
-
             this.status = "Paused";
           } else if (this.sampler.getStatus() === LppStatus.STOPPED) {
             this.status = "Running...";
             this.sampler.start();
             this.isPaused = false;
-
-            if (this.isWakeLockSupported && document.visibilityState === 'visible' && this.wakeLock === null) {
-              this._requestWakeLock();
-            }
           }
         }
       }
@@ -626,6 +603,12 @@ export let MainView = _decorate([customElement('main-view')], function (_initial
         <mwc-formfield label="Trace GPS position">
           <mwc-switch id="tracePosition" ?disabled=${this.isTracing}
             @change=${this._onTracePositionClick}>
+          </mwc-switch>
+        </mwc-formfield>
+
+        <mwc-formfield label="Keep screen on while tracing">
+          <mwc-switch id="keepScreenOn" ?disabled=${this.isTracing}
+            @change=${this._onKeepScreenOn}>
           </mwc-switch>
         </mwc-formfield>
 
