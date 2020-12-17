@@ -30,6 +30,12 @@ function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.it
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
+function _get(target, property, receiver) { if (typeof Reflect !== "undefined" && Reflect.get) { _get = Reflect.get; } else { _get = function _get(target, property, receiver) { var base = _superPropBase(target, property); if (!base) return; var desc = Object.getOwnPropertyDescriptor(base, property); if (desc.get) { return desc.get.call(receiver); } return desc.value; }; } return _get(target, property, receiver || target); }
+
+function _superPropBase(object, property) { while (!Object.prototype.hasOwnProperty.call(object, property)) { object = _getPrototypeOf(object); if (object === null) break; } return object; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
 /*
  * Copyright (C) 2020 Intel Corporation.
  *
@@ -49,6 +55,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
  */
 import { isValidHttpUrl } from './utils.js';
 import { LppNetworkTracer, LppStatus } from './nettrace.js';
+import { log } from './logger.js';
 import { html, css, LitElement, customElement, property } from "../web_modules/lit-element.js";
 import { directive } from "../web_modules/lit-html.js";
 import { query } from '../web_modules/lit-element/lib/decorators.js';
@@ -70,17 +77,29 @@ const animateChange = directive(value => part => {
   if (part.value !== value) {
     part.setValue(value);
     part.commit();
-    part.startNode.parentElement.animate({
-      backgroundColor: ['lightgray', 'white']
-    }, 1000);
+
+    if (part.startNode.parentElement.animate) {
+      part.startNode.parentElement.animate({
+        backgroundColor: ['lightgray', 'white']
+      }, 1000);
+    } else {
+      part.startNode.parentElement.style.backgroundColor = "#f2f2f2";
+      setTimeout(_ => part.startNode.parentElement.style.backgroundColor = "#ffffff", 1000);
+    }
   }
 });
 export let MainView = _decorate([customElement('main-view')], function (_initialize, _LitElement) {
   class MainView extends _LitElement {
-    constructor(...args) {
-      super(...args);
+    constructor() {
+      super();
 
       _initialize(this);
+
+      if ('wakeLock' in navigator) {
+        this.isWakeLockSupported = true;
+      } else {
+        this.isWakeLockSupported = false;
+      }
     }
 
   }
@@ -150,6 +169,15 @@ export let MainView = _decorate([customElement('main-view')], function (_initial
       kind: "field",
       decorators: [property()],
       key: "isTracing",
+
+      value() {
+        return false;
+      }
+
+    }, {
+      kind: "field",
+      decorators: [property()],
+      key: "isPaused",
 
       value() {
         return false;
@@ -231,6 +259,20 @@ export let MainView = _decorate([customElement('main-view')], function (_initial
 
     }, {
       kind: "field",
+      decorators: [property()],
+      key: "wakeLock",
+
+      value() {
+        return null;
+      }
+
+    }, {
+      kind: "field",
+      decorators: [property()],
+      key: "isWakeLockSupported",
+      value: void 0
+    }, {
+      kind: "field",
       decorators: [query('#description')],
       key: "descriptionRef",
       value: void 0
@@ -281,6 +323,42 @@ export let MainView = _decorate([customElement('main-view')], function (_initial
       value: void 0
     }, {
       kind: "method",
+      key: "connectedCallback",
+      value: function connectedCallback() {
+        _get(_getPrototypeOf(MainView.prototype), "connectedCallback", this).call(this);
+
+        if (this.isWakeLockSupported) {
+          window.document.addEventListener("visibilitychange", this._handleOnVisibilityChange.bind(this));
+        }
+
+        if ('connection' in navigator) {
+          navigator.connection.onchange = this._onConnectionChange.bind(this);
+        }
+      }
+    }, {
+      kind: "method",
+      key: "disconnectedCallback",
+      value: function disconnectedCallback() {
+        if (this.isWakeLockSupported) {
+          window.document.removeEventListener("visibilitychange", this._handleOnVisibilityChange.bind(this));
+        }
+
+        if ('connection' in navigator) {
+          navigator.connection.onchange = null;
+        }
+
+        _get(_getPrototypeOf(MainView.prototype), "disconnectedCallback", this).call(this);
+      }
+    }, {
+      kind: "method",
+      key: "_handleOnVisibilityChange",
+      value: function _handleOnVisibilityChange(_) {
+        if (document.visibilityState === 'visible' && this.wakeLock !== null) {
+          this._requestWakeLock();
+        }
+      }
+    }, {
+      kind: "method",
       key: "_onConnectionChange",
       value: function _onConnectionChange() {
         const {
@@ -292,6 +370,18 @@ export let MainView = _decorate([customElement('main-view')], function (_initial
       }
     }, {
       kind: "method",
+      key: "_requestWakeLock",
+      value: async function _requestWakeLock() {
+        try {
+          this.wakeLock = await navigator.wakeLock.request('screen');
+        } catch (err) {
+          // if wake lock request fails - usually system related, such as battery
+          log('warn', `${err.name}, ${err.message}`);
+          this.isWakeLockSupported = false;
+        }
+      }
+    }, {
+      kind: "method",
       key: "firstUpdated",
       value: function firstUpdated() {
         this.fileUrlRef.value = localStorage.getItem('lastUrl');
@@ -299,8 +389,6 @@ export let MainView = _decorate([customElement('main-view')], function (_initial
 
         if ('connection' in navigator) {
           this._onConnectionChange();
-
-          navigator.connection.onchange = () => this._onConnectionChange();
         }
       }
     }, {
@@ -372,6 +460,10 @@ export let MainView = _decorate([customElement('main-view')], function (_initial
         this.status = 'running...';
         this.progress = 0;
         this.lppStart(description, params);
+
+        if (this.isWakeLockSupported && this.wakeLock === null) {
+          this._requestWakeLock();
+        }
       }
     }, {
       kind: "method",
@@ -379,7 +471,14 @@ export let MainView = _decorate([customElement('main-view')], function (_initial
       value: function _onStopClick() {
         var _this$sampler, _this$sampler2;
 
+        if (this.isWakeLockSupported && this.wakeLock !== null) {
+          this.wakeLock.release().then(() => {
+            this.wakeLock = null;
+          });
+        }
+
         this.isTracing = false;
+        this.isPaused = false;
         (_this$sampler = this.sampler) == null ? void 0 : _this$sampler.stop();
         this.status = 'Stopped';
         this.jsonConsoleRef.innerText = (_this$sampler2 = this.sampler) == null ? void 0 : _this$sampler2.toJSON();
@@ -391,10 +490,25 @@ export let MainView = _decorate([customElement('main-view')], function (_initial
         if (this.sampler !== null) {
           if (this.sampler.getStatus() === LppStatus.STARTED) {
             this.sampler.stop();
+            this.isPaused = true;
+
+            if (this.isWakeLockSupported) {
+              if (this.wakeLock !== null) {
+                this.wakeLock.release().then(() => {
+                  this.wakeLock = null;
+                });
+              }
+            }
+
             this.status = "Paused";
           } else if (this.sampler.getStatus() === LppStatus.STOPPED) {
             this.status = "Running...";
             this.sampler.start();
+            this.isPaused = false;
+
+            if (this.isWakeLockSupported && document.visibilityState === 'visible' && this.wakeLock === null) {
+              this._requestWakeLock();
+            }
           }
         }
       }
@@ -523,7 +637,7 @@ export let MainView = _decorate([customElement('main-view')], function (_initial
 
         <div class="buttons">
           <mwc-button dense unelevated id='startButton' ?disabled=${this.isTracing} @click=${this._onStartClick}>Start</mwc-button>
-          <mwc-button dense unelevated id='pauseButton' ?disabled=${!this.isTracing} @click=${this._onPauseClick}>${this.isTracing ? "Pause" : "Resume"}</mwc-button>
+          <mwc-button dense unelevated id='pauseButton' ?disabled=${!this.isTracing} @click=${this._onPauseClick}>${this.isPaused ? "Resume" : "Pause"}</mwc-button>
           <mwc-button dense unelevated id='stopButton' ?disabled=${!this.isTracing} @click=${this._onStopClick}>Stop</mwc-button>
           <div>
             <span>${this.status}</span>

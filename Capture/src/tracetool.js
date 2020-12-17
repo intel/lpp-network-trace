@@ -17,6 +17,7 @@
  */
 import { isValidHttpUrl } from './utils.js';
 import { LppNetworkTracer, LppStatus } from './nettrace.js';
+import { log } from './logger.js';
 
 import { html, css, LitElement, customElement, property } from "lit-element";
 import { directive } from "lit-html";
@@ -38,9 +39,14 @@ const animateChange = directive(value => (part) => {
   if (part.value !== value) {
     part.setValue(value);
     part.commit();
-    part.startNode.parentElement.animate({
-      backgroundColor: ['lightgray', 'white']
-    }, 1000);
+    if (part.startNode.parentElement.animate) {
+      part.startNode.parentElement.animate({
+        backgroundColor: ['lightgray', 'white']
+      }, 1000);
+    } else {
+      part.startNode.parentElement.style.backgroundColor = "#f2f2f2";
+      setTimeout(_ => part.startNode.parentElement.style.backgroundColor= "#ffffff", 1000);
+    }
   }
 });
 
@@ -94,6 +100,7 @@ export class MainView extends LitElement {
   sampler = null;
 
   @property() isTracing = false;
+  @property() isPaused = false;
   @property({type: Number}) progress = 0;
 
   @property() status = 'Stopped';
@@ -104,6 +111,9 @@ export class MainView extends LitElement {
   @property() longitude = 0;
   @property() latitude = 0;
   @property() accuracy = 0;
+
+  @property() wakeLock = null;
+  @property() isWakeLockSupported;
 
   @query('#description') descriptionRef;
   @query('#clientModel') clientModelRef;
@@ -116,10 +126,57 @@ export class MainView extends LitElement {
   @query('#tracePosition') tracePositionRef;
   @query('#jsonConsole') jsonConsoleRef;
 
+  constructor() {
+    super();
+    if ('wakeLock' in navigator) {
+      this.isWakeLockSupported = true;
+    } else {
+      this.isWakeLockSupported = false;
+    }
+  }
+
+  connectedCallback() {
+    super.connectedCallback();
+    if (this.isWakeLockSupported) {
+      window.document.addEventListener( "visibilitychange",
+        this._handleOnVisibilityChange.bind(this) );
+    }
+    if ('connection' in navigator) {
+      navigator.connection.onchange = this._onConnectionChange.bind(this);
+    }
+  }
+
+  disconnectedCallback() {
+    if (this.isWakeLockSupported) {
+      window.document.removeEventListener( "visibilitychange",
+        this._handleOnVisibilityChange.bind(this) );
+    }
+    if ('connection' in navigator) {
+      navigator.connection.onchange = null;
+    }
+    super.disconnectedCallback();
+  }
+
+  _handleOnVisibilityChange(_) {
+    if (document.visibilityState === 'visible' && this.wakeLock !== null) {
+      this._requestWakeLock();
+    }
+  }
+
   _onConnectionChange() {
     const { type, effectiveType } = navigator.connection;
     this.networkType = type || "Unknown";
     this.networkEffectiveType = effectiveType || "Unknown";
+  }
+
+  async _requestWakeLock() {
+    try {
+      this.wakeLock = await navigator.wakeLock.request('screen');
+    } catch (err) {
+      // if wake lock request fails - usually system related, such as battery
+      log( 'warn', `${err.name}, ${err.message}` );
+      this.isWakeLockSupported = false;
+    }
   }
 
   firstUpdated() {
@@ -127,7 +184,6 @@ export class MainView extends LitElement {
     this.tracePositionRef.checked = localStorage.getItem('inclPosition') === String(true);
     if ('connection' in navigator) {
       this._onConnectionChange();
-      navigator.connection.onchange = () => this._onConnectionChange();
     }
   }
 
@@ -194,10 +250,17 @@ export class MainView extends LitElement {
 
     this.progress = 0;
     this.lppStart(description, params);
+    if ( this.isWakeLockSupported && this.wakeLock === null ) {
+        this._requestWakeLock();
+    }
   }
 
   _onStopClick() {
+    if ( this.isWakeLockSupported && this.wakeLock !== null ) {
+        this.wakeLock.release().then( () => { this.wakeLock = null; } );
+    }
     this.isTracing = false;
+    this.isPaused = false;
     this.sampler?.stop();
     this.status = 'Stopped';
     this.jsonConsoleRef.innerText = this.sampler?.toJSON();
@@ -207,10 +270,21 @@ export class MainView extends LitElement {
     if (this.sampler !== null) {
       if (this.sampler.getStatus() === LppStatus.STARTED) {
         this.sampler.stop();
+        this.isPaused = true;
+        if ( this.isWakeLockSupported ) {
+          if ( this.wakeLock !== null ) {
+            this.wakeLock.release().then( () => { this.wakeLock = null; } );
+          }
+        }
         this.status = "Paused";
       } else if (this.sampler.getStatus() === LppStatus.STOPPED) {
         this.status = "Running...";
         this.sampler.start();
+        this.isPaused = false;
+        if ( this.isWakeLockSupported && document.visibilityState === 'visible' &&
+          this.wakeLock === null ) {
+          this._requestWakeLock();
+        }
       }
     }
   }
@@ -330,7 +404,7 @@ export class MainView extends LitElement {
 
         <div class="buttons">
           <mwc-button dense unelevated id='startButton' ?disabled=${this.isTracing} @click=${this._onStartClick}>Start</mwc-button>
-          <mwc-button dense unelevated id='pauseButton' ?disabled=${!this.isTracing} @click=${this._onPauseClick}>${this.isTracing ? "Pause" : "Resume"}</mwc-button>
+          <mwc-button dense unelevated id='pauseButton' ?disabled=${!this.isTracing} @click=${this._onPauseClick}>${this.isPaused ? "Resume" : "Pause"}</mwc-button>
           <mwc-button dense unelevated id='stopButton' ?disabled=${!this.isTracing} @click=${this._onStopClick}>Stop</mwc-button>
           <div>
             <span>${this.status}</span>

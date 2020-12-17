@@ -68,8 +68,10 @@ class Trace {
    * @param {string} clientModel - client model
    * @param {string} clientName - client name
    * @param {string} note - additional description
+   * @param {object} settings - object containing settings used for tracing
+   * (e.g. "dlBwTestDuration", "dlBwTestDownloadLimit", "dlBwTestUrl")
    */
-  constructor(version, description, clientModel, clientName, note) {
+  constructor(version, description, clientModel, clientName, note, settings) {
     assert(version === 1, 'version != 1');
     assert(description !== null, 'description=null');
     assert(typeof description === 'string', 'description is not string');
@@ -89,6 +91,52 @@ class Trace {
     if (typeof note !== 'undefined' && note !== null) {
       assert(typeof note === 'string', 'note is not string');
       this.note = note;
+    }
+
+    if (settings !== null && typeof settings === 'object') {
+      if (DEBUG === true) {
+        if ("dlBwTestDuration" in settings) {
+          assert(Number.isInteger(+settings.dlBwTestDuration), 'dlBwTestDuration is not an integer');
+          assert(+settings.dlBwTestDuration > 0, 'dlBwTestDuration is not positive');
+        }
+      }
+
+      this.dlBwTestDuration = settings.dlBwTestDuration;
+
+      if (DEBUG === true) {
+        if ("dlBwTestDownloadLimit" in settings) {
+          assert(Number.isInteger(+settings.dlBwTestDownloadLimit), 'dlBwTestDownloadLimit is not an integer');
+          assert(+settings.dlBwTestDownloadLimit > 0, 'dlBwTestDownloadLimit is not positive');
+        }
+      }
+
+      this.dlBwTestDownloadLimit = settings.dlBwTestDownloadLimit;
+
+      if (DEBUG === true) {
+        if ("dlBwTestUrl" in settings) {
+          assert(typeof settings.dlBwTestUrl === 'string', 'dlBwTestUrl is not a string');
+        }
+      }
+
+      this.dlBwTestUrl = settings.dlBwTestUrl;
+
+      if (DEBUG === true) {
+        if ("ulBwTestDuration" in settings) {
+          assert(Number.isInteger(+settings.ulBwTestDuration), 'ulBwTestDuration is not an integer');
+          assert(+settings.ulBwTestDuration > 0, 'ulBwTestDuration is not positive');
+        }
+      }
+
+      this.ulBwTestDuration = settings.ulBwTestDuration;
+
+      if (DEBUG === true) {
+        if ("ulBwTestUploadLimit" in settings) {
+          assert(Number.isInteger(+settings.ulBwTestUploadLimit), 'ulBwTestUploadLimit is not an integer');
+          assert(+settings.ulBwTestUploadLimit > 0, 'ulBwTestUploadLimit is not positive');
+        }
+      }
+
+      this.ulBwTestUploadLimit = settings.ulBwTestUploadLimit;
     }
 
     this.entries = [];
@@ -475,10 +523,12 @@ class Tracer {
    * @param {string} clientModel - client model
    * @param {string} clientName - client name
    * @param {string} note - additional description
+   * @param {object} settings - object containing settings used for tracing
+   * (e.g. "dlBwTestDuration", "dlBwTestDownloadLimit", "dlBwTestUrl")
    */
-  constructor(schemaVersion, description, clientModel, clientName, note) {
+  constructor(schemaVersion, description, clientModel, clientName, note, settings) {
     this.entries = 0;
-    this.dump = new Trace(schemaVersion, description, clientModel, clientName, note);
+    this.dump = new Trace(schemaVersion, description, clientModel, clientName, note, settings);
   }
 
   trace(opt) {
@@ -608,7 +658,7 @@ class LppNetworkTracer {
     if (options.dlBwTestDuration !== undefined) {
       precondition(Number.isInteger(+options.dlBwTestDuration), 'dlBwTestDuration is not an integer');
       precondition(+options.dlBwTestDuration > 0, 'dlBwTestDuration <= 0');
-      _dlBwTestDuration = options.dlBwTestDuration;
+      _dlBwTestDuration = Number(options.dlBwTestDuration);
     } else {
       _dlBwTestDuration = Defaults.dlBwTestDuration;
     }
@@ -688,7 +738,7 @@ class LppNetworkTracer {
     if (options.dlLimitKbytes !== undefined) {
       precondition(Number.isInteger(+options.dlLimitKbytes), 'dlLimitKbytes is not an integer');
       precondition(+options.dlLimitKbytes > 0, 'dlLimitKbytes <= 0');
-      _dlLimitKbytes = options.dlLimitKbytes;
+      _dlLimitKbytes = Number(options.dlLimitKbytes);
     } else {
       _dlLimitKbytes = Defaults.dlLimitKbytes;
     }
@@ -923,7 +973,12 @@ class LppNetworkTracer {
     }
 
     if (this.getTracer() === null) {
-      this.setTracer(new Tracer(this.getSchemaVersion(), this.getDescription(), this.getClientModel(), this.getClientName(), this.getNote()));
+      const settings = {
+        dlBwTestDuration: this.getDlBwTestDuration(),
+        dlBwTestDownloadLimit: this.getDlLimitKbytes(),
+        dlBwTestUrl: this.getUrl()
+      };
+      this.setTracer(new Tracer(this.getSchemaVersion(), this.getDescription(), this.getClientModel(), this.getClientName(), this.getNote(), settings));
     }
 
     if (this.getTracePosition() === true) {
