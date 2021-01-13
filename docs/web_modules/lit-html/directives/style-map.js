@@ -1,4 +1,4 @@
-import { d as directive, A as AttributePart, P as PropertyPart } from './lit-html-11dd2d1e.js';
+import { d as directive, A as AttributePart, P as PropertyPart } from '../../common/lit-html-11dd2d1e.js';
 
 /**
  * @license
@@ -77,4 +77,4 @@ const styleMap = directive((styleInfo) => (part) => {
     }
 });
 
-export { styleMap as s };
+export { styleMap };

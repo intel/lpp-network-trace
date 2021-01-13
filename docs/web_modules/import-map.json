@@ -8,6 +8,7 @@
     "@material/mwc-textfield": "./@material/mwc-textfield.js",
     "lit-element": "./lit-element.js",
     "lit-element/lib/decorators": "./lit-element/lib/decorators.js",
-    "lit-html": "./lit-html.js"
+    "lit-html": "./lit-html.js",
+    "lit-html/directives/style-map": "./lit-html/directives/style-map.js"
   }
 }

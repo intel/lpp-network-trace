@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2020 Intel Corporation.
+ * Copyright (C) 2020-2021 Intel Corporation.
  *
  * This program is free software; you can redistribute it and/or modify it
  * under the terms and conditions of the GNU General Public License,
@@ -21,7 +21,8 @@ import { log } from './logger.js';
 
 import { html, css, LitElement, customElement, property } from "lit-element";
 import { directive } from "lit-html";
-import { query } from 'lit-element/lib/decorators';
+import { styleMap } from "lit-html/directives/style-map";
+import { query } from "lit-element/lib/decorators";
 
 import "@material/mwc-button";
 import "@material/mwc-icon-button";
@@ -434,6 +435,10 @@ export class MainView extends LitElement {
   }
 }
 
+function supportDownload() {
+  return "download" in document.createElement("a")
+}
+
 @customElement('json-view')
 export class JsonView extends LitElement {
 
@@ -499,8 +504,13 @@ export class JsonView extends LitElement {
     return html`
       <div>
         <pre id="json">${this.value}</pre>
-        <mwc-icon-button id="save" icon="save_alt" @click=${this.save} ?disabled=${!this.value.length}></mwc-icon-button>
-        <mwc-icon-button id="copy" icon="content_copy" @click=${this.copy} ?disabled=${!this.value.length}></mwc-icon-button>
+        <mwc-icon-button id="save" icon="save_alt"
+            style=${styleMap({display: !supportDownload() ? 'none' : 'block'})}
+            @click=${this.save} ?disabled=${!this.value.length}>
+        </mwc-icon-button>
+        <mwc-icon-button id="copy" icon="content_copy"
+            @click=${this.copy} ?disabled=${!this.value.length}>
+        </mwc-icon-button>
       </div>
     `;
   }

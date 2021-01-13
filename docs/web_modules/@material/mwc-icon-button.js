@@ -3,8 +3,8 @@ import { h as html } from '../common/lit-html-11dd2d1e.js';
 import { LitElement, css } from '../lit-element.js';
 import { property, query, queryAsync, internalProperty, eventOptions, customElement } from '../lit-element/lib/decorators.js';
 import '../common/foundation-593bff33.js';
-import { R as RippleHandlers } from '../common/ripple-handlers-c3789aa0.js';
-import '../common/style-map-f27292ac.js';
+import { R as RippleHandlers } from '../common/ripple-handlers-ac537d10.js';
+import '../lit-html/directives/style-map.js';
 
 /** @soyCompatible */
 class IconButtonBase extends LitElement {

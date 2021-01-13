@@ -37,7 +37,7 @@ function _superPropBase(object, property) { while (!Object.prototype.hasOwnPrope
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 /*
- * Copyright (C) 2020 Intel Corporation.
+ * Copyright (C) 2020-2021 Intel Corporation.
  *
  * This program is free software; you can redistribute it and/or modify it
  * under the terms and conditions of the GNU General Public License,
@@ -58,7 +58,8 @@ import { LppNetworkTracer, LppStatus } from './nettrace.js';
 import { log } from './logger.js';
 import { html, css, LitElement, customElement, property } from "../web_modules/lit-element.js";
 import { directive } from "../web_modules/lit-html.js";
-import { query } from '../web_modules/lit-element/lib/decorators.js';
+import { styleMap } from "../web_modules/lit-html/directives/style-map.js";
+import { query } from "../web_modules/lit-element/lib/decorators.js";
 import "../web_modules/@material/mwc-button.js";
 import "../web_modules/@material/mwc-icon-button.js";
 import "../web_modules/@material/mwc-textfield.js";
@@ -665,6 +666,11 @@ export let MainView = _decorate([customElement('main-view')], function (_initial
     }]
   };
 }, LitElement);
+
+function supportDownload() {
+  return "download" in document.createElement("a");
+}
+
 export let JsonView = _decorate([customElement('json-view')], function (_initialize2, _LitElement2) {
   class JsonView extends _LitElement2 {
     constructor(...args) {
@@ -764,8 +770,15 @@ export let JsonView = _decorate([customElement('json-view')], function (_initial
         return html`
       <div>
         <pre id="json">${this.value}</pre>
-        <mwc-icon-button id="save" icon="save_alt" @click=${this.save} ?disabled=${!this.value.length}></mwc-icon-button>
-        <mwc-icon-button id="copy" icon="content_copy" @click=${this.copy} ?disabled=${!this.value.length}></mwc-icon-button>
+        <mwc-icon-button id="save" icon="save_alt"
+            style=${styleMap({
+          display: !supportDownload() ? 'none' : 'block'
+        })}
+            @click=${this.save} ?disabled=${!this.value.length}>
+        </mwc-icon-button>
+        <mwc-icon-button id="copy" icon="content_copy"
+            @click=${this.copy} ?disabled=${!this.value.length}>
+        </mwc-icon-button>
       </div>
     `;
       }
