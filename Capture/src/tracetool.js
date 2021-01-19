@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2020 Intel Corporation.
+ * Copyright (C) 2020-2021 Intel Corporation.
  *
  * This program is free software; you can redistribute it and/or modify it
  * under the terms and conditions of the GNU General Public License,
@@ -21,9 +21,11 @@ import { log } from './logger.js';
 
 import { html, css, LitElement, customElement, property } from "lit-element";
 import { directive } from "lit-html";
-import { query } from 'lit-element/lib/decorators';
+import { styleMap } from "lit-html/directives/style-map";
+import { query } from "lit-element/lib/decorators";
 
 import "@material/mwc-button";
+import "@material/mwc-icon-button";
 import "@material/mwc-textfield";
 import "@material/mwc-formfield";
 import "@material/mwc-switch";
@@ -39,13 +41,18 @@ const animateChange = directive(value => (part) => {
   if (part.value !== value) {
     part.setValue(value);
     part.commit();
-    if (part.startNode.parentElement.animate) {
-      part.startNode.parentElement.animate({
+
+    const parentElement = part.startNode.parentElement;
+
+    if ('animate' in parentElement) {
+      parentElement.animate({
         backgroundColor: ['lightgray', 'white']
       }, 1000);
     } else {
-      part.startNode.parentElement.style.backgroundColor = "#f2f2f2";
-      setTimeout(_ => part.startNode.parentElement.style.backgroundColor= "#ffffff", 1000);
+      parentElement.style.backgroundColor = 'lightgray';
+      setTimeout(_ => {
+        parentElement.style.backgroundColor = 'white';
+      }, 1000);
     }
   }
 });
@@ -73,21 +80,6 @@ export class MainView extends LitElement {
       gap: 6px;
     }
 
-    pre {
-      max-height: 200px;
-      padding: 1em;
-      margin: .5em 0;
-      border: 0;
-      border-radius: 0.3em;
-      min-height: 180px;
-      max-width: auto;
-      overflow: auto;
-      line-height: inherit;
-      word-wrap: normal;
-      background-color: #2b354f;
-      color: white;
-    }
-
     mwc-linear-progress {
       padding: 16px 0 0 0;
     }
@@ -98,6 +90,7 @@ export class MainView extends LitElement {
   `;
 
   sampler = null;
+  wakeLock = null;
 
   @property() isTracing = false;
   @property() isPaused = false;
@@ -112,9 +105,6 @@ export class MainView extends LitElement {
   @property() latitude = 0;
   @property() accuracy = 0;
 
-  @property() wakeLock = null;
-  @property() isWakeLockSupported;
-
   @query('#description') descriptionRef;
   @query('#clientModel') clientModelRef;
   @query('#clientName') clientNameRef;
@@ -124,43 +114,21 @@ export class MainView extends LitElement {
   @query('#dlLimitKbytes') dlLimitKbytesRef;
   @query('#fileUrl') fileUrlRef;
   @query('#tracePosition') tracePositionRef;
+  @query('#keepScreenOn') keepScreenOnRef;
   @query('#jsonConsole') jsonConsoleRef;
-
-  constructor() {
-    super();
-    if ('wakeLock' in navigator) {
-      this.isWakeLockSupported = true;
-    } else {
-      this.isWakeLockSupported = false;
-    }
-  }
 
   connectedCallback() {
     super.connectedCallback();
-    if (this.isWakeLockSupported) {
-      window.document.addEventListener( "visibilitychange",
-        this._handleOnVisibilityChange.bind(this) );
-    }
     if ('connection' in navigator) {
       navigator.connection.onchange = this._onConnectionChange.bind(this);
     }
   }
 
   disconnectedCallback() {
-    if (this.isWakeLockSupported) {
-      window.document.removeEventListener( "visibilitychange",
-        this._handleOnVisibilityChange.bind(this) );
-    }
     if ('connection' in navigator) {
       navigator.connection.onchange = null;
     }
     super.disconnectedCallback();
-  }
-
-  _handleOnVisibilityChange(_) {
-    if (document.visibilityState === 'visible' && this.wakeLock !== null) {
-      this._requestWakeLock();
-    }
   }
 
   _onConnectionChange() {
@@ -169,19 +137,25 @@ export class MainView extends LitElement {
     this.networkEffectiveType = effectiveType || "Unknown";
   }
 
-  async _requestWakeLock() {
-    try {
-      this.wakeLock = await navigator.wakeLock.request('screen');
-    } catch (err) {
-      // if wake lock request fails - usually system related, such as battery
-      log( 'warn', `${err.name}, ${err.message}` );
-      this.isWakeLockSupported = false;
-    }
-  }
-
   firstUpdated() {
-    this.fileUrlRef.value = localStorage.getItem('lastUrl');
+    if ('wakeLock' in navigator) {
+      // Reacquire wake lock
+      document.addEventListener('visibilitychange', async () => {
+        if (this.wakeLock !== null && document.visibilityState === 'visible') {
+          this.wakeLock = await this._requestWakeLock();
+          this.keepScreenOnRef.checked = !!this.wakeLock;
+        }
+      });
+
+      this.keepScreenOnRef.checked = localStorage.getItem('keepScreenOn') === String(true);
+      this._onKeepScreenOn();
+    } else {
+      this.keepScreenOnRef.disabled = true;
+    }
+
+    this.fileUrlRef.value = localStorage.getItem('lastUrl') || "";
     this.tracePositionRef.checked = localStorage.getItem('inclPosition') === String(true);
+
     if ('connection' in navigator) {
       this._onConnectionChange();
     }
@@ -196,7 +170,31 @@ export class MainView extends LitElement {
     }
   }
 
-  _onStartClick() {
+  async _requestWakeLock() {
+    const hasLock = !!this.wakeLock;
+    const wakeLock = await navigator.wakeLock.request('screen');
+    if (!wakeLock) {
+      return null;
+    }
+
+    console.log("Screen wakelock was", hasLock ? "re-acquired" : "acquired");
+
+    wakeLock.onrelease = () => {
+      console.log("Screen wakelock was released")
+    };
+    return wakeLock;
+  }
+
+  async _onKeepScreenOn() {
+    const checked = !!this.keepScreenOnRef.checked;
+    localStorage.setItem('keepScreenOn', String(checked));
+
+    if (!('wakeLock' in navigator)) {
+      this.keepScreenOnRef.checked = false;
+    }
+  }
+
+  async _onStartClick() {
     const description = this.descriptionRef.value;
     if (isEmpty(description)) {
       return alert('Description must not be empty!');
@@ -204,7 +202,7 @@ export class MainView extends LitElement {
 
     const interval = parsePositiveNumber(this.dlBwTestIntervalRef.value);
     if (!interval) {
-      return alert( 'interval must be positive integer!' );
+      return alert('interval must be positive integer!');
     }
 
     const duration = parsePositiveNumber(this.dlBwTestDurationRef.value);
@@ -249,21 +247,22 @@ export class MainView extends LitElement {
     this.status = 'running...';
 
     this.progress = 0;
+
     this.lppStart(description, params);
-    if ( this.isWakeLockSupported && this.wakeLock === null ) {
-        this._requestWakeLock();
+    if (this.keepScreenOnRef.checked) {
+      this.wakeLock = await this._requestWakeLock();
     }
   }
 
-  _onStopClick() {
-    if ( this.isWakeLockSupported && this.wakeLock !== null ) {
-        this.wakeLock.release().then( () => { this.wakeLock = null; } );
-    }
+  async _onStopClick() {
     this.isTracing = false;
     this.isPaused = false;
     this.sampler?.stop();
     this.status = 'Stopped';
-    this.jsonConsoleRef.innerText = this.sampler?.toJSON();
+    this.jsonConsoleRef.value = this.sampler?.toJSON();
+
+    await this.wakeLock?.release();
+    this.wakeLock = null;
   }
 
   _onPauseClick() {
@@ -271,32 +270,13 @@ export class MainView extends LitElement {
       if (this.sampler.getStatus() === LppStatus.STARTED) {
         this.sampler.stop();
         this.isPaused = true;
-        if ( this.isWakeLockSupported ) {
-          if ( this.wakeLock !== null ) {
-            this.wakeLock.release().then( () => { this.wakeLock = null; } );
-          }
-        }
         this.status = "Paused";
       } else if (this.sampler.getStatus() === LppStatus.STOPPED) {
         this.status = "Running...";
         this.sampler.start();
         this.isPaused = false;
-        if ( this.isWakeLockSupported && document.visibilityState === 'visible' &&
-          this.wakeLock === null ) {
-          this._requestWakeLock();
-        }
       }
     }
-  }
-
-  _onCopyClick() {
-    const range = document.createRange();
-    range.selectNode(this.jsonConsoleRef);
-    window.getSelection().removeAllRanges();
-    window.getSelection().addRange(range);
-    document.execCommand("copy");
-    window.getSelection().removeAllRanges();
-    this.jsonConsoleRef.disabled = false;
   }
 
   lppStart(description, params) {
@@ -402,6 +382,12 @@ export class MainView extends LitElement {
           </mwc-switch>
         </mwc-formfield>
 
+        <mwc-formfield label="Keep screen on while tracing">
+          <mwc-switch id="keepScreenOn" ?disabled=${this.isTracing}
+            @change=${this._onKeepScreenOn}>
+          </mwc-switch>
+        </mwc-formfield>
+
         <div class="buttons">
           <mwc-button dense unelevated id='startButton' ?disabled=${this.isTracing} @click=${this._onStartClick}>Start</mwc-button>
           <mwc-button dense unelevated id='pauseButton' ?disabled=${!this.isTracing} @click=${this._onPauseClick}>${this.isPaused ? "Resume" : "Pause"}</mwc-button>
@@ -431,8 +417,89 @@ export class MainView extends LitElement {
       </div>
       <div class="inline-label">
         <label for="jsonConsole">Recorded data as JSON:</label><br><br>
-        <pre id="jsonConsole"></pre>
-        <mwc-button dense unelevated id='copyButton' type='button' ?disabled=${this.isTracing} @click=${this._onCopyClick}>Copy</mwc-button>
+        <json-view id="jsonConsole" ?disabled=${this.isTracing}></json-view>
+      </div>
+      <br>
+    `;
+  }
+}
+
+function supportDownload() {
+  return "download" in document.createElement("a")
+}
+
+@customElement('json-view')
+export class JsonView extends LitElement {
+
+  static styles = css`
+    pre {
+      max-height: 200px;
+      padding: 1em;
+      margin: .5em 0;
+      border: 0;
+      border-radius: 0.3em;
+      min-height: 180px;
+      max-width: auto;
+      overflow: auto;
+      line-height: inherit;
+      word-wrap: normal;
+      background-color: #2b354f;
+      color: white;
+    }
+
+    div {
+      display: block;
+      position: relative;
+    }
+
+    mwc-icon-button {
+      overflow: unset;
+      padding: 0;
+      color: white;
+      margin: 8px;
+      padding: 0px;
+      position: absolute;
+      right: 0;
+      top: 0;
+      --mdc-theme-text-disabled-on-light: lightslategray;
+    }
+
+    #save {
+      right: 52px;
+    }
+  `;
+
+  @property({ type: String }) value = "";
+
+  copy() {
+    window.getSelection().removeAllRanges();
+    const range = document.createRange();
+    range.selectNode(this.shadowRoot.querySelector('#json'));
+    window.getSelection().addRange(range);
+    document.execCommand('copy');
+    window.getSelection().removeAllRanges();
+  }
+
+  save() {
+    const blob = new Blob([this.value], {type: "application/json"});
+    const anchor = document.createElement("a");
+    anchor.href = URL.createObjectURL(blob);
+    anchor.download = "tracedata.json";
+    anchor.click();
+    window.URL.revokeObjectURL(anchor.href);
+  }
+
+  render() {
+    return html`
+      <div>
+        <pre id="json">${this.value}</pre>
+        <mwc-icon-button id="save" icon="save_alt"
+            style=${styleMap({display: !supportDownload() ? 'none' : 'block'})}
+            @click=${this.save} ?disabled=${!this.value.length}>
+        </mwc-icon-button>
+        <mwc-icon-button id="copy" icon="content_copy"
+            @click=${this.copy} ?disabled=${!this.value.length}>
+        </mwc-icon-button>
       </div>
     `;
   }

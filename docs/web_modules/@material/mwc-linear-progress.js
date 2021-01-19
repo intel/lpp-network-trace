@@ -2,7 +2,7 @@ import { _ as __decorate, c as classMap } from '../common/class-map-43a63f9c.js'
 import { h as html } from '../common/lit-html-11dd2d1e.js';
 import { LitElement, css } from '../lit-element.js';
 import { query, property, internalProperty, customElement } from '../lit-element/lib/decorators.js';
-import { s as styleMap } from '../common/style-map-f27292ac.js';
+import { styleMap } from '../lit-html/directives/style-map.js';
 import { i as ifDefined } from '../common/if-defined-2ef3ca8e.js';
 
 /** @soyCompatible */

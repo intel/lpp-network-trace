@@ -37,7 +37,7 @@ function _superPropBase(object, property) { while (!Object.prototype.hasOwnPrope
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 /*
- * Copyright (C) 2020 Intel Corporation.
+ * Copyright (C) 2020-2021 Intel Corporation.
  *
  * This program is free software; you can redistribute it and/or modify it
  * under the terms and conditions of the GNU General Public License,
@@ -58,8 +58,10 @@ import { LppNetworkTracer, LppStatus } from './nettrace.js';
 import { log } from './logger.js';
 import { html, css, LitElement, customElement, property } from "../web_modules/lit-element.js";
 import { directive } from "../web_modules/lit-html.js";
-import { query } from '../web_modules/lit-element/lib/decorators.js';
+import { styleMap } from "../web_modules/lit-html/directives/style-map.js";
+import { query } from "../web_modules/lit-element/lib/decorators.js";
 import "../web_modules/@material/mwc-button.js";
+import "../web_modules/@material/mwc-icon-button.js";
 import "../web_modules/@material/mwc-textfield.js";
 import "../web_modules/@material/mwc-formfield.js";
 import "../web_modules/@material/mwc-switch.js";
@@ -77,29 +79,26 @@ const animateChange = directive(value => part => {
   if (part.value !== value) {
     part.setValue(value);
     part.commit();
+    const parentElement = part.startNode.parentElement;
 
-    if (part.startNode.parentElement.animate) {
-      part.startNode.parentElement.animate({
+    if ('animate' in parentElement) {
+      parentElement.animate({
         backgroundColor: ['lightgray', 'white']
       }, 1000);
     } else {
-      part.startNode.parentElement.style.backgroundColor = "#f2f2f2";
-      setTimeout(_ => part.startNode.parentElement.style.backgroundColor = "#ffffff", 1000);
+      parentElement.style.backgroundColor = 'lightgray';
+      setTimeout(_ => {
+        parentElement.style.backgroundColor = 'white';
+      }, 1000);
     }
   }
 });
 export let MainView = _decorate([customElement('main-view')], function (_initialize, _LitElement) {
   class MainView extends _LitElement {
-    constructor() {
-      super();
+    constructor(...args) {
+      super(...args);
 
       _initialize(this);
-
-      if ('wakeLock' in navigator) {
-        this.isWakeLockSupported = true;
-      } else {
-        this.isWakeLockSupported = false;
-      }
     }
 
   }
@@ -132,21 +131,6 @@ export let MainView = _decorate([customElement('main-view')], function (_initial
       gap: 6px;
     }
 
-    pre {
-      max-height: 200px;
-      padding: 1em;
-      margin: .5em 0;
-      border: 0;
-      border-radius: 0.3em;
-      min-height: 180px;
-      max-width: auto;
-      overflow: auto;
-      line-height: inherit;
-      word-wrap: normal;
-      background-color: #2b354f;
-      color: white;
-    }
-
     mwc-linear-progress {
       padding: 16px 0 0 0;
     }
@@ -160,6 +144,14 @@ export let MainView = _decorate([customElement('main-view')], function (_initial
     }, {
       kind: "field",
       key: "sampler",
+
+      value() {
+        return null;
+      }
+
+    }, {
+      kind: "field",
+      key: "wakeLock",
 
       value() {
         return null;
@@ -259,20 +251,6 @@ export let MainView = _decorate([customElement('main-view')], function (_initial
 
     }, {
       kind: "field",
-      decorators: [property()],
-      key: "wakeLock",
-
-      value() {
-        return null;
-      }
-
-    }, {
-      kind: "field",
-      decorators: [property()],
-      key: "isWakeLockSupported",
-      value: void 0
-    }, {
-      kind: "field",
       decorators: [query('#description')],
       key: "descriptionRef",
       value: void 0
@@ -318,6 +296,11 @@ export let MainView = _decorate([customElement('main-view')], function (_initial
       value: void 0
     }, {
       kind: "field",
+      decorators: [query('#keepScreenOn')],
+      key: "keepScreenOnRef",
+      value: void 0
+    }, {
+      kind: "field",
       decorators: [query('#jsonConsole')],
       key: "jsonConsoleRef",
       value: void 0
@@ -327,10 +310,6 @@ export let MainView = _decorate([customElement('main-view')], function (_initial
       value: function connectedCallback() {
         _get(_getPrototypeOf(MainView.prototype), "connectedCallback", this).call(this);
 
-        if (this.isWakeLockSupported) {
-          window.document.addEventListener("visibilitychange", this._handleOnVisibilityChange.bind(this));
-        }
-
         if ('connection' in navigator) {
           navigator.connection.onchange = this._onConnectionChange.bind(this);
         }
@@ -339,23 +318,11 @@ export let MainView = _decorate([customElement('main-view')], function (_initial
       kind: "method",
       key: "disconnectedCallback",
       value: function disconnectedCallback() {
-        if (this.isWakeLockSupported) {
-          window.document.removeEventListener("visibilitychange", this._handleOnVisibilityChange.bind(this));
-        }
-
         if ('connection' in navigator) {
           navigator.connection.onchange = null;
         }
 
         _get(_getPrototypeOf(MainView.prototype), "disconnectedCallback", this).call(this);
-      }
-    }, {
-      kind: "method",
-      key: "_handleOnVisibilityChange",
-      value: function _handleOnVisibilityChange(_) {
-        if (document.visibilityState === 'visible' && this.wakeLock !== null) {
-          this._requestWakeLock();
-        }
       }
     }, {
       kind: "method",
@@ -370,21 +337,24 @@ export let MainView = _decorate([customElement('main-view')], function (_initial
       }
     }, {
       kind: "method",
-      key: "_requestWakeLock",
-      value: async function _requestWakeLock() {
-        try {
-          this.wakeLock = await navigator.wakeLock.request('screen');
-        } catch (err) {
-          // if wake lock request fails - usually system related, such as battery
-          log('warn', `${err.name}, ${err.message}`);
-          this.isWakeLockSupported = false;
-        }
-      }
-    }, {
-      kind: "method",
       key: "firstUpdated",
       value: function firstUpdated() {
-        this.fileUrlRef.value = localStorage.getItem('lastUrl');
+        if ('wakeLock' in navigator) {
+          // Reacquire wake lock
+          document.addEventListener('visibilitychange', async () => {
+            if (this.wakeLock !== null && document.visibilityState === 'visible') {
+              this.wakeLock = await this._requestWakeLock();
+              this.keepScreenOnRef.checked = !!this.wakeLock;
+            }
+          });
+          this.keepScreenOnRef.checked = localStorage.getItem('keepScreenOn') === String(true);
+
+          this._onKeepScreenOn();
+        } else {
+          this.keepScreenOnRef.disabled = true;
+        }
+
+        this.fileUrlRef.value = localStorage.getItem('lastUrl') || "";
         this.tracePositionRef.checked = localStorage.getItem('inclPosition') === String(true);
 
         if ('connection' in navigator) {
@@ -404,8 +374,38 @@ export let MainView = _decorate([customElement('main-view')], function (_initial
       }
     }, {
       kind: "method",
+      key: "_requestWakeLock",
+      value: async function _requestWakeLock() {
+        const hasLock = !!this.wakeLock;
+        const wakeLock = await navigator.wakeLock.request('screen');
+
+        if (!wakeLock) {
+          return null;
+        }
+
+        console.log("Screen wakelock was", hasLock ? "re-acquired" : "acquired");
+
+        wakeLock.onrelease = () => {
+          console.log("Screen wakelock was released");
+        };
+
+        return wakeLock;
+      }
+    }, {
+      kind: "method",
+      key: "_onKeepScreenOn",
+      value: async function _onKeepScreenOn() {
+        const checked = !!this.keepScreenOnRef.checked;
+        localStorage.setItem('keepScreenOn', String(checked));
+
+        if (!('wakeLock' in navigator)) {
+          this.keepScreenOnRef.checked = false;
+        }
+      }
+    }, {
+      kind: "method",
       key: "_onStartClick",
-      value: function _onStartClick() {
+      value: async function _onStartClick() {
         const description = this.descriptionRef.value;
 
         if (isEmpty(description)) {
@@ -461,27 +461,23 @@ export let MainView = _decorate([customElement('main-view')], function (_initial
         this.progress = 0;
         this.lppStart(description, params);
 
-        if (this.isWakeLockSupported && this.wakeLock === null) {
-          this._requestWakeLock();
+        if (this.keepScreenOnRef.checked) {
+          this.wakeLock = await this._requestWakeLock();
         }
       }
     }, {
       kind: "method",
       key: "_onStopClick",
-      value: function _onStopClick() {
-        var _this$sampler, _this$sampler2;
-
-        if (this.isWakeLockSupported && this.wakeLock !== null) {
-          this.wakeLock.release().then(() => {
-            this.wakeLock = null;
-          });
-        }
+      value: async function _onStopClick() {
+        var _this$sampler, _this$sampler2, _this$wakeLock;
 
         this.isTracing = false;
         this.isPaused = false;
         (_this$sampler = this.sampler) == null ? void 0 : _this$sampler.stop();
         this.status = 'Stopped';
-        this.jsonConsoleRef.innerText = (_this$sampler2 = this.sampler) == null ? void 0 : _this$sampler2.toJSON();
+        this.jsonConsoleRef.value = (_this$sampler2 = this.sampler) == null ? void 0 : _this$sampler2.toJSON();
+        await ((_this$wakeLock = this.wakeLock) == null ? void 0 : _this$wakeLock.release());
+        this.wakeLock = null;
       }
     }, {
       kind: "method",
@@ -491,38 +487,13 @@ export let MainView = _decorate([customElement('main-view')], function (_initial
           if (this.sampler.getStatus() === LppStatus.STARTED) {
             this.sampler.stop();
             this.isPaused = true;
-
-            if (this.isWakeLockSupported) {
-              if (this.wakeLock !== null) {
-                this.wakeLock.release().then(() => {
-                  this.wakeLock = null;
-                });
-              }
-            }
-
             this.status = "Paused";
           } else if (this.sampler.getStatus() === LppStatus.STOPPED) {
             this.status = "Running...";
             this.sampler.start();
             this.isPaused = false;
-
-            if (this.isWakeLockSupported && document.visibilityState === 'visible' && this.wakeLock === null) {
-              this._requestWakeLock();
-            }
           }
         }
-      }
-    }, {
-      kind: "method",
-      key: "_onCopyClick",
-      value: function _onCopyClick() {
-        const range = document.createRange();
-        range.selectNode(this.jsonConsoleRef);
-        window.getSelection().removeAllRanges();
-        window.getSelection().addRange(range);
-        document.execCommand("copy");
-        window.getSelection().removeAllRanges();
-        this.jsonConsoleRef.disabled = false;
       }
     }, {
       kind: "method",
@@ -635,6 +606,12 @@ export let MainView = _decorate([customElement('main-view')], function (_initial
           </mwc-switch>
         </mwc-formfield>
 
+        <mwc-formfield label="Keep screen on while tracing">
+          <mwc-switch id="keepScreenOn" ?disabled=${this.isTracing}
+            @change=${this._onKeepScreenOn}>
+          </mwc-switch>
+        </mwc-formfield>
+
         <div class="buttons">
           <mwc-button dense unelevated id='startButton' ?disabled=${this.isTracing} @click=${this._onStartClick}>Start</mwc-button>
           <mwc-button dense unelevated id='pauseButton' ?disabled=${!this.isTracing} @click=${this._onPauseClick}>${this.isPaused ? "Resume" : "Pause"}</mwc-button>
@@ -664,8 +641,127 @@ export let MainView = _decorate([customElement('main-view')], function (_initial
       </div>
       <div class="inline-label">
         <label for="jsonConsole">Recorded data as JSON:</label><br><br>
-        <pre id="jsonConsole"></pre>
-        <mwc-button dense unelevated id='copyButton' type='button' ?disabled=${this.isTracing} @click=${this._onCopyClick}>Copy</mwc-button>
+        <json-view id="jsonConsole" ?disabled=${this.isTracing}></json-view>
+      </div>
+      <br>
+    `;
+      }
+    }]
+  };
+}, LitElement);
+
+function supportDownload() {
+  return "download" in document.createElement("a");
+}
+
+export let JsonView = _decorate([customElement('json-view')], function (_initialize2, _LitElement2) {
+  class JsonView extends _LitElement2 {
+    constructor(...args) {
+      super(...args);
+
+      _initialize2(this);
+    }
+
+  }
+
+  return {
+    F: JsonView,
+    d: [{
+      kind: "field",
+      static: true,
+      key: "styles",
+
+      value() {
+        return css`
+    pre {
+      max-height: 200px;
+      padding: 1em;
+      margin: .5em 0;
+      border: 0;
+      border-radius: 0.3em;
+      min-height: 180px;
+      max-width: auto;
+      overflow: auto;
+      line-height: inherit;
+      word-wrap: normal;
+      background-color: #2b354f;
+      color: white;
+    }
+
+    div {
+      display: block;
+      position: relative;
+    }
+
+    mwc-icon-button {
+      overflow: unset;
+      padding: 0;
+      color: white;
+      margin: 8px;
+      padding: 0px;
+      position: absolute;
+      right: 0;
+      top: 0;
+      --mdc-theme-text-disabled-on-light: lightslategray;
+    }
+
+    #save {
+      right: 52px;
+    }
+  `;
+      }
+
+    }, {
+      kind: "field",
+      decorators: [property({
+        type: String
+      })],
+      key: "value",
+
+      value() {
+        return "";
+      }
+
+    }, {
+      kind: "method",
+      key: "copy",
+      value: function copy() {
+        window.getSelection().removeAllRanges();
+        const range = document.createRange();
+        range.selectNode(this.shadowRoot.querySelector('#json'));
+        window.getSelection().addRange(range);
+        document.execCommand('copy');
+        window.getSelection().removeAllRanges();
+      }
+    }, {
+      kind: "method",
+      key: "save",
+      value: function save() {
+        const blob = new Blob([this.value], {
+          type: "application/json"
+        });
+        const anchor = document.createElement("a");
+        anchor.href = URL.createObjectURL(blob);
+        anchor.download = "tracedata.json";
+        anchor.click();
+        window.URL.revokeObjectURL(anchor.href);
+      }
+    }, {
+      kind: "method",
+      key: "render",
+      value: function render() {
+        return html`
+      <div>
+        <pre id="json">${this.value}</pre>
+        <mwc-icon-button id="save" icon="save_alt"
+            style=${styleMap({
+          display: !supportDownload() ? 'none' : 'block'
+        })}
+            @click=${this.save} ?disabled=${!this.value.length}>
+        </mwc-icon-button>
+        <mwc-icon-button id="copy" icon="content_copy"
+            @click=${this.copy} ?disabled=${!this.value.length}>
+        </mwc-icon-button>
       </div>
     `;
       }

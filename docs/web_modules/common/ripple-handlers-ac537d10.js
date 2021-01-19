@@ -3,7 +3,7 @@ import { h as html } from './lit-html-11dd2d1e.js';
 import { css } from '../lit-element.js';
 import { query, property, internalProperty, customElement } from '../lit-element/lib/decorators.js';
 import { M as MDCFoundation, B as BaseElement } from './foundation-593bff33.js';
-import { s as styleMap } from './style-map-f27292ac.js';
+import { styleMap } from '../lit-html/directives/style-map.js';
 
 /**
  * @license
