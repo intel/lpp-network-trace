@@ -48,6 +48,9 @@ async function sendConditions(tab, BW) {
   assert(typeof tab !== 'undefined' && tab !== null && typeof tab === 'object', 'tab is not an object');
   assert(typeof BW !== 'undefined' && BW !== null && !isNaN(BW), 'BW is not a number');
   conditions.downloadThroughput = Math.floor((BW * 1024) / 8);
+  if(BW===0) {
+    BW=0.1;
+  }
   try {
     const target = {
       tabId: tab.id,
